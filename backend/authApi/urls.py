@@ -7,6 +7,7 @@ from rest_framework_simplejwt.views import (
 )
 from django.contrib.auth import views as auth_views
 from .views import PasswordResetView, PasswordResetConfirmView, PasswordResetCompleteView
+
 urlpatterns=[
     path('',views.getRoutes),
     path('token/',MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
@@ -17,6 +18,7 @@ urlpatterns=[
     path('reset_password/', PasswordResetView.as_view(), name='api_reset_password'),
     path('reset/<uidb64>/<token>/', PasswordResetConfirmView.as_view(), name='api_password_reset_confirm'),
     path('reset_password_complete/', PasswordResetCompleteView.as_view(), name='api_password_reset_complete'),
+   
 #     path('reset_password/',
 #          auth_views.PasswordResetView.as_view(template_name="password_reset.html"),
 #          name="reset_password"),

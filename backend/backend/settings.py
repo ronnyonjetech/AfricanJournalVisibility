@@ -42,11 +42,41 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
+    'journalApis',
+    'drf_spectacular',
 ]
 REST_FRAMEWORK = { 
+
+    # YOUR SETTINGS
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+
     'DEFAULT_AUTHENTICATION_CLASSES': ( 
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
+}
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'APHRC API DOCUMENTATION',
+    'DESCRIPTION': 'These are api end-points for African Journal Visibility project.CRUD operation processes',
+    'VERSION': '1.0.0',
+    'CONTACT': {
+        'name': 'APHRC',
+        'url': 'https://aphrc.org/',
+        'email': 'helpdesk@aphrc.org',
+    },
+    'LICENSE': {
+        'name': 'MIT',
+        'url': 'https://opensource.org/licenses/MIT',
+    },
+    # Customizing Swagger UI
+    # 'SWAGGER_UI_SETTINGS': {
+    #     'docExpansion': 'none',  # Controls how the operations are displayed
+    #     'defaultModelsExpandDepth': -1,  # Hides default models section
+    #     'operationsSorter': 'alpha',  # Sort operations alphabetically
+    #     'tagsSorter': 'alpha',  # Sort tags alphabetically
+    #     'layout': 'BaseLayout',  # Layout options: 'BaseLayout', 'StandaloneLayout'
+    # },
+    'SERVE_INCLUDE_SCHEMA': False,
+    # OTHER SETTINGS
 }
 
 
