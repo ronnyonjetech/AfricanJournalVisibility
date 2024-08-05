@@ -67,18 +67,12 @@ SPECTACULAR_SETTINGS = {
         'name': 'MIT',
         'url': 'https://opensource.org/licenses/MIT',
     },
-    # Customizing Swagger UI
-    # 'SWAGGER_UI_SETTINGS': {
-    #     'docExpansion': 'none',  # Controls how the operations are displayed
-    #     'defaultModelsExpandDepth': -1,  # Hides default models section
-    #     'operationsSorter': 'alpha',  # Sort operations alphabetically
-    #     'tagsSorter': 'alpha',  # Sort tags alphabetically
-    #     'layout': 'BaseLayout',  # Layout options: 'BaseLayout', 'StandaloneLayout'
-    # },
+    
     'SERVE_INCLUDE_SCHEMA': False,
     # OTHER SETTINGS
 }
 
+#https://aphrc.org/wp-content/themes/understrap-child/img/APHRC-primary-logo-large.png
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=1440),
