@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-yfax-5v=kmb7nud9zp36%hi_oa84yl=gh%nv_*u=qyxncq^b2=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["africanjournalvisibility.onrender.com",'127.0.0.1','localhost']
+ALLOWED_HOSTS = ['127.0.0.1','localhost',"africanjournalvisibility.onrender.com"]
 
 
 # Application definition
