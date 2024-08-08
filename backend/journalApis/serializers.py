@@ -24,7 +24,7 @@ from .models import Volume, Article, ArticleType
 class ArticleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Article
-        fields = ['id', 'title', 'authors', 'keywords', 'publication_date']
+        fields = ['id','volume', 'article_type', 'title', 'authors', 'keywords', 'publication_date']
 
 class VolumeSerializer(serializers.ModelSerializer):
     articles = ArticleSerializer(many=True)
@@ -32,3 +32,8 @@ class VolumeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Volume
         fields = ['volume_number', 'created_at', 'articles']
+
+# class ArticleSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Article
+#         fields = ['id', 'volume', 'article_type', 'title', 'authors', 'keywords', 'publication_date']

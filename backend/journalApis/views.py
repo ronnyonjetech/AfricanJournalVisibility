@@ -9,27 +9,10 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import Volume
-from .serializers import VolumeSerializer, ArticleSerializer
+from .models import Volume,Article
+from .serializers import VolumeSerializer,ArticleSerializer
 from django.shortcuts import get_object_or_404
-#from .models import Journal,PDF,Volume
-#from .serializers import JournalSerializer,PDFSerializer,VolumeSerializer
 
-# class JournalList(APIView):
-#     def get(self, request):
-#         journals = Journal.objects.all()  # Retrieve all Journal objects
-#         serializer = JournalSerializer(journals, many=True)  # Serialize the queryset
-#         return Response(serializer.data, status=status.HTTP_200_OK)  # Return serialized data
-# class PDFList(APIView):
-#     def get(self, request):
-#         pdfs = PDF.objects.all()  # Retrieve all PDF objects
-#         serializer = PDFSerializer(pdfs, many=True)  # Serialize the queryset
-#         return Response(serializer.data, status=status.HTTP_200_OK)  # Return serialized data
-# class VolumeList(APIView):
-#     def get(self, request):
-#         volumes = Volume.objects.all()  # Retrieve all Volume objects
-#         serializer = VolumeSerializer(volumes, many=True)  # Serialize the queryset
-#         return Response(serializer.data, status=status.HTTP_200_OK)  # Return serialized data  
 
 class VolumeClusterView(APIView):
     def get(self, request):
@@ -62,6 +45,7 @@ class VolumeClusterView(APIView):
         }
 
         return Response(response_data)
+    
 class VolumeDetailView(APIView):
     def get(self, request, volume_number):
         # Get the volume with the specified volume number
@@ -71,6 +55,80 @@ class VolumeDetailView(APIView):
         serializer = VolumeSerializer(volume)
         
         return Response(serializer.data)
-         
+
+class VolumeDeleteView(APIView):
+    def delete(self, request, volume_number):
+        # Get the volume with the specified volume number
+        volume = get_object_or_404(Volume, volume_number=volume_number)
+        
+        # Delete the volume
+        volume.delete()
+        
+        # Return a response indicating successful deletion
+        return Response({'message': 'Volume deleted successfully'}, status=status.HTTP_204_NO_CONTENT)
+
+class ArticleListView(APIView):
+    def get(self, request):
+        # Retrieve all articles from the database
+        articles = Article.objects.all()
+        
+        # Serialize the articles
+        serializer = ArticleSerializer(articles, many=True)
+        
+        # Return the serialized data
+        return Response(serializer.data)
+
+class ArticleDetailView(APIView):
+    def get(self, request, article_id):
+        # Retrieve the article with the specified ID
+        article = get_object_or_404(Article, id=article_id)
+        
+        # Serialize the article
+        serializer = ArticleSerializer(article)
+        
+        # Return the serialized article data
+        return Response(serializer.data)
+    
+class ArticleUpdateView(APIView):
+    def put(self, request, article_id):
+        # Retrieve the article with the specified ID
+        article = get_object_or_404(Article, id=article_id)
+        
+        # Deserialize the incoming data
+        serializer = ArticleSerializer(article, data=request.data)
+        
+        # Validate and save the updated article
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    def patch(self, request, article_id):
+        # Retrieve the article with the specified ID
+        article = get_object_or_404(Article, id=article_id)
+        
+        # Deserialize the incoming data
+        serializer = ArticleSerializer(article, data=request.data, partial=True)
+        
+        # Validate and save the updated article
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+class ArticleCreateView(APIView):
+    def post(self, request):
+        # Deserialize the incoming data
+        serializer = ArticleSerializer(data=request.data)
+        
+        # Validate and save the new article
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)    
+                     
 def getJournals(Request):
     pass
