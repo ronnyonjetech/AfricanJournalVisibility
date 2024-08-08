@@ -20,21 +20,23 @@
 # admin.site.register(Volume, VolumeAdmin)
 # admin.site.register(PDF)
 from django.contrib import admin
-from .models import Journal, Volume, PDF
+#from .models import Journal, Volume, PDF,Article
+from .models import Volume,Article
+# @admin.register(Journal)
+# class JournalAdmin(admin.ModelAdmin):
+#     list_display = ('name', 'created_at')  # Columns to display in the list view
+#     search_fields = ('name',)  # Add search functionality for the journal name
 
-@admin.register(Journal)
-class JournalAdmin(admin.ModelAdmin):
-    list_display = ('name', 'created_at')  # Columns to display in the list view
-    search_fields = ('name',)  # Add search functionality for the journal name
+# @admin.register(Volume)
+# class VolumeAdmin(admin.ModelAdmin):
+#     list_display = ('journal', 'volume_number', 'created_at')  # Display volume number and journal
+#     list_filter = ('journal',)  # Filter by journal in the admin interface
 
-@admin.register(Volume)
-class VolumeAdmin(admin.ModelAdmin):
-    list_display = ('journal', 'volume_number', 'created_at')  # Display volume number and journal
-    list_filter = ('journal',)  # Filter by journal in the admin interface
+# @admin.register(PDF)
+# class PDFAdmin(admin.ModelAdmin):
+#     list_display = ('title', 'volume', 'author', 'doi', 'language', 'created_at')  # Display PDF details
+#     search_fields = ('title', 'author', 'doi')  # Add search functionality for title, author, and DOI
+#     list_filter = ('volume', 'language')  # Filter by volume and language
 
-@admin.register(PDF)
-class PDFAdmin(admin.ModelAdmin):
-    list_display = ('title', 'volume', 'author', 'doi', 'language', 'created_at')  # Display PDF details
-    search_fields = ('title', 'author', 'doi')  # Add search functionality for title, author, and DOI
-    list_filter = ('volume', 'language')  # Filter by volume and language
-
+admin.site.register(Article)
+admin.site.register(Volume)
