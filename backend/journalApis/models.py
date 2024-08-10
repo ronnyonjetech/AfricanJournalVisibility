@@ -2,7 +2,6 @@ from django.db import models
 
 class Volume(models.Model):
     volume_number = models.PositiveIntegerField(unique=True, verbose_name="Volume Number")
-    #volume_number = models.IntegerField(unique=True,verbose_name="Volume Number")
     created_at = models.DateTimeField(auto_now_add=True)
     
 

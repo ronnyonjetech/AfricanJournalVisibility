@@ -1,39 +1,32 @@
-# serializers.py
 
-# from rest_framework import serializers
-# from .models import Journal,PDF,Volume
-
-# class JournalSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Journal
-#         fields = '__all__'  # Use '__all__' to include all fields, or specify them explicitly
-        
-# class VolumeSerializer(serializers.ModelSerializer):
-#     journal=JournalSerializer()
-#     class Meta:
-#         model = Volume
-#         fields = '__all__'  # Use '__all__' to include all fields, or specify them explicitly
-# class PDFSerializer(serializers.ModelSerializer):
-#     volume=VolumeSerializer()
-#     class Meta:
-#         model = PDF
-#         fields = '__all__'  # Use '__all__' to include all fields, or specify them explicitly
 from rest_framework import serializers
 from .models import Volume, Article, ArticleType
 
+
+
+
+class ArticleTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ArticleType
+        fields = ['id', 'article_type', 'created_at']
+
+
 class ArticleSerializer(serializers.ModelSerializer):
+    #volume=VolumeSerializer()
+    #volume = serializers.PrimaryKeyRelatedField(read_only=True)
+    volume_number = serializers.SerializerMethodField() 
+    article_type=ArticleTypeSerializer()
     class Meta:
         model = Article
-        fields = ['id','volume', 'article_type', 'title', 'authors', 'keywords', 'publication_date']
+        fields = ['id','volume_number', 'article_type', 'title', 'authors', 'keywords', 'publication_date']
+    def get_volume_number(self, obj):
+        return obj.volume.volume_number
+     
 
 class VolumeSerializer(serializers.ModelSerializer):
     articles = ArticleSerializer(many=True)
-
+    
     class Meta:
         model = Volume
         fields = ['volume_number', 'created_at', 'articles']
 
-# class ArticleSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Article
-#         fields = ['id', 'volume', 'article_type', 'title', 'authors', 'keywords', 'publication_date']
