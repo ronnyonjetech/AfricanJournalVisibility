@@ -24,6 +24,7 @@ class Article(models.Model):
     authors = models.TextField()  # Store a list of authors as a comma-separated string
     keywords = models.TextField()
     publication_date = models.DateField()
+   
     #publication_details = models.CharField(max_length=100)
     
     def __str__(self):

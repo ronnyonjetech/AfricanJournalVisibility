@@ -14,6 +14,27 @@ from .serializers import VolumeSerializer,ArticleSerializer
 from django.shortcuts import get_object_or_404
 
 
+class LatestVolumeView(APIView):
+    def get(self, request):
+        # Fetch the latest volume based on volume_number
+        latest_volume = Volume.objects.order_by('-volume_number').first()
+        
+        if latest_volume is not None:
+            # Serialize the latest volume
+            volume_serializer = VolumeSerializer(latest_volume)
+            volume_number = latest_volume.volume_number
+
+            # Prepare response data
+            response_data = {
+                'volume_number': volume_number,
+                'created_at': latest_volume.created_at,
+                'articles': volume_serializer.data['articles']
+            }
+        else:
+            response_data = {'error': 'No volume data available'}
+
+        return Response(response_data)
+
 class VolumeClusterView(APIView):
     def get(self, request):
         volumes = Volume.objects.all().order_by('volume_number')
@@ -74,6 +95,17 @@ class ArticleListView(APIView):
         
         # Serialize the articles
         serializer = ArticleSerializer(articles, many=True)
+        
+        # Return the serialized data
+        return Response(serializer.data)
+    
+class LatestArticleListView(APIView):
+    def get(self, request):
+        # Retrieve the latest 5 articles from the database, ordered by created_at descending
+        latest_articles = Article.objects.order_by('-publication_date')[:5]
+        
+        # Serialize the articles
+        serializer = ArticleSerializer(latest_articles, many=True)
         
         # Return the serialized data
         return Response(serializer.data)
