@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 # Create your views here.
 # views.py
-
+from rest_framework.pagination import PageNumberPagination
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -12,6 +12,16 @@ from rest_framework.views import APIView
 from .models import Volume,Article
 from .serializers import VolumeSerializer,ArticleSerializer
 from django.shortcuts import get_object_or_404
+from django_filters.rest_framework import DjangoFilterBackend
+from .filters import ArticleFilter
+from rest_framework import generics
+
+
+
+class ArticlePagination(PageNumberPagination):
+    # page_size = 3
+    page_size_query_param = 'page_size'  # Allows clients to set the page size
+    max_page_size = 100
 
 
 class LatestVolumeView(APIView):
@@ -98,6 +108,22 @@ class ArticleListView(APIView):
         
         # Return the serialized data
         return Response(serializer.data)
+
+class ArticlePaginationListView(APIView):
+    def get(self, request):
+        # Retrieve all articles from the database
+        articles = Article.objects.all()
+
+        # Instantiate the pagination class
+        paginator = ArticlePagination()
+        
+        # Paginate the queryset
+        paginated_articles = paginator.paginate_queryset(articles, request)
+        # Serialize the articles
+        serializer = ArticleSerializer(paginated_articles, many=True)
+        
+        # Return the serialized data
+        return paginator.get_paginated_response(serializer.data) 
     
 class LatestArticleListView(APIView):
     def get(self, request):
@@ -161,6 +187,13 @@ class ArticleCreateView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)    
-                     
+    
+#To be improved after migration to POSTGRES DATABASE
+class ArticleSearchView(generics.ListAPIView):
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = ArticleFilter
+
 def getJournals(Request):
     pass

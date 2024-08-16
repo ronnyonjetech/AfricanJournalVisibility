@@ -2,7 +2,8 @@ from . import views
 from django.urls import path
 from .views import (VolumeClusterView, VolumeDetailView,VolumeDeleteView,
                     ArticleListView,ArticleDetailView,ArticleUpdateView,
-                    ArticleCreateView,LatestVolumeView,LatestArticleListView)
+                    ArticleCreateView,LatestVolumeView,LatestArticleListView,
+                    ArticleSearchView,ArticlePaginationListView)
 
 urlpatterns=[
    path('',views.getJournals),
@@ -13,8 +14,11 @@ urlpatterns=[
    path('api/volumes/<int:volume_number>/delete/', VolumeDeleteView.as_view(), name='volume-delete'),
    #url route for Articles
    path('api/articles/', ArticleListView.as_view(), name='article-list'),
+   path('api/articles_pagination/', ArticlePaginationListView.as_view(), name='article-list'),
    path('latest-articles/', LatestArticleListView.as_view(), name='latest-article'),
    path('api/articles/<int:article_id>/', ArticleDetailView.as_view(), name='article-detail'),
    path('api/articles/<int:article_id>/update/', ArticleUpdateView.as_view(), name='article-update'),
    path('api/articles/create/', ArticleCreateView.as_view(), name='article-create'),
+   #search for articles
+   path('articles/search/', ArticleSearchView.as_view(), name='article-search'),
 ]

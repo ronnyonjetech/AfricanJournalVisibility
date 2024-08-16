@@ -1,8 +1,5 @@
-
 from rest_framework import serializers
 from .models import Volume, Article, ArticleType
-
-
 
 
 class ArticleTypeSerializer(serializers.ModelSerializer):

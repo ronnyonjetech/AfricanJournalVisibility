@@ -44,15 +44,18 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist',
     'journalApis',
     'drf_spectacular',
+    'django_filters',
 ]
 REST_FRAMEWORK = { 
-
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 3,
     # YOUR SETTINGS
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 
     'DEFAULT_AUTHENTICATION_CLASSES': ( 
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
+   
 }
 SPECTACULAR_SETTINGS = {
     'TITLE': 'APHRC API DOCUMENTATION',
