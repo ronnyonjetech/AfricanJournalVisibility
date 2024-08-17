@@ -1,4 +1,4 @@
-
+#python manage.py load_excel_data "C:\Users\guest478\Downloads\visibility.xlsx"
 
 import pandas as pd
 from django.core.management.base import BaseCommand
