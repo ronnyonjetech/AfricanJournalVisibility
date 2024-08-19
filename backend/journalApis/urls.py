@@ -4,7 +4,7 @@ from .views import (VolumeClusterView, VolumeDetailView,VolumeDeleteView,
                     ArticleListView,ArticleDetailView,ArticleUpdateView,
                     ArticleCreateView,LatestVolumeView,LatestArticleListView,
                     ArticleSearchView,ArticlePaginationListView)
-
+from .views import JournalPaginationListView,JournalSearchView,JournalDetailView
 urlpatterns=[
    path('',views.getJournals),
    #url route for Volumes
@@ -21,4 +21,8 @@ urlpatterns=[
    path('api/articles/create/', ArticleCreateView.as_view(), name='article-create'),
    #search for articles
    path('articles/search/', ArticleSearchView.as_view(), name='article-search'),
+   #search journals
+   path('journals/', JournalPaginationListView.as_view(), name='journal-list'),
+   path('journals/search/',JournalSearchView.as_view()),
+   path('api/journals/<int:journal_id>/', JournalDetailView.as_view()),
 ]

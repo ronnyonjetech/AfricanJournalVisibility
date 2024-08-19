@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const Journals = () => {
-  const [articles, setArticles] = useState([]);
+  const [journals, setJournals] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const pageSize = 3; // Number of articles per page
+  const pageSize = 10; 
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchArticles = async () => {
       try {
         const url = searchQuery
-          ? `http://127.0.0.1:8000/journal_api/articles/search/?page=${currentPage}&query=${encodeURIComponent(searchQuery)}`
-          : `http://127.0.0.1:8000/journal_api/api/articles_pagination/?page=${currentPage}`;
+          ? `http://127.0.0.1:8000/journal_api/journals/search/?page=${currentPage}&query=${encodeURIComponent(searchQuery)}`
+          : `http://127.0.0.1:8000/journal_api/journals/?page=${currentPage}`;
 
         const response = await fetch(url, {
           method: 'GET',
@@ -31,10 +33,13 @@ const Journals = () => {
         }
 
         const data = await response.json();
-        setArticles(data.results);
+        setJournals(data.results);
         setTotalPages(Math.ceil(data.count / pageSize)); // Calculate total pages
       } catch (error) {
-        setError(`Failed to fetch articles: ${error.message}`);
+        //navigate('/journals');
+        window.location.reload();
+        //setError(`Failed to fetch Journals: ${error.message}`);
+        //fetchArticles()
       } finally {
         setLoading(false);
       }
@@ -51,6 +56,8 @@ const Journals = () => {
     if (currentPage < totalPages) {
       setCurrentPage(currentPage + 1);
     }
+    console.log(currentPage)
+    console.log( totalPages)
   };
 
   const handlePreviousPage = () => {
@@ -107,16 +114,16 @@ const Journals = () => {
         </div>
       </div>
       <ul style={{ listStyle: 'none', padding: 0 }}>
-        {articles.map((article) => (
-          <li key={article.id} style={{ padding: '10px', borderBottom: '1px solid #ccc' }}>
-            <Link to={`/journal/${article.id}`} style={{ textDecoration: 'none' }}>
-              <h4 className="articleTitle">{article.title}</h4>
+        {journals.map((journal) => (
+          <li key={journal.id} style={{ padding: '10px', borderBottom: '1px solid #ccc' }}>
+            <Link to={`/journal/${journal.id}`} style={{ textDecoration: 'none' }}>
+              <h4 className="articleTitle">{journal.journal_title}</h4>
             </Link>
-            <p className="articleType">{article.article_type.article_type}</p>
-            <p className="articleAuthors">{article.authors}</p>
-            <p className="articleKeywords">{article.keywords}</p>
-            <p className="articleVolume">VOL({article.volume_number}) ARTICLE {article.id}</p>
-            <p className="articleDate">Publication Date: {new Date(article.publication_date).toDateString()}</p>
+            <p className="articleType">{journal.country ? journal.country.country : "Country not specified"}</p>
+            <p className="articleAuthors">{journal.publishers_name ? journal.publishers_name : "Publisher not specified"}</p>
+            <p className="articleKeywords">{journal.thematic_area ?journal.thematic_area.thematic_area:"thematic area not specified"}</p>
+            {/* <p className="articleVolume">VOL({article.volume_number}) ARTICLE {article.id}</p>
+            <p className="articleDate">Publication Date: {new Date(article.publication_date).toDateString()}</p> */}
           </li>
         ))}
       </ul>

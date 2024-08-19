@@ -9,19 +9,25 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import Volume,Article
-from .serializers import VolumeSerializer,ArticleSerializer
+from .models import Volume,Article,Journal
+from .serializers import VolumeSerializer,ArticleSerializer,JournalSerializer
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
-from .filters import ArticleFilter
+from .filters import ArticleFilter,JournalFilter
 from rest_framework import generics
-
+from rest_framework.filters import SearchFilter
 
 
 class ArticlePagination(PageNumberPagination):
     # page_size = 3
     page_size_query_param = 'page_size'  # Allows clients to set the page size
     max_page_size = 100
+
+class JournalPagination(PageNumberPagination):
+    # Set the page size here or in settings.py
+    page_size_query_param = 'page_size'
+    max_page_size = 100
+    page_size = 10 
 
 
 class LatestVolumeView(APIView):
@@ -194,6 +200,78 @@ class ArticleSearchView(generics.ListAPIView):
     serializer_class = ArticleSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_class = ArticleFilter
+
+
+class JournalPaginationListView(APIView):
+    def get(self, request):
+        # Retrieve all journals from the database
+        journals = Journal.objects.all()
+
+        # Instantiate the pagination class
+        paginator = JournalPagination()
+        
+        # Paginate the queryset
+        paginated_journals = paginator.paginate_queryset(journals, request)
+        
+        # Serialize the journals
+        serializer = JournalSerializer(paginated_journals, many=True)
+        
+        # Return the serialized data with pagination information
+        return paginator.get_paginated_response(serializer.data)
+    
+# class JournalListView(generics.ListAPIView):
+#     queryset = Journal.objects.all()
+#     serializer_class = JournalSerializer
+
+
+# class JournalListView(generics.ListAPIView):
+#     queryset = Journal.objects.all()
+#     serializer_class = JournalSerializer
+#     filter_backends = [SearchFilter]
+#     search_fields = [
+#         'journal_title', 
+#         'platform__platform', 
+#         'country__country', 
+#         'publishers_name', 
+#         'language__language', 
+#         'thematic_area__thematic_area',
+#         'issn_number',
+#         'eigen_metrix',
+#         'link',
+#     ]
+#     pagination_class = JournalPagination  # Use the custom pagination class
+
+
+
+
+# class JournalSearchView(generics.ListAPIView):
+#     queryset = Journal.objects.all()
+#     serializer_class = JournalSerializer
+#     filter_backends = [DjangoFilterBackend]
+#     filterset_class = JournalFilter
+
+
+class JournalSearchView(generics.ListAPIView):
+    queryset = Journal.objects.all()
+    serializer_class = JournalSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = JournalFilter
+    pagination_class = JournalPagination
+
+
+class JournalDetailView(APIView):
+    def get(self, request, journal_id):
+        # Retrieve the article with the specified ID
+        journal = get_object_or_404(Journal, id=journal_id)
+        
+        # Serialize the article
+        serializer = JournalSerializer(journal)
+        
+        # Return the serialized article data
+        return Response(serializer.data)
+
+
+
 
 def getJournals(Request):
     pass

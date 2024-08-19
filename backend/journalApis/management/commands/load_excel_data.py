@@ -20,6 +20,9 @@ class Command(BaseCommand):
         # Iterate over the rows in the DataFrame
         for index, row in df.iterrows():
             try:
+                aim_value = row.get('African Index Medicus')
+                converted_aim = self.convert_to_boolean(aim_value)
+                print(f"Row {index} - AIM Value: {aim_value} | Converted AIM: {converted_aim}")
                 language = self.get_or_create_model(Language, 'language', row.get('Language'))
                 platform = self.get_or_create_model(Platform, 'platform', row.get('Platform'))
                 country = self.get_or_create_model(Country, 'country', row.get('Country'))
@@ -37,7 +40,7 @@ class Command(BaseCommand):
                     language=language,
                     thematic_area=thematic_area,
                     link=row.get('Link'),
-                    aim_identifier=self.convert_to_boolean(row.get('African Index Medicus')),
+                    aim_identifier=converted_aim,
                     medline=self.convert_to_boolean(row.get('Medline (Medicine and Health Journals)')),
                     google_scholar_index=self.convert_to_boolean(row.get('Indexed on Google Scholar')),
                     impact_factor=self.convert_to_int(row.get('Impact Factor')),
@@ -72,8 +75,11 @@ class Command(BaseCommand):
 
     def convert_to_boolean(self, value):
         """Converts various representations of boolean values to Python's True/False."""
+        print(f"Original Value: {value} | Type: {type(value)}")
         if pd.isna(value):
             return None
+        if isinstance(value, (int, float)):
+            return bool(value)
         value = str(value).strip().lower()
         if value in ['true', '1', 'yes', 'y']:
             return True
