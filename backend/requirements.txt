@@ -13,12 +13,14 @@ cryptography==42.0.5
 cssselect==1.2.0
 Django==5.0
 django-cors-headers==4.3.1
+django-filter==24.3
 django-phonenumber-field==7.3.0
 django-tenant-schemas==1.12.0
 django-tenants==3.6.1
 djangorestframework==3.14.0
 djangorestframework-simplejwt==5.3.1
 drf-spectacular==0.27.2
+et-xmlfile==1.1.0
 filelock==3.13.4
 flatbuffers==24.3.25
 fsspec==2024.3.1
@@ -42,10 +44,12 @@ mdurl==0.1.2
 ml-dtypes==0.3.2
 namex==0.0.8
 numpy==1.26.4
+openpyxl==3.1.5
 opt-einsum==3.3.0
 optree==0.11.0
 ordered-set==4.1.0
 packaging==24.0
+pandas==2.2.2
 pdfminer.six==20231228
 phonenumbers==8.13.29
 protobuf==4.25.3
