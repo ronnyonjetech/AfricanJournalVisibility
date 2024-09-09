@@ -87,16 +87,22 @@ class Command(BaseCommand):
             return False
         return None
 
+    
     def convert_to_int(self, value):
         """Converts a value to an integer, returning None if conversion fails or value is missing."""
         try:
+            if pd.isna(value):
+                return None
             return int(value)
         except (ValueError, TypeError):
             return None
 
+    
     def convert_to_float(self, value):
-        """Converts a value to a float, returning None if conversion fails or value is missing."""
+        """Converts a value to a float, returning None if conversion fails or value is invalid."""
         try:
+            if pd.isna(value):
+                return None
             return float(value)
         except (ValueError, TypeError):
             return None

@@ -39,7 +39,7 @@ class Journal(models.Model):
      language=models.ForeignKey(Language,on_delete=models.CASCADE,null=True, blank=True)
      #thematic_area=models.ForeignKey(ThematicArea,on_delete=models.CASCADE,unique=True,null=True, blank=True)
      thematic_area=models.ForeignKey(ThematicArea,on_delete=models.CASCADE,null=True, blank=True)
-     issn_number=models.CharField(max_length=9, null=True, blank=True)
+     issn_number=models.CharField(max_length=100, null=True, blank=True)
      link = models.URLField(max_length=200, blank=True, null=True)
      aim_identifier = models.BooleanField(blank=True, null=True)
      medline=models.BooleanField(blank=True, null=True)
