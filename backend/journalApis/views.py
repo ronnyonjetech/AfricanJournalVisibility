@@ -69,3 +69,4 @@ class JournalDetailView(APIView):
 
 def getJournals(Request):
     pass
+
