@@ -40,7 +40,7 @@ class Journal(models.Model):
      #thematic_area=models.ForeignKey(ThematicArea,on_delete=models.CASCADE,unique=True,null=True, blank=True)
      thematic_area=models.ForeignKey(ThematicArea,on_delete=models.CASCADE,null=True, blank=True)
      issn_number=models.CharField(max_length=100, null=True, blank=True)
-     link = models.URLField(max_length=200, blank=True, null=True)
+     link = models.URLField(max_length=2048, blank=True, null=True)
      aim_identifier = models.BooleanField(blank=True, null=True)
      medline=models.BooleanField(blank=True, null=True)
      google_scholar_index=models.BooleanField(blank=True, null=True)
@@ -57,7 +57,8 @@ class Journal(models.Model):
      publisher_in_cope=models.BooleanField(blank=True, null=True)
      online_publisher_africa=models.BooleanField(blank=True, null=True)
      hosted_on_inasps=models.BooleanField(blank=True, null=True)
-    
+     summary = models.TextField(null=True, blank=True)
+
      def __str__(self):
         return f"{self.id}-{self.journal_title}"
 

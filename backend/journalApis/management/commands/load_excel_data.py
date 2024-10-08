@@ -29,7 +29,7 @@ class Command(BaseCommand):
                 thematic_area = self.get_or_create_model(ThematicArea, 'thematic_area', row.get('Thematic area'))
                 
                 issn_number = row.get('ISSN Number') if pd.notna(row.get('ISSN Number')) else None
-
+                summary = row.get('Summary') if pd.notna(row.get('Summary')) else None  # Retrieve summary
                 # Create a new Journal record
                 Journal.objects.create(
                     issn_number=issn_number,  # This can be None
@@ -56,6 +56,7 @@ class Command(BaseCommand):
                     publisher_in_cope=self.convert_to_boolean(row.get('The publisher is a member of Committee on publication Ethics (COPE)')),
                     online_publisher_africa=self.convert_to_boolean(row.get('Online publisher based in Africa')),
                     hosted_on_inasps=self.convert_to_boolean(row.get("Hosted on INASP'S Journal online")),
+                    summary=summary 
                 )
                 self.stdout.write(f"Inserted row {index}")
 
