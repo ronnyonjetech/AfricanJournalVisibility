@@ -15,7 +15,8 @@ from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
 from .filters import JournalFilter
 from rest_framework import generics
-
+from rest_framework.decorators import api_view
+import google.generativeai as genai
 
 
 
@@ -69,4 +70,59 @@ class JournalDetailView(APIView):
 
 def getJournals(Request):
     pass
+
+
+
+@api_view(['GET'])
+def journal_stats(request):
+    # Count total number of journals with specific attributes
+    open_access_count = Journal.objects.filter(open_access_journal=True).count()
+    hosted_on_inasps_count = Journal.objects.filter(hosted_on_inasps=True).count()
+    online_publisher_africa_count = Journal.objects.filter(online_publisher_africa=True).count()
+    doaj_count = Journal.objects.filter(listed_in_doaj=True).count()
+    cope_count = Journal.objects.filter(publisher_in_cope=True).count()
+    issn_count = Journal.objects.filter(present_issn=True).count()
+    
+    # Create response dictionary
+    stats = {
+        'open_access_journal_count': open_access_count,
+        'hosted_on_inasps_count': hosted_on_inasps_count,
+        'online_publisher_africa_count': online_publisher_africa_count,
+        'doaj_count': doaj_count,
+        'cope_count': cope_count,
+        'issn_count': issn_count,
+    }
+
+    return Response(stats)
+
+@api_view(['POST'])
+def generate_journal_description(request):
+    genai.configure(api_key='AIzaSyBf6hhxPUxOgKFWnPhtgWnRj6htPPbkdWU')
+    # Get the journal text from the request data
+    journal_text = request.data.get('journal_text')
+
+    if not journal_text:
+        return Response({"error": "Journal text is required."}, status=status.HTTP_400_BAD_REQUEST)
+
+    try:
+        # Initialize the generative model
+        model = genai.GenerativeModel("gemini-1.5-flash")
+
+        # Generate a brief description based on the input journal text
+        prompt = f"Provide a brief description three paragrahs for the following journal title:'{journal_text}'."
+        response = model.generate_content(prompt)
+
+        # Check if the response contains the generated description
+        if response and response.text:
+            print(response.text)
+            return Response({
+                'journal_text': journal_text,
+                'description': response.text
+            }, status=status.HTTP_200_OK)
+        else:
+            return Response({"error": "Failed to generate a description."}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+    except Exception as e:
+        # Handle errors during the process
+        return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
