@@ -64,3 +64,26 @@ class Journal(models.Model):
 
 
 
+class Volume(models.Model):
+    journal = models.ForeignKey(Journal,  on_delete=models.CASCADE, related_name="volumes") 
+    volume_number = models.PositiveIntegerField(verbose_name="Volume Number")
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        unique_together = ('journal', 'volume_number')  # Ensures unique volumes per journal
+
+    def __str__(self):
+        return f"Volume {self.volume_number} of {self.journal.journal_title}"
+
+
+class Article(models.Model):
+    volume = models.ForeignKey(Volume, on_delete=models.CASCADE, related_name="articles", blank=True)  
+    title = models.CharField(max_length=255)
+    authors = models.TextField()  # Store a list of authors as a comma-separated string
+    keywords = models.TextField()
+    publication_date = models.DateField()
+    pdf = models.FileField(upload_to='articles/pdfs/', blank=True, null=True)
+    
+    def __str__(self):
+        return self.title
+

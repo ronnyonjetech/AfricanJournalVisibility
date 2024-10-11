@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Journal,Language,Platform,Country,ThematicArea
+from .models import Journal,Language,Platform,Country,ThematicArea,Volume, Article
 
 
 
@@ -24,11 +24,26 @@ class ThematicAreaSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+# Serializer for Article model
+class ArticleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Article
+        fields = ['id', 'title', 'authors', 'keywords','pdf','publication_date']
+
+# Serializer for Volume model, including nested articles
+class VolumeSerializer(serializers.ModelSerializer):
+    articles = ArticleSerializer(many=True, read_only=True)  # Nested ArticleSerializer to include all articles in this volume
+
+    class Meta:
+        model = Volume
+        fields = ['id', 'volume_number', 'created_at', 'articles']
+
 class JournalSerializer(serializers.ModelSerializer):
     language=LanguageSerializer()
     platform=PlatformSerializer()
     country=CountrySerializer()
     thematic_area=ThematicAreaSerializer()
+    volumes = VolumeSerializer(many=True, read_only=True)
     class Meta:
         model = Journal
         fields = '__all__'  
