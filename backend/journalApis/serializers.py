@@ -36,7 +36,7 @@ class VolumeSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Volume
-        fields = ['id', 'volume_number', 'created_at', 'articles']
+        fields = ['id','volume_number','issue_number','year','created_at','articles']
 
 class JournalSerializer(serializers.ModelSerializer):
     language=LanguageSerializer()
