@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Journal,Language,Platform,Country,ThematicArea,Volume, Article
+from .models import Journal,Language,Platform,Country,ThematicArea,Volume, Article,JournalImage
 
 
 
@@ -38,12 +38,19 @@ class VolumeSerializer(serializers.ModelSerializer):
         model = Volume
         fields = ['id','volume_number','issue_number','year','created_at','articles']
 
+# Serializer for JournalImage model
+class JournalImageSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = JournalImage
+        fields = ['id', 'image', 'description', 'uploaded_at']
+
 class JournalSerializer(serializers.ModelSerializer):
     language=LanguageSerializer()
     platform=PlatformSerializer()
     country=CountrySerializer()
     thematic_area=ThematicAreaSerializer()
     volumes = VolumeSerializer(many=True, read_only=True)
+    image = JournalImageSerializer(read_only=True)  # Only one image per journal, no 'many=True'
     class Meta:
         model = Journal
         fields = '__all__'  

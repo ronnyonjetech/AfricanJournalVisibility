@@ -40,7 +40,8 @@ class Journal(models.Model):
      #thematic_area=models.ForeignKey(ThematicArea,on_delete=models.CASCADE,unique=True,null=True, blank=True)
      thematic_area=models.ForeignKey(ThematicArea,on_delete=models.CASCADE,null=True, blank=True)
      issn_number=models.CharField(max_length=100, null=True, blank=True)
-     link = models.URLField(max_length=2048, blank=True, null=True)
+    #  link = models.URLField(max_length=2048, blank=True, null=True)
+     link = models.TextField(blank=True, null=True)
      aim_identifier = models.BooleanField(blank=True, null=True)
      medline=models.BooleanField(blank=True, null=True)
      google_scholar_index=models.BooleanField(blank=True, null=True)
@@ -63,17 +64,15 @@ class Journal(models.Model):
         return f"{self.id}-{self.journal_title}"
 
 
+class JournalImage(models.Model):
+    journal = models.OneToOneField(Journal, on_delete=models.CASCADE, related_name="image")
+    image = models.ImageField(upload_to='journals/images/', blank=True, null=True)
+    description = models.CharField(max_length=255, blank=True, null=True)  # Optional description of the image
+    uploaded_at = models.DateTimeField(auto_now_add=True)
 
-# class Volume(models.Model):
-#     journal = models.ForeignKey(Journal,  on_delete=models.CASCADE, related_name="volumes") 
-#     volume_number = models.PositiveIntegerField(verbose_name="Volume Number")
-#     created_at = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return f"Image for {self.journal.journal_title} uploaded on {self.uploaded_at}"
 
-#     class Meta:
-#         unique_together = ('journal', 'volume_number')  # Ensures unique volumes per journal
-
-#     def __str__(self):
-#         return f"Volume {self.volume_number} of {self.journal.journal_title}"
 
 class Volume(models.Model):
     journal = models.ForeignKey(Journal, on_delete=models.CASCADE, related_name="volumes")
