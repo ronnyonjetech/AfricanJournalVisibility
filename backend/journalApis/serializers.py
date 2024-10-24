@@ -54,3 +54,8 @@ class JournalSerializer(serializers.ModelSerializer):
     class Meta:
         model = Journal
         fields = '__all__'  
+        
+class JournalSerializer1(serializers.ModelSerializer):
+    class Meta:
+        model = Journal
+        fields = '__all__'

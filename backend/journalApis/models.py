@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
      
 class Language(models.Model):
     language=models.CharField(max_length=1000)
@@ -59,6 +60,7 @@ class Journal(models.Model):
      online_publisher_africa=models.BooleanField(blank=True, null=True)
      hosted_on_inasps=models.BooleanField(blank=True, null=True)
      summary = models.TextField(null=True, blank=True)
+     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
 
      def __str__(self):
         return f"{self.id}-{self.journal_title}"

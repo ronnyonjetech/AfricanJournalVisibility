@@ -10,16 +10,17 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Journal
-from .serializers import JournalSerializer
+from .serializers import JournalSerializer,JournalSerializer1,LanguageSerializer,PlatformSerializer,CountrySerializer,ThematicAreaSerializer,VolumeSerializer,ArticleSerializer
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
 from .filters import JournalFilter
 from rest_framework import generics
 from rest_framework.decorators import api_view
 import google.generativeai as genai
-
-
-
+from rest_framework import viewsets  # This imports viewsets
+from rest_framework.permissions import IsAuthenticated 
+from .models import Language,Platform,Country,ThematicArea,Volume,Article
+from django.conf import settings
 
 class JournalPagination(PageNumberPagination):
     # Set the page size here or in settings.py
@@ -45,7 +46,31 @@ class JournalPaginationListView(APIView):
         # Return the serialized data with pagination information
         return paginator.get_paginated_response(serializer.data)
     
+class JournalPaginationListUserView(APIView):
+    permission_classes = [IsAuthenticated]
 
+    def get(self, request):
+        # Retrieve the authenticated user's ID
+        authenticated_user_id = request.user.id
+        print(authenticated_user_id)
+        # Retrieve journals uploaded by the specific user
+        journals = Journal.objects.filter(user_id=authenticated_user_id)
+
+        # Check if journals exist for the user
+        if not journals.exists():
+            return Response({'detail': 'No journals found for the authenticated user.'}, status=status.HTTP_404_NOT_FOUND)
+
+        # Instantiate the pagination class
+        paginator = JournalPagination()
+        
+        # Paginate the queryset
+        paginated_journals = paginator.paginate_queryset(journals, request)
+        
+        # Serialize the journals
+        serializer = JournalSerializer(paginated_journals, many=True)
+        
+        # Return the serialized data with pagination information
+        return paginator.get_paginated_response(serializer.data)
 
 
 class JournalSearchView(generics.ListAPIView):
@@ -126,3 +151,41 @@ def generate_journal_description(request):
         # Handle errors during the process
         return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
+class JournalCreateView(APIView):
+    def post(self, request):
+        serializer = JournalSerializer1(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class LanguageViewSet(viewsets.ModelViewSet):
+    queryset = Language.objects.all()  # Fetch all languages
+    serializer_class = LanguageSerializer
+    pagination_class = None  # This disables pagination for this viewset
+
+class PlatformViewSet(viewsets.ModelViewSet):
+    queryset = Platform.objects.all()  # Fetch all languages
+    serializer_class = PlatformSerializer
+    pagination_class = None  # This disables pagination for this viewset
+
+class CountryViewSet(viewsets.ModelViewSet):
+    queryset = Country.objects.all()  # Fetch all languages
+    serializer_class = CountrySerializer
+    pagination_class = None  # This disables pagination for this viewset
+
+class ThematicAreaViewSet(viewsets.ModelViewSet):
+    queryset = ThematicArea.objects.all()  # Fetch all languages
+    serializer_class = ThematicAreaSerializer
+    pagination_class = None  # This disables pagination for this viewset
+
+class VolumeViewSet(viewsets.ModelViewSet):
+    queryset = Volume.objects.all()  # Fetch all languages
+    serializer_class = VolumeSerializer
+    pagination_class = None  # This disables pagination for this viewset
+
+class ArticleViewSet(viewsets.ModelViewSet):
+    queryset = Article.objects.all()  # Fetch all languages
+    serializer_class = ArticleSerializer
+    pagination_class = None  # This disables pagination for this viewset
