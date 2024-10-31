@@ -21,6 +21,7 @@ from rest_framework import viewsets  # This imports viewsets
 from rest_framework.permissions import IsAuthenticated 
 from .models import Language,Platform,Country,ThematicArea,Volume,Article
 from django.conf import settings
+from django.db.models import Count
 
 class JournalPagination(PageNumberPagination):
     # Set the page size here or in settings.py
@@ -53,24 +54,19 @@ class JournalPaginationListUserView(APIView):
         # Retrieve the authenticated user's ID
         authenticated_user_id = request.user.id
         print(authenticated_user_id)
+        
         # Retrieve journals uploaded by the specific user
         journals = Journal.objects.filter(user_id=authenticated_user_id)
 
         # Check if journals exist for the user
         if not journals.exists():
             return Response({'detail': 'No journals found for the authenticated user.'}, status=status.HTTP_404_NOT_FOUND)
-
-        # Instantiate the pagination class
-        paginator = JournalPagination()
-        
-        # Paginate the queryset
-        paginated_journals = paginator.paginate_queryset(journals, request)
         
         # Serialize the journals
-        serializer = JournalSerializer(paginated_journals, many=True)
+        serializer = JournalSerializer(journals, many=True)
         
-        # Return the serialized data with pagination information
-        return paginator.get_paginated_response(serializer.data)
+        # Return the serialized data
+        return Response(serializer.data)
 
 
 class JournalSearchView(generics.ListAPIView):
@@ -164,6 +160,58 @@ class LanguageViewSet(viewsets.ModelViewSet):
     queryset = Language.objects.all()  # Fetch all languages
     serializer_class = LanguageSerializer
     pagination_class = None  # This disables pagination for this viewset
+
+class UserLanguageViewSet(viewsets.ModelViewSet):
+    serializer_class = LanguageSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        # Filtering languages associated with journals authored by the user
+        return Language.objects.filter(journal__user=user).distinct()
+
+    def list(self, request, *args, **kwargs):
+        user = request.user
+        
+        # Fetch languages used by the user and count the journals per language
+        queryset = Language.objects.filter(journal__user=user).annotate(
+            journal_count=Count('journal')
+        ).distinct()
+
+        data = []
+        for language in queryset:
+            data.append({
+                'language': language.language,
+                'journal_count': language.journal_count
+            })
+
+        return Response(data)    
+
+class UserThematicAreaViewSet(viewsets.ModelViewSet):
+    serializer_class = ThematicAreaSerializer
+    permission_classes = [IsAuthenticated]
+    pagination_class = None  # This disables pagination for this viewset
+    def get_queryset(self):
+        user = self.request.user
+        # Filtering thematic areas associated with journals authored by the user
+        return ThematicArea.objects.filter(journal__user=user).distinct()
+
+    def list(self, request, *args, **kwargs):
+        user = request.user
+        
+        # Fetch thematic areas used by the user and count the journals per thematic area
+        queryset = ThematicArea.objects.filter(journal__user=user).annotate(
+            journal_count=Count('journal')
+        ).distinct()
+
+        data = []
+        for thematic_area in queryset:
+            data.append({
+                'thematic_area': thematic_area.thematic_area,
+                'journal_count': thematic_area.journal_count
+            })
+
+        return Response(data)
 
 class PlatformViewSet(viewsets.ModelViewSet):
     queryset = Platform.objects.all()  # Fetch all languages
