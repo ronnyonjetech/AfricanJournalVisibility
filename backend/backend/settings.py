@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['127.0.0.1','localhost',"africanjournalvisibility.onrender.com"
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,7 +46,8 @@ INSTALLED_APPS = [
     'journalApis',
     'drf_spectacular',
     'django_filters',
-    'django.contrib.postgres'
+    'django.contrib.postgres',
+    
 ]
 REST_FRAMEWORK = { 
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
@@ -236,3 +238,101 @@ DEFAULT_FROM_EMAIL = 'nyonjeron@gmail.com'
 
 
 FRONTEND_URL = 'http://localhost:5174'  # Replace with your frontend URL
+
+
+JAZZMIN_SETTINGS = {
+   "custom_css": "css/custom_admin.css",
+    
+    # Title on the login screen (19 chars max) (defaults to current_admin_site.site_header if absent or None)
+    "site_header": "Afrika Journals",
+
+    # Title on the brand (19 chars max) (defaults to current_admin_site.site_header if absent or None)
+    "site_brand": "Afrika Journals",
+
+    # Logo to use for your site, must be present in static files, used for brand on top left
+    "site_logo": "logo.png",
+
+    
+
+    # CSS classes that are applied to the logo above
+    "site_logo_classes": "img-fluid",
+
+    # Relative path to a favicon for your site, will default to site_logo if absent (ideally 32x32 px)
+    #"site_icon": None,
+
+    # Welcome text on the login screen
+    "welcome_sign": "Welcome to the Afrika Journals Platform",
+
+
+
+
+# title of the window (Will default to current_admin_site.site_title if absent or None)
+    "site_title": "Afrika Journals",
+
+ # Copyright on the footer
+    "copyright": "Afrika journals",
+
+    ############
+    # Top Menu #
+    ############
+
+    # Links to put along the top menu
+    "topmenu_links": [
+        # App with dropdown menu to all its models pages (Permissions checked against models)
+        {"app": "journalApis"},
+    ],
+     # Whether to show the UI customizer on the sidebar
+    "show_ui_builder": True,
+
+
+     # Other Jazzmin settings
+    
+    "icons": {
+        "journalApis.Journal": "fas fa-book",      # Example for a Book model
+        "journalApis.Country": "fa fa-globe",
+        "journalApis.Article": "fa fa-file-pdf",
+        "journalApis.JournalImage": "fa fa-file-image",
+        "journalApis.Language": "fa fa-language",
+        "journalApis.Platform": "fa fa-cubes",
+        "journalApis.ThematicArea": "fa fa-tags",
+        "journalApis.Volume": "fa fa-list-ol",
+        "authApi.NewUser": "fa fa-user",
+        "auth.Group": "fa fa-users",
+        
+            # Example for a User model
+        #"your_app_name.ModelName3": "fas fa-chart-bar", # Example for a Chart model
+        
+    },
+    
+}
+JAZZMIN_UI_TWEAKS = {
+    "navbar_small_text": False,
+    "footer_small_text": False,
+    "body_small_text": False,
+    "brand_small_text": False,
+    "brand_colour": False,
+    "accent": "accent-primary",
+    "navbar": "navbar-white navbar-light",
+    "no_navbar_border": True,
+    "navbar_fixed": False,
+    "layout_boxed": False,
+    "footer_fixed": True,
+    "sidebar_fixed": False,
+    "sidebar": "sidebar-dark-warning",
+    "sidebar_nav_small_text": False,
+    "sidebar_disable_expand": False,
+    "sidebar_nav_child_indent": False,
+    "sidebar_nav_compact_style": False,
+    "sidebar_nav_legacy_style": False,
+    "sidebar_nav_flat_style": False,
+    "theme": "default",
+    "dark_mode_theme": None,
+    "button_classes": {
+        "primary": "btn-primary",
+        "secondary": "btn-secondary",
+        "info": "btn-info",
+        "warning": "btn-warning",
+        "danger": "btn-danger",
+        "success": "btn-success"
+    }
+}

@@ -1,0 +1,82 @@
+/* Main Layout Setup for All Pages */
+html, body {
+    height: 100%;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    display: flex;
+    box-sizing: border-box;
+}
+
+/* Sidebar Styles */
+.main-sidebar {
+    background-color: #f2f4f7 !important;
+    padding-top: 20px !important;
+    box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.1) !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 250px;
+    z-index: 999;
+    transition: width 0.3s ease;
+    box-sizing: border-box;
+    /* Ensure sidebar height matches the content */
+    height: 100%;  /* Ensure it takes full height of the body */
+    overflow-y: auto;  /* Enable scrolling if sidebar content is long */
+}
+
+/* Collapsed Sidebar */
+.main-sidebar.collapsed {
+    width: 80px !important;
+    overflow: hidden;
+}
+
+/* Content Wrapper Styling */
+.content-wrapper {
+    margin-left: 250px;
+    padding-top: 20px;
+    flex: 1;
+    overflow: auto; /* Prevents content overflow */
+    transition: margin-left 0.3s ease;
+    box-sizing: border-box;
+    width: calc(100vw - 250px); /* Dynamically adjust width */
+}
+
+/* Adjust Content Margin When Sidebar is Collapsed */
+.main-sidebar.collapsed + .content-wrapper {
+    margin-left: 80px !important;
+    width: calc(100vw - 80px); /* Correct width when sidebar is collapsed */
+}
+
+/* Fix for Django Admin Pages */
+#content, .module, .change-list, .inline-related {
+    max-width: 100vw; /* Prevents admin content from expanding */
+    overflow-x: hidden; /* Prevents horizontal scroll */
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box;
+}
+
+/* Admin Page Body Adjustment */
+body.admin {
+    width: 100vw; /* Explicitly set admin body width */
+    overflow-x: hidden; /* Prevent any unwanted horizontal scroll */
+}
+
+/* Responsive Adjustments for Small Screens */
+@media (max-width: 768px) {
+    .main-sidebar {
+        display: none !important;
+    }
+
+    .content-wrapper {
+        margin-left: 0 !important;
+        width: 100vw; /* Full width on small screens */
+    }
+
+    .navbar-nav,
+    .navbar-toggler {
+        display: block !important;
+    }
+}

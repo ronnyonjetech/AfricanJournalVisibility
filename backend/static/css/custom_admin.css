@@ -1,0 +1,174 @@
+/* Main Layout Setup for All Pages */
+html, body {
+    height: 100%;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    display: flex;
+    box-sizing: border-box;
+}
+/* Darken Text Beside Sidebar Logo */
+.brand-link {
+    color: #4b4b4b !important; /* Darker color for visibility */
+}
+
+/* Sidebar Styles */
+.main-sidebar {
+    background-color: #f2f4f7 !important;
+    padding-top: 20px !important;
+    box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.1) !important;
+    position: fixed; /* Fix the sidebar to the screen */
+    top: 0;
+    left: 0;
+    width: 250px;
+    z-index: 999;
+    transition: width 0.3s ease;
+    box-sizing: border-box;
+    height: 100vh; /* Sidebar should take the full height of the screen */
+    overflow: hidden; /* Prevent vertical scrolling in the sidebar */
+}
+
+/* Collapsed Sidebar */
+.main-sidebar.collapsed {
+    width: 80px !important;
+    overflow: hidden;
+}
+
+/* Content Wrapper Styling */
+.content-wrapper {
+    margin-left: 250px;
+    padding-top: 20px;
+    flex: 1;
+    overflow-y: auto; /* Only the body content should scroll vertically */
+    transition: margin-left 0.3s ease;
+    box-sizing: border-box;
+    width: calc(100vw - 250px); /* Adjust width dynamically */
+}
+
+/* Adjust Content Margin When Sidebar is Collapsed */
+.main-sidebar.collapsed + .content-wrapper {
+    margin-left: 80px !important;
+    width: calc(100vw - 80px); /* Correct width when sidebar is collapsed */
+}
+
+/* Fix for Django Admin Pages */
+#content, .module, .change-list, .inline-related {
+    max-width: 100vw; /* Prevents admin content from expanding */
+    overflow-x: hidden; /* Prevents horizontal scroll */
+    padding-right: 0 !important;
+    margin-right: 0 !important;
+    box-sizing: border-box;
+}
+
+/* Admin Page Body Adjustment */
+body.admin {
+    width: 100vw; /* Explicitly set admin body width */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+/* Dropdown Styles */
+.dropdown-menu {
+    max-height: 300px; /* Limit dropdown height */
+    overflow-y: auto;  /* Add scrolling if the content exceeds max height */
+    position: absolute;
+    top: 100%; /* Ensure dropdown appears below its parent */
+    left: 0;
+    right: 0;
+    z-index: 1050; /* Ensure dropdown is above other elements */
+}
+
+/* Prevent Dropdowns from Exceeding Viewport Height */
+@media (max-width: 768px) {
+    .dropdown-menu {
+        max-height: 50vh; /* Constrain dropdown height on smaller screens */
+    }
+}
+
+/* Responsive Adjustments for Small Screens */
+@media (max-width: 768px) {
+    .main-sidebar {
+        display: none !important;
+    }
+
+    .content-wrapper {
+        margin-left: 0 !important;
+        width: 100vw; /* Full width on small screens */
+    }
+
+    .navbar-nav,
+    .navbar-toggler {
+        display: block !important;
+    }
+}
+
+/* Styling for ForeignKey dropdown (Select field) in Admin */
+#content select {
+    max-height: 300px;    /* Limit dropdown height */
+    overflow-y: auto;     /* Add vertical scrolling */
+    width: 100%;          /* Full width dropdown */
+}
+
+/* Adjust the size of ForeignKey dropdown on smaller screens */
+@media (max-width: 768px) {
+    #content select {
+        max-height: 50vh;    /* Limit height on small screens */
+    }
+}
+
+/* Targeting Form Rows for ForeignKey dropdown fields */
+.form-row select {
+    max-height: 300px;    /* Constrain dropdown height */
+    overflow-y: auto;     /* Prevent overflow */
+}
+
+/* Darker Sidebar Icons */
+.main-sidebar .nav-link i {
+    color: #4b4b4b !important;  /* Darker icons for visibility */
+    transition: color 0.3s ease; /* Smooth transition for icon color */
+}
+
+/* Hover Effect on Sidebar Icons */
+.main-sidebar .nav-link:hover i {
+    color: #000000 !important; /* Even darker on hover */
+}
+
+/* Active State for Icons */
+.main-sidebar .nav-treeview > .nav-item > .nav-link.active i {
+    color: #000000 !important; /* Darker icon color when active */
+}
+
+/* Darker Sidebar Text */
+.main-sidebar .nav-link {
+    color: #4b4b4b !important;  /* Darker text for better visibility */
+    font-weight: 600;           /* Optional: Make text bold for better readability */
+    transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+/* Hover Effect on Sidebar Links (Text) */
+.main-sidebar .nav-link:hover {
+    background-color: #e0e4ed !important; /* Lighter hover effect */
+    color: #000000 !important;            /* Dark text color on hover */
+}
+
+/* Active Sidebar Link (Text) */
+.main-sidebar .nav-treeview > .nav-item > .nav-link.active {
+    background-color: #d1d7e1 !important; /* Lighter background for active items */
+    color: #000000 !important;            /* Dark color for active text */
+}
+
+/* Darker Text Above Icon Groups (Sidebar Group Titles) */
+.main-sidebar .nav-header {
+    color: #4b4b4b !important;  /* Darker color for the section titles above icons */
+    font-weight: 600;           /* Optional: Bold for better readability */
+}
+
+/* Darken Sidebar User Icon and Username in Jazzmin */
+.user-panel .image img, /* If the icon is an img */
+.user-panel .info a {
+    color: #4b4b4b !important; /* Darker color for visibility */
+}
+/* Darken the Sidebar User Icon */
+.user-panel .image img {
+    color: #4b4b4b ;/* Darkens the icon */
+}
