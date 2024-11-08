@@ -8,6 +8,7 @@ html, body {
     display: flex;
     box-sizing: border-box;
 }
+
 /* Darken Text Beside Sidebar Logo */
 .brand-link {
     color: #4b4b4b !important; /* Darker color for visibility */
@@ -18,44 +19,45 @@ html, body {
     background-color: #f2f4f7 !important;
     padding-top: 20px !important;
     box-shadow: 2px 0px 10px rgba(0, 0, 0, 0.1) !important;
-    position: fixed; /* Fix the sidebar to the screen */
+    position: fixed; /* Fix sidebar to the screen */
     top: 0;
     left: 0;
     width: 250px;
     z-index: 999;
-    transition: width 0.3s ease;
+    transition: width 0.3s ease; /* Smooth transition for width change */
     box-sizing: border-box;
     height: 100vh; /* Sidebar should take the full height of the screen */
-    overflow: hidden; /* Prevent vertical scrolling in the sidebar */
+    overflow-y: auto; /* Allow sidebar to scroll vertically */
 }
 
 /* Collapsed Sidebar */
 .main-sidebar.collapsed {
-    width: 80px !important;
-    overflow: hidden;
+    width: 80px !important; /* Sidebar collapsed width */
+    overflow: hidden; /* Prevent sidebar overflow */
 }
 
 /* Content Wrapper Styling */
 .content-wrapper {
-    margin-left: 250px;
+    margin-left: 250px; /* Default margin for expanded sidebar */
     padding-top: 20px;
     flex: 1;
-    overflow-y: auto; /* Only the body content should scroll vertically */
-    transition: margin-left 0.3s ease;
+    overflow-y: auto; /* Allow content to scroll vertically */
+    transition: margin-left 0.3s ease, width 0.3s ease; /* Transition for margin and width */
     box-sizing: border-box;
-    width: calc(100vw - 250px); /* Adjust width dynamically */
+    width: calc(100vw - 250px); /* Default content width */
+    height: 100vh; /* Full height content */
 }
 
 /* Adjust Content Margin When Sidebar is Collapsed */
 .main-sidebar.collapsed + .content-wrapper {
-    margin-left: 80px !important;
-    width: calc(100vw - 80px); /* Correct width when sidebar is collapsed */
+    margin-left: 80px !important; /* Adjust margin when sidebar is collapsed */
+    width: calc(100vw - 80px) !important; /* Adjust content width when collapsed */
 }
 
 /* Fix for Django Admin Pages */
 #content, .module, .change-list, .inline-related {
-    max-width: 100vw; /* Prevents admin content from expanding */
-    overflow-x: hidden; /* Prevents horizontal scroll */
+    max-width: 100vw; /* Prevent admin content from expanding */
+    overflow-x: hidden !important; /* Prevent horizontal scroll */
     padding-right: 0 !important;
     margin-right: 0 !important;
     box-sizing: border-box;
@@ -88,7 +90,7 @@ body.admin {
 /* Responsive Adjustments for Small Screens */
 @media (max-width: 768px) {
     .main-sidebar {
-        display: none !important;
+        display: none !important; /* Hide sidebar on small screens */
     }
 
     .content-wrapper {

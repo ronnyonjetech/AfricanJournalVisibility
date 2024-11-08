@@ -237,9 +237,9 @@ EMAIL_HOST_PASSWORD='lllj dcfx fmis rtbw'
 DEFAULT_FROM_EMAIL = 'nyonjeron@gmail.com'
 
 
-FRONTEND_URL = 'http://localhost:5174'  # Replace with your frontend URL
+#FRONTEND_URL = 'http://localhost:5174'  # Replace with your frontend URL
 
-
+FRONTEND_URL = 'https://afrijour.web.app/'
 JAZZMIN_SETTINGS = {
    "custom_css": "css/custom_admin.css",
     
