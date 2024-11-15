@@ -236,4 +236,4 @@ class VolumeViewSet(viewsets.ModelViewSet):
 class ArticleViewSet(viewsets.ModelViewSet):
     queryset = Article.objects.all()  # Fetch all languages
     serializer_class = ArticleSerializer
-    pagination_class = None  # This disables pagination for this viewset
+    #pagination_class = None  # This disables pagination for this viewset
