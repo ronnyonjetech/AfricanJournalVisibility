@@ -133,14 +133,16 @@ class Volume(models.Model):
 
 class Article(models.Model):
     volume = models.ForeignKey(Volume, on_delete=models.CASCADE, related_name="articles", blank=True)  
-    title = models.CharField(max_length=255)
+    #title = models.CharField(max_length=255)
+    title = models.TextField()
     authors = models.TextField()  # Comma-separated list of authors
     keywords = models.TextField(blank=True, null=True)
     publication_date = models.DateField()
     pdf = models.FileField(upload_to='articles/pdfs/', blank=True, null=True)
 
     # CrossRef metadata and publisher information
-    doi = models.CharField(max_length=255, blank=True, null=True)
+    #doi = models.CharField(max_length=255, blank=True, null=True)
+    doi = models.TextField(blank=True, null=True)
     #url = models.URLField(blank=True, null=True)
     url = models.TextField(blank=True, null=True)
     reference_count = models.PositiveIntegerField(default=0)
@@ -151,10 +153,10 @@ class Article(models.Model):
     page_end = models.CharField(max_length=10, blank=True, null=True)
     abstract = models.TextField(blank=True, null=True)
     subjects = models.TextField(blank=True, null=True)  # Comma-separated list of subjects
-    article_type = models.CharField(max_length=50, blank=True, null=True)
-    electronic_issn = models.CharField(max_length=50, blank=True, null=True)
-    print_issn = models.CharField(max_length=50, blank=True, null=True)
-    publisher = models.CharField(max_length=255, blank=True, null=True)
+    article_type = models.CharField(max_length=1050, blank=True, null=True)
+    electronic_issn = models.CharField(max_length=1050, blank=True, null=True)
+    print_issn = models.CharField(max_length=1050, blank=True, null=True)
+    publisher = models.CharField(max_length=1255, blank=True, null=True)
     publisher_location = models.CharField(max_length=255, blank=True, null=True)
 
     def __str__(self):
