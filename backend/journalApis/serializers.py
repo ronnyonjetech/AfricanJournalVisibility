@@ -28,7 +28,8 @@ class ThematicAreaSerializer(serializers.ModelSerializer):
 class ArticleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Article
-        fields = ['id', 'title', 'authors', 'keywords','pdf','publication_date']
+        fields = '__all__'
+        # fields = ['id', 'title', 'authors', 'keywords','pdf','publication_date']
 
 # Serializer for Volume model, including nested articles
 class VolumeSerializer(serializers.ModelSerializer):

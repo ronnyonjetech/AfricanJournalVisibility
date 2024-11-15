@@ -63,6 +63,7 @@ class JournalFilter(django_filters.FilterSet):
         # Full-text search vector
         search_vector = SearchVector(
             'journal_title',
+            'summary',
             'platform__platform',
             'country__country',
             'publishers_name',
@@ -86,6 +87,7 @@ class JournalFilter(django_filters.FilterSet):
             Q(thematic_area__thematic_area__icontains=value) |
             Q(issn_number__icontains=value) |
             Q(language__language__icontains=value)|
-            Q(h_index__icontains=value)
+            Q(h_index__icontains=value)|
+            Q(summary__icontains=value)
         ).order_by('-rank').distinct()
 
