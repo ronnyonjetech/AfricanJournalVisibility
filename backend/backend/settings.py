@@ -298,7 +298,8 @@ JAZZMIN_SETTINGS = {
         "journalApis.Volume": "fa fa-list-ol",
         "authApi.NewUser": "fa fa-user",
         "auth.Group": "fa fa-users",
-        
+        "journalApis.JournalsWithoutVolumes":"fa fa-triangle-exclamation",
+        "journalApis.LastProcessedJournal":"fa fa-clipboard",
             # Example for a User model
         #"your_app_name.ModelName3": "fas fa-chart-bar", # Example for a Chart model
         

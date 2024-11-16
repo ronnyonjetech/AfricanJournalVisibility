@@ -62,9 +62,24 @@ class Journal(models.Model):
      hosted_on_inasps=models.BooleanField(blank=True, null=True)
      summary = models.TextField(null=True, blank=True)
      user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
+     
 
      def __str__(self):
-        return f"{self.id}-{self.journal_title}"
+            return f"{self.id}-{self.journal_title}"
+
+class JournalsWithoutVolumesManager(models.Manager):
+    def get_queryset(self):
+        # Return journals with no associated volumes
+        return super().get_queryset().filter(volumes__isnull=True)
+
+class JournalsWithoutVolumes(Journal):
+    objects = JournalsWithoutVolumesManager()
+
+    class Meta:
+        proxy = True  # Define this model as a proxy
+        verbose_name = "Journal (No Volume)"
+        verbose_name_plural = "Journals (No Volumes)"
+
 
 
 class JournalImage(models.Model):
