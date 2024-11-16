@@ -92,31 +92,19 @@ class JournalImage(models.Model):
         return f"Image for {self.journal.journal_title} uploaded on {self.uploaded_at}"
 
 
-# class Volume(models.Model):
-#     journal = models.ForeignKey(Journal, on_delete=models.CASCADE, related_name="volumes")
-#     volume_number = models.PositiveIntegerField(verbose_name="Volume Number")
-#     issue_number = models.PositiveIntegerField(verbose_name="Issue Number", default=1)  # New field for issue number
-#     year = models.PositiveIntegerField(verbose_name="Year of Publication")
-#     created_at = models.DateTimeField(auto_now_add=True)
+class JournalsWithoutImagesManager(models.Manager):
+    def get_queryset(self):
+        # Return journals with no associated JournalImage
+        return super().get_queryset().filter(image__isnull=True)
 
-#     class Meta:
-#         constraints = [
-#             models.UniqueConstraint(fields=['journal', 'volume_number', 'issue_number'], name='unique_journal_volume_issue')
-#         ]
+class JournalsWithoutImages(Journal):
+    objects = JournalsWithoutImagesManager()
 
-#     def __str__(self):
-#         return f"Volume {self.volume_number} No. {self.issue_number} of {self.journal.journal_title} ({self.year})"
+    class Meta:
+        proxy = True  # Define this model as a proxy
+        verbose_name = "Journal (No Image)"
+        verbose_name_plural = "Journals (No Images)"
 
-# class Article(models.Model):
-#     volume = models.ForeignKey(Volume, on_delete=models.CASCADE, related_name="articles", blank=True)  
-#     title = models.CharField(max_length=255)
-#     authors = models.TextField()  # Store a list of authors as a comma-separated string
-#     keywords = models.TextField()
-#     publication_date = models.DateField()
-#     pdf = models.FileField(upload_to='articles/pdfs/', blank=True, null=True)
-    
-#     def __str__(self):
-#         return self.title
 '''
 class LastProcessedJournal(models.Model):
     last_processed_id = models.PositiveIntegerField(default=0)
@@ -177,53 +165,4 @@ class Article(models.Model):
     def __str__(self):
         return self.title
 
-# class Article(models.Model):
-#     volume = models.ForeignKey(Volume, on_delete=models.CASCADE, related_name="articles", blank=True)  
-#     title = models.CharField(max_length=255)
-#     authors = models.TextField()  # Store a list of authors as a comma-separated string
-#     keywords = models.TextField(blank=True, null=True)
-#     publication_date = models.DateField()
-#     pdf = models.FileField(upload_to='articles/pdfs/', blank=True, null=True)
-
-#     # New fields for CrossRef metadata and publisher information
-#     doi = models.CharField(max_length=255, blank=True, null=True)
-#     url = models.URLField(blank=True, null=True)
-#     reference_count = models.PositiveIntegerField(default=0)
-#     citation_count = models.PositiveIntegerField(default=0)
-#     license_url = models.URLField(blank=True, null=True)
-#     page_start = models.CharField(max_length=10, blank=True, null=True)
-#     page_end = models.CharField(max_length=10, blank=True, null=True)
-#     abstract = models.TextField(blank=True, null=True)
-#     subjects = models.TextField(blank=True, null=True)  # Store subjects as a comma-separated string
-#     article_type = models.CharField(max_length=50, blank=True, null=True)
-#     electronic_issn = models.CharField(max_length=50, blank=True, null=True)
-#     print_issn = models.CharField(max_length=50, blank=True, null=True)
-#     publisher = models.CharField(max_length=255, blank=True, null=True)
-#     publisher_location = models.CharField(max_length=255, blank=True, null=True)
-
-#     def __str__(self):
-#         return self.title
-
-# class Article(models.Model):
-#     title = models.CharField(max_length=255)
-#     authors = models.TextField()
-#     keywords = models.TextField()
-#     publication_date = models.DateField()
-#     pdf = models.URLField()
-#     volume = models.ForeignKey(Volume, on_delete=models.CASCADE)
-#     issn = models.CharField(max_length=255, blank=True, null=True)  # Add ISSN field
-#     doi = models.CharField(max_length=255, blank=True, null=True)
-#     reference_count = models.IntegerField(default=0)
-#     citation_count = models.IntegerField(default=0)
-#     license_info = models.URLField(blank=True, null=True)  # Add license info field
-#     start_page = models.CharField(max_length=255, blank=True, null=True)  # Add start page field
-#     end_page = models.CharField(max_length=255, blank=True, null=True)  # Add end page field
-#     article_type = models.CharField(max_length=255, blank=True, null=True)
-#     issn_electronic = models.CharField(max_length=255, blank=True, null=True)  # Add electronic ISSN field
-#     issn_print = models.CharField(max_length=255, blank=True, null=True)  # Add print ISSN field
-#     publisher_location = models.CharField(max_length=255, blank=True, null=True)
-#     abstract = models.TextField(blank=True, null=True)
-
-#     def __str__(self):
-#         return self.title
 
