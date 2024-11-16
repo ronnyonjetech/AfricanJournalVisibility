@@ -63,7 +63,23 @@ class Journal(models.Model):
      summary = models.TextField(null=True, blank=True)
      user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
      
-
+     class Meta:
+        indexes = [
+            # Composite index on platform, country, language, and thematic_area
+            models.Index(fields=['journal_title','platform','country', 'language', 'thematic_area','issn_number','summary']),
+            # You can also add indexes for other frequently filtered fields if needed
+            models.Index(fields=['aim_identifier']),
+            models.Index(fields=['sjr']),
+            models.Index(fields=['listed_in_doaj']),
+            models.Index(fields=['present_issn']),
+            models.Index(fields=['open_access_journal']),
+            models.Index(fields=['publisher_in_cope']),
+            models.Index(fields=['online_publisher_africa']),
+            models.Index(fields=['impact_factor']),
+            models.Index(fields=['h_index']),
+            models.Index(fields=['hosted_on_inasps']),
+            models.Index(fields=['google_scholar_index']),
+        ]
      def __str__(self):
             return f"{self.id}-{self.journal_title}"
 
@@ -87,6 +103,9 @@ class JournalImage(models.Model):
     image = models.ImageField(upload_to='journals/images/', blank=True, null=True)
     description = models.CharField(max_length=255, blank=True, null=True)  # Optional description of the image
     uploaded_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        indexes=[models.Index(fields=['image','description'])]
 
     def __str__(self):
         return f"Image for {self.journal.journal_title} uploaded on {self.uploaded_at}"
@@ -126,6 +145,8 @@ class Volume(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
+        indexes = [ models.Index(fields=['volume_number','issue_number','year'])]
+        
         constraints = [
             models.UniqueConstraint(fields=['journal', 'volume_number', 'issue_number'], name='unique_journal_volume_issue')
         ]

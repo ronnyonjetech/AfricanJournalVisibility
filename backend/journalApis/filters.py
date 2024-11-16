@@ -64,6 +64,7 @@ class JournalFilter(django_filters.FilterSet):
         search_vector = SearchVector(
             'journal_title',
             'summary',
+            'h_index',
             'platform__platform',
             'country__country',
             'publishers_name',
