@@ -156,12 +156,19 @@ class Volume(models.Model):
 
 
 class Article(models.Model):
-    volume = models.ForeignKey(Volume, on_delete=models.CASCADE, related_name="articles", blank=True)  
+    journal = models.ForeignKey(
+        'Journal',  # Reference to the Journal model
+        on_delete=models.CASCADE,  # If the journal is deleted, its articles are also deleted
+        related_name="articles",  # Allows reverse access from the Journal model
+        blank=True,  # Optional field
+        null=True  # Allow null values for existing data
+    )
+    volume = models.ForeignKey(Volume, on_delete=models.CASCADE, related_name="articles", blank=True,  null=True)  
     #title = models.CharField(max_length=255)
     title = models.TextField()
     authors = models.TextField()  # Comma-separated list of authors
     keywords = models.TextField(blank=True, null=True)
-    publication_date = models.DateField()
+    publication_date = models.DateField(blank=True, null=True)
     pdf = models.FileField(upload_to='articles/pdfs/', blank=True, null=True)
 
     # CrossRef metadata and publisher information
@@ -184,6 +191,9 @@ class Article(models.Model):
     publisher_location = models.CharField(max_length=255, blank=True, null=True)
 
     def __str__(self):
-        return self.title
+        if self.journal:
+            return f"{self.title} - {self.journal.journal_title}"
+        else:
+            return f"{self.title} - No Journal"
 
 

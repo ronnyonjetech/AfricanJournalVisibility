@@ -51,6 +51,7 @@ class JournalSerializer(serializers.ModelSerializer):
     country=CountrySerializer()
     thematic_area=ThematicAreaSerializer()
     volumes = VolumeSerializer(many=True, read_only=True)
+    articles=ArticleSerializer(many=True,read_only=True)
     image = JournalImageSerializer(read_only=True)  # Only one image per journal, no 'many=True'
     class Meta:
         model = Journal
