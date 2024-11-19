@@ -404,42 +404,141 @@ class Command(BaseCommand):
         self.stdout.write(self.style.SUCCESS("Finished processing all journals without articles."))
 '''
 
+# import time
+# import random
+# from django.core.management.base import BaseCommand
+# from scholarly import scholarly
+# from journalApis.models import Journal, Article
+# from django.utils.timezone import now
+
+
+# class Command(BaseCommand):
+#     help = "Fetch articles using Scholarly and save them to the database for journals without articles."
+
+#     # Configurable delay parameters
+#     BASE_DELAY = 5       # Base delay in seconds
+#     RANDOM_DELAY = 3     # Random additional delay to mimic human behavior
+
+#     def handle(self, *args, **kwargs):
+#         # Query journals without articles, ordered alphabetically by journal title
+#         journals_without_articles = Journal.objects.filter(
+#             articles__isnull=True
+#         ).order_by('journal_title')  # Ordered alphabetically
+
+#         if not journals_without_articles.exists():
+#             self.stdout.write(self.style.WARNING("No journals found without articles."))
+#             return
+
+#         for journal in journals_without_articles:
+#             self.stdout.write(self.style.NOTICE(f"Processing journal: {journal.journal_title}"))
+
+#             articles = []
+
+#             try:
+#                 # Query Scholarly for articles
+#                 search_query = scholarly.search_pubs(journal.journal_title)
+
+#                 for i, article in enumerate(search_query):
+#                     try:
+#                         title = article['bib']['title']
+#                         authors = ", ".join(article['bib']['author'])
+#                         publication_year = article['bib'].get('pub_year', None)
+#                         abstract = article['bib'].get('abstract', 'No abstract available.')
+#                         url = article.get('eprint_url', None)
+#                         doi = article['bib'].get('doi', None)
+#                         citation_count = article.get('num_citations', 0)
+#                         reference_count = article.get('num_references', 0)
+
+#                         # Format publication date
+#                         publication_date = None
+#                         if publication_year and publication_year.isdigit():
+#                             publication_date = f"{publication_year}-01-01"
+
+#                         # Prepare the article for bulk creation
+#                         articles.append(Article(
+#                             journal=journal,
+#                             title=title,
+#                             authors=authors,
+#                             abstract=abstract,
+#                             publication_date=publication_date,
+#                             url=url,
+#                             doi=doi,
+#                             citation_count=citation_count,
+#                             reference_count=reference_count,
+#                         ))
+
+#                         # Limit to 10 articles per journal
+#                         if len(articles) >= 10:
+#                             break
+
+#                     except Exception as article_error:
+#                         self.stdout.write(self.style.ERROR(f"Error processing article: {article_error}"))
+#                         continue
+
+#                     # Randomized delay between article requests
+#                     delay = self.BASE_DELAY + random.uniform(0, self.RANDOM_DELAY)
+#                     self.stdout.write(self.style.NOTICE(f"Delaying next article request by {delay:.2f} seconds..."))
+#                     time.sleep(delay)
+
+#                 # Save articles to the database
+#                 if articles:
+#                     Article.objects.bulk_create(articles)
+#                     self.stdout.write(self.style.SUCCESS(
+#                         f"Added {len(articles)} articles for journal: {journal.journal_title}"
+#                     ))
+#                 else:
+#                     self.stdout.write(self.style.WARNING(f"No articles found for journal: {journal.journal_title}"))
+
+#             except Exception as e:
+#                 self.stdout.write(self.style.ERROR(
+#                     f"Error processing journal {journal.journal_title}: {e}. Skipping."
+#                 ))
+#                 continue
+
+#             # Delay between journals
+#             delay = self.BASE_DELAY + random.uniform(0, self.RANDOM_DELAY)
+#             self.stdout.write(self.style.NOTICE(f"Delaying next journal request by {delay:.2f} seconds..."))
+#             time.sleep(delay)
+
+#         self.stdout.write(self.style.SUCCESS("Finished processing all journals without articles."))
+
+
 import time
 import random
 from django.core.management.base import BaseCommand
 from scholarly import scholarly
-from journalApis.models import Journal, Article
-from django.utils.timezone import now
+from journalApis.models import Journal, Volume, Article
 
 
 class Command(BaseCommand):
-    help = "Fetch articles using Scholarly and save them to the database for journals without articles."
+    help = "Fetch articles using Scholarly and save them to the database for journals without volumes or articles."
 
     # Configurable delay parameters
     BASE_DELAY = 5       # Base delay in seconds
     RANDOM_DELAY = 3     # Random additional delay to mimic human behavior
 
     def handle(self, *args, **kwargs):
-        # Query journals without articles, ordered alphabetically by journal title
-        journals_without_articles = Journal.objects.filter(
-            articles__isnull=True
-        ).order_by('journal_title')  # Ordered alphabetically
-
-        if not journals_without_articles.exists():
-            self.stdout.write(self.style.WARNING("No journals found without articles."))
+        # Filter journals that have neither volumes nor articles
+        journals_to_process = Journal.objects.filter(
+            volumes__isnull=True,  # Correct field name for related volumes
+            articles__isnull=True  # Journal has no articles
+         ).order_by('journal_title')  # Process journals alphabetically by title
+        if not journals_to_process.exists():
+            self.stdout.write(self.style.WARNING("No journals found without volumes or articles."))
             return
 
-        for journal in journals_without_articles:
+        for journal in journals_to_process:
             self.stdout.write(self.style.NOTICE(f"Processing journal: {journal.journal_title}"))
 
             articles = []
 
             try:
-                # Query Scholarly for articles
+                # Search for articles using Scholarly
                 search_query = scholarly.search_pubs(journal.journal_title)
 
                 for i, article in enumerate(search_query):
                     try:
+                        # Extract metadata from Scholarly results
                         title = article['bib']['title']
                         authors = ", ".join(article['bib']['author'])
                         publication_year = article['bib'].get('pub_year', None)
@@ -480,7 +579,7 @@ class Command(BaseCommand):
                     self.stdout.write(self.style.NOTICE(f"Delaying next article request by {delay:.2f} seconds..."))
                     time.sleep(delay)
 
-                # Save articles to the database
+                # Bulk create articles
                 if articles:
                     Article.objects.bulk_create(articles)
                     self.stdout.write(self.style.SUCCESS(
@@ -500,4 +599,4 @@ class Command(BaseCommand):
             self.stdout.write(self.style.NOTICE(f"Delaying next journal request by {delay:.2f} seconds..."))
             time.sleep(delay)
 
-        self.stdout.write(self.style.SUCCESS("Finished processing all journals without articles."))
+        self.stdout.write(self.style.SUCCESS("Finished processing all journals without volumes or articles."))
