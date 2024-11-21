@@ -13,3 +13,35 @@
 2024-11-21 11:41:32,723 - INFO - Delaying next article request by 11.62 seconds...
 2024-11-21 11:41:44,496 - INFO - Added 10 articles for journal: Management & Economics Research Journal
 2024-11-21 11:41:44,497 - INFO - Delaying next journal request by 11.82 seconds...
+2024-11-21 11:51:16,426 - INFO - Processing journal: Journal de la Faculté de Médecine
+2024-11-21 11:51:16,428 - INFO - Querying Scholarly for journal: Journal de la Faculté de Médecine (Attempt 1)
+2024-11-21 11:51:16,428 - INFO - Getting https://scholar.google.com/scholar?hl=en&q=Journal%20de%20la%20Facult%C3%A9%20de%20M%C3%A9decine&as_vis=0&as_sdt=0,33
+2024-11-21 11:51:17,859 - INFO - HTTP Request: GET https://scholar.google.com/scholar?hl=en&q=Journal%20de%20la%20Facult%C3%A9%20de%20M%C3%A9decine&as_vis=0&as_sdt=0,33 "HTTP/1.1 403 Forbidden"
+2024-11-21 11:51:17,860 - INFO - Got an access denied error (403).
+2024-11-21 11:51:17,860 - INFO - No other connections possible.
+2024-11-21 11:51:17,860 - INFO - Retrying immediately with another session.
+2024-11-21 11:51:19,577 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2024-11-21 11:51:19,577 - INFO - Retrying with a new session.
+2024-11-21 11:51:21,907 - INFO - HTTP Request: GET https://scholar.google.com/scholar?hl=en&q=Journal%20de%20la%20Facult%C3%A9%20de%20M%C3%A9decine&as_vis=0&as_sdt=0,33 "HTTP/1.1 403 Forbidden"
+2024-11-21 11:51:21,909 - INFO - Got an access denied error (403).
+2024-11-21 11:51:21,909 - INFO - No other connections possible.
+2024-11-21 11:51:21,909 - INFO - Will retry after 102.10 seconds (with another session).
+2024-11-21 11:54:46,486 - INFO - Processing journal: Journal de la Faculté de Médecine
+2024-11-21 11:54:46,486 - INFO - Querying Scholarly for journal: Journal de la Faculté de Médecine (Attempt 1)
+2024-11-21 11:54:46,486 - INFO - Getting https://scholar.google.com/scholar?hl=en&q=Journal%20de%20la%20Facult%C3%A9%20de%20M%C3%A9decine&as_vis=0&as_sdt=0,33
+2024-11-21 11:54:48,806 - INFO - HTTP Request: GET https://scholar.google.com/scholar?hl=en&q=Journal%20de%20la%20Facult%C3%A9%20de%20M%C3%A9decine&as_vis=0&as_sdt=0,33 "HTTP/1.1 403 Forbidden"
+2024-11-21 11:54:48,807 - INFO - Got an access denied error (403).
+2024-11-21 11:54:48,807 - INFO - No other connections possible.
+2024-11-21 11:54:48,807 - INFO - Retrying immediately with another session.
+2024-11-21 11:54:50,638 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2024-11-21 11:54:50,638 - INFO - Retrying with a new session.
+2024-11-21 11:54:52,235 - INFO - HTTP Request: GET https://scholar.google.com/scholar?hl=en&q=Journal%20de%20la%20Facult%C3%A9%20de%20M%C3%A9decine&as_vis=0&as_sdt=0,33 "HTTP/1.1 403 Forbidden"
+2024-11-21 11:54:52,237 - INFO - Got an access denied error (403).
+2024-11-21 11:54:52,237 - INFO - No other connections possible.
+2024-11-21 11:54:52,237 - INFO - Will retry after 100.92 seconds (with another session).
+2024-11-21 11:56:34,301 - INFO - Exception RuntimeError while fetching page: ('Cannot send a request, as the client has been closed.',)
+2024-11-21 11:56:34,301 - INFO - Retrying with a new session.
+2024-11-21 11:56:36,240 - INFO - HTTP Request: GET https://scholar.google.com/scholar?hl=en&q=Journal%20de%20la%20Facult%C3%A9%20de%20M%C3%A9decine&as_vis=0&as_sdt=0,33 "HTTP/1.1 403 Forbidden"
+2024-11-21 11:56:36,241 - INFO - Got an access denied error (403).
+2024-11-21 11:56:36,241 - INFO - No other connections possible.
+2024-11-21 11:56:36,242 - INFO - Will retry after 111.74 seconds (with another session).
