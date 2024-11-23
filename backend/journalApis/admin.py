@@ -33,3 +33,22 @@ class JournalsWithoutImagesAdmin(admin.ModelAdmin):
 
 # Register the custom admin
 admin.site.register(JournalsWithoutImages, JournalsWithoutImagesAdmin)
+
+
+class JournalsWithoutArticlesAdmin(admin.ModelAdmin):
+    list_display = ('id', 'journal_title', 'platform', 'country', 'language', 'thematic_area', 'issn_number')
+    search_fields = ('journal_title', 'issn_number', 'platform__platform', 'country__country', 'language__language')
+    list_filter = ('platform', 'country', 'language', 'thematic_area')
+    ordering = ('journal_title',)
+    readonly_fields = ('id',)
+
+    def has_add_permission(self, request):
+        # Prevent adding new instances via this proxy model
+        return False
+
+    def has_delete_permission(self, request, obj=None):
+        # Prevent deleting instances via this proxy model
+        return False
+
+# Register the proxy model with the custom admin class
+admin.site.register(JournalsWithoutArticles, JournalsWithoutArticlesAdmin)

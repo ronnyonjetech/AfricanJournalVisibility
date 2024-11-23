@@ -124,6 +124,8 @@ class JournalsWithoutImages(Journal):
         verbose_name = "Journal (No Image)"
         verbose_name_plural = "Journals (No Images)"
 
+
+
 '''
 class LastProcessedJournal(models.Model):
     last_processed_id = models.PositiveIntegerField(default=0)
@@ -197,3 +199,15 @@ class Article(models.Model):
             return f"{self.title} - No Journal"
 
 
+class JournalsWithoutArticlesManager(models.Manager):
+    def get_queryset(self):
+        # Return journals with no associated articles
+        return super().get_queryset().filter(articles__isnull=True).distinct()
+
+class JournalsWithoutArticles(Journal):
+    objects = JournalsWithoutArticlesManager()
+
+    class Meta:
+        proxy = True  # Define this model as a proxy
+        verbose_name = "Journal (No Articles)"
+        verbose_name_plural = "Journals (No Articles)"
