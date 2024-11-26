@@ -1,6 +1,6 @@
 import django_filters
 from django.db.models import Q
-from .models import  Journal
+from .models import  Journal,Article
 from django.contrib.postgres.search import SearchVector,SearchQuery, SearchRank
 
 class JournalFilter(django_filters.FilterSet):
@@ -90,5 +90,104 @@ class JournalFilter(django_filters.FilterSet):
             Q(language__language__icontains=value)|
             Q(h_index__icontains=value)|
             Q(summary__icontains=value)
+        ).order_by('-rank').distinct()
+
+# class ArticleFilter(django_filters.FilterSet):
+#     # Filters for Article fields
+#     query = django_filters.CharFilter(method='custom_search', label='Search')
+#     has_pdf = django_filters.BooleanFilter(field_name='pdf', lookup_expr='isnull', exclude=True)
+#     has_doi = django_filters.BooleanFilter(field_name='doi', lookup_expr='isnull', exclude=True)
+#     publication_date_after = django_filters.DateFilter(field_name='publication_date', lookup_expr='gte')
+#     publication_date_before = django_filters.DateFilter(field_name='publication_date', lookup_expr='lte')
+
+#     # Filters for related Journal fields
+#     journal_title = django_filters.CharFilter(field_name='volume__journal__journal_title', lookup_expr='icontains', label='Journal Title')
+#     journal_country = django_filters.CharFilter(field_name='volume__journal__country__country', lookup_expr='icontains', label='Journal Country')
+#     journal_language = django_filters.CharFilter(field_name='volume__journal__language__language', lookup_expr='icontains', label='Journal Language')
+#     journal_open_access = django_filters.BooleanFilter(field_name='volume__journal__open_access_journal', label='Open Access Journal')
+#     journal_google_scholar = django_filters.BooleanFilter(field_name='volume__journal__google_scholar_index', label='Indexed on Google Scholar')
+
+#     class Meta:
+#         model = Article
+#         fields = []
+
+#     def custom_search(self, queryset, name, value):
+#         # Full-text search setup for Article fields
+#         search_query = SearchQuery(value)
+#         search_vector = SearchVector(
+#             'title',
+#             'abstract',
+#             'keywords',
+#             'authors',
+#             'subjects',
+#             'article_type',
+#             'publisher'
+#         )
+#         queryset = queryset.annotate(rank=SearchRank(search_vector, search_query))
+
+#         # Article and related Journal filtering
+#         return queryset.filter(
+#             Q(rank__gte=0.1) |  # Full-text search
+#             Q(title__icontains=value) |
+#             Q(abstract__icontains=value) |
+#             Q(keywords__icontains=value) |
+#             Q(authors__icontains=value) |
+#             Q(subjects__icontains=value) |
+#             Q(article_type__icontains=value) |
+#             Q(publisher__icontains=value) |
+#             Q(volume__journal__journal_title__icontains=value) |  # Related Journal fields
+#             Q(volume__journal__country__country__icontains=value) |
+#             Q(volume__journal__language__language__icontains=value)
+#         ).order_by('-rank').distinct()
+
+
+
+class ArticleFilter(django_filters.FilterSet):
+    # Filters for Article fields
+    query = django_filters.CharFilter(method='custom_search', label='Search')
+    has_pdf = django_filters.BooleanFilter(field_name='pdf', lookup_expr='isnull', exclude=True)
+    has_doi = django_filters.BooleanFilter(field_name='doi', lookup_expr='isnull', exclude=True)
+    publication_date_after = django_filters.DateFilter(field_name='publication_date', lookup_expr='gte')
+    publication_date_before = django_filters.DateFilter(field_name='publication_date', lookup_expr='lte')
+
+    # Filters for related Journal fields (directly using the Journal foreign key)
+    journal_title = django_filters.CharFilter(field_name='journal__journal_title', lookup_expr='icontains', label='Journal Title')
+    journal_country = django_filters.CharFilter(field_name='journal__country__country', lookup_expr='icontains', label='Journal Country')
+    journal_language = django_filters.CharFilter(field_name='journal__language__language', lookup_expr='icontains', label='Journal Language')
+    journal_open_access = django_filters.BooleanFilter(field_name='journal__open_access_journal', label='Open Access Journal')
+    journal_google_scholar = django_filters.BooleanFilter(field_name='journal__google_scholar_index', label='Indexed on Google Scholar')
+
+    class Meta:
+        model = Article
+        fields = []
+
+    def custom_search(self, queryset, name, value):
+        # Full-text search setup for Article fields
+        search_query = SearchQuery(value)
+        search_vector = SearchVector(
+            'title',
+            'abstract',
+            'keywords',
+            'authors',
+            'subjects',
+            'article_type',
+            'publisher'
+        )
+        queryset = queryset.annotate(rank=SearchRank(search_vector, search_query))
+
+        # Article and related Journal filtering
+        return queryset.filter(
+            Q(rank__gte=0.1) |  # Full-text search
+            Q(title__icontains=value) |
+            Q(abstract__icontains=value) |
+            Q(keywords__icontains=value) |
+            Q(authors__icontains=value) |
+            Q(subjects__icontains=value) |
+            Q(article_type__icontains=value) |
+            Q(publisher__icontains=value) |
+            Q(journal__journal_title__icontains=value) |  # Related Journal fields
+            Q(journal__country__country__icontains=value) |
+            Q(journal__language__language__icontains=value)|
+            Q(journal__thematic_area__thematic_area__icontains=value)
         ).order_by('-rank').distinct()
 

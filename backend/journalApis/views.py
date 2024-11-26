@@ -13,7 +13,7 @@ from .models import Journal
 from .serializers import JournalSerializer,JournalSerializer1,LanguageSerializer,PlatformSerializer,CountrySerializer,ThematicAreaSerializer,VolumeSerializer,ArticleSerializer
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
-from .filters import JournalFilter
+from .filters import JournalFilter,ArticleFilter
 from rest_framework import generics
 from rest_framework.decorators import api_view
 import google.generativeai as genai
@@ -28,7 +28,12 @@ class JournalPagination(PageNumberPagination):
     page_size_query_param = 'page_size'
     max_page_size = 100
     page_size = 10 
-
+    
+class ArticlePagination(PageNumberPagination):
+    # Set the page size here or in settings.py
+    page_size_query_param = 'page_size'
+    max_page_size = 100
+    page_size = 10 
 
 class JournalPaginationListView(APIView):
     def get(self, request):
@@ -237,3 +242,22 @@ class ArticleViewSet(viewsets.ModelViewSet):
     queryset = Article.objects.all()  # Fetch all languages
     serializer_class = ArticleSerializer
     #pagination_class = None  # This disables pagination for this viewset
+
+class ArticleSearchView(generics.ListAPIView):
+    """
+    API view to search and filter articles.
+    """
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = ArticleFilter
+    pagination_class = ArticlePagination  # Replace with DRF's default if no custom pagination
+
+    def get_queryset(self):
+        """
+        Optionally override the queryset to apply additional filtering logic.
+        """
+        queryset = super().get_queryset()
+
+        # Add additional filtering logic if necessary
+        return queryset

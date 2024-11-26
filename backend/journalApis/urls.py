@@ -1,7 +1,7 @@
 from . import views
 from django.urls import path
 from .views import generate_journal_description
-from .views import JournalPaginationListView,JournalSearchView,JournalDetailView,JournalCreateView,JournalPaginationListUserView
+from .views import JournalPaginationListView,JournalSearchView,JournalDetailView,JournalCreateView,JournalPaginationListUserView,ArticleSearchView
 from .views import LanguageViewSet,PlatformViewSet,CountryViewSet,ThematicAreaViewSet,VolumeViewSet,ArticleViewSet,UserLanguageViewSet,UserThematicAreaViewSet  # Import your viewset
 
 # Create individual views for list and detail actions
@@ -135,6 +135,7 @@ urlpatterns=[
 
    path('api/article/', article_list, name='article-list'),  # List and create languages
    path('api/article/<int:pk>/', article_detail, name='article-detail'),  # Retrieve, update, delete specific language
+   path('articles/search/', ArticleSearchView.as_view(), name='article-search'),
 
    path('api/user-languages/', user_language_list, name='user-language-list'),
    path('api/user-languages/<int:pk>/', user_language_detail, name='user-language-detail'),
