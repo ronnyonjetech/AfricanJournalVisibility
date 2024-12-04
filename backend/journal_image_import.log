@@ -543,3 +543,206 @@
 2024-11-28 21:09:59,637 - WARNING - No image found for journal: Highland Medical Research Journal
 2024-11-28 21:09:59,641 - INFO - No image found for journal: Highland Medical Research Journal
 2024-11-28 21:10:00,352 - INFO - Found image for Ibadan Journal of Humanistic Studies: https://www.ajol.info/public/journals/474/homepageImage_en_US.jpg
+2024-12-02 06:40:08,046 - INFO - Found image for Science et Technique, Sciences de la Santé: https://knowledgehub.iphce.org/wp-content/uploads/2021/04/Science-et-Technique-Sciences-de-la-Sante.jpg
+2024-12-02 06:40:11,699 - WARNING - Failed to download image for journal: Science et Technique, Sciences de la Santé - Status code: 404
+2024-12-02 06:40:12,653 - INFO - Found image for East Africa Science: https://cega.berkeley.edu/wp-content/uploads/2018/12/visiting-fellows_22770798561_o-1-e1544133990757.jpg
+2024-12-02 06:40:14,188 - WARNING - Failed to download image for journal: East Africa Science - Status code: 403
+2024-12-02 06:40:15,008 - INFO - Found image for African Journal of Sustainable Development: https://www.un.org/osaa/sites/www.un.org.osaa/files/confirmed_reworked_94_3_9.9.24.png
+2024-12-02 06:40:15,622 - WARNING - Failed to download image for journal: African Journal of Sustainable Development - Status code: 403
+2024-12-02 06:40:16,533 - INFO - Found image for Global Journal of Mathematical Sciences: https://www.ajol.info/public/journals/655/homepageImage_en_US.jpg
+2024-12-02 06:40:20,638 - INFO - Image saved for journal: Global Journal of Mathematical Sciences
+2024-12-02 06:40:21,786 - INFO - Found image for Highland Medical Research Journal: https://www.ajol.info/public/journals/233/homepageImage_en_US.png
+2024-12-02 06:40:24,845 - INFO - Image saved for journal: Highland Medical Research Journal
+2024-12-02 06:40:25,565 - INFO - Found image for Ibadan Journal of Humanistic Studies: https://www.ajol.info/public/journals/474/homepageImage_en_US.jpg
+2024-12-02 06:40:27,203 - INFO - Image saved for journal: Ibadan Journal of Humanistic Studies
+2024-12-02 06:40:28,015 - INFO - Found image for Ife Journal of Science: https://www.ajol.info/public/journals/219/homepageImage_en_US.jpg
+2024-12-02 06:40:29,218 - INFO - Image saved for journal: Ife Journal of Science
+2024-12-02 06:40:30,064 - INFO - Found image for IFE PsychologIA: https://www.ajol.info/public/journals/140/homepageImage_en_US.png
+2024-12-02 06:40:31,786 - INFO - Image saved for journal: IFE PsychologIA
+2024-12-02 06:40:32,729 - INFO - Found image for Ilorin Journal of Religious Studies: https://www.ajol.info/public/journals/501/homepageImage_en_US.jpg
+2024-12-02 06:40:33,877 - INFO - Image saved for journal: Ilorin Journal of Religious Studies
+2024-12-02 06:40:34,670 - INFO - Found image for Information Impact: Journal of Information and Knowledge Management: https://www.ajol.info/public/journals/564/homepageImage_en_US.png
+2024-12-02 06:40:35,882 - INFO - Image saved for journal: Information Impact: Journal of Information and Knowledge Management
+2024-12-02 06:40:36,719 - INFO - Found image for Information Manager (The): https://www.ssl2buy.com/wp-content/uploads/2021/12/information-management.jpg
+2024-12-02 06:40:39,480 - INFO - Image saved for journal: Information Manager (The)
+2024-12-02 06:40:40,406 - INFO - Found image for Information Technologist (The): https://www.cambridgehealth.edu/wp-content/uploads/2022/02/blog3-2.jpg
+2024-12-02 06:40:42,546 - INFO - Image saved for journal: Information Technologist (The)
+2024-12-02 06:40:43,682 - INFO - Found image for International Journal of Agriculture and Rural Development: https://www.ijard.com/images/COVER%20IJARD%2015%203%202012.jpg
+2024-12-02 06:40:46,254 - INFO - Image saved for journal: International Journal of Agriculture and Rural Development
+2024-12-02 06:40:47,061 - INFO - Found image for International Journal of Applied Agriculture and Apiculture Research: https://assets.echocommunity.org/links/3cd6e64a-a783-4f7f-ac39-26fb5647e00b/medium.jpg
+2024-12-02 06:40:48,756 - INFO - Image saved for journal: International Journal of Applied Agriculture and Apiculture Research
+2024-12-02 06:40:49,519 - INFO - Found image for International Journal of Basic, Applied and Innovative Research: https://www.ajol.info/public/journals/515/homepageImage_en_US.jpg
+2024-12-02 06:40:50,406 - INFO - Image saved for journal: International Journal of Basic, Applied and Innovative Research
+2024-12-02 06:40:51,259 - INFO - Found image for International Journal of Community Research: https://www.ajol.info/public/journals/518/homepageImage_en_US.jpg
+2024-12-02 06:40:52,332 - INFO - Image saved for journal: International Journal of Community Research
+2024-12-02 06:40:53,355 - INFO - Found image for International Journal of Development and Management Review: https://www.ajol.info/public/journals/404/homepageImage_en_US.jpg
+2024-12-02 06:40:54,181 - INFO - Image saved for journal: International Journal of Development and Management Review
+2024-12-02 06:40:55,048 - INFO - Found image for International Journal of Development and Policy Studies: https://www.ajol.info/public/journals/303/homepageImage.jpg
+2024-12-02 06:40:55,930 - INFO - Image saved for journal: International Journal of Development and Policy Studies
+2024-12-02 06:40:56,788 - INFO - Found image for International Journal of Educational Research: https://ars.els-cdn.com/content/image/X08830355.jpg
+2024-12-02 06:40:57,181 - INFO - Image saved for journal: International Journal of Educational Research
+2024-12-02 06:40:58,223 - INFO - Found image for International Journal of Engineering, Science and Technology: https://www.ajol.info/public/journals/431/homepageImage_en_US.jpg
+2024-12-02 06:40:59,207 - INFO - Image saved for journal: International Journal of Engineering, Science and Technology
+2024-12-02 06:41:00,066 - INFO - Found image for International Journal of Health Research: https://carijournals.org/journals/public/journals/17/homepageImage_en_US.jpg
+2024-12-02 06:41:02,284 - INFO - Image saved for journal: International Journal of Health Research
+2024-12-02 06:41:03,144 - INFO - Found image for International Journal of Herbs and Pharmacological Research: https://www.ajol.info/public/journals/519/homepageImage_en_US.jpg
+2024-12-02 06:41:04,155 - INFO - Image saved for journal: International Journal of Herbs and Pharmacological Research
+2024-12-02 06:41:04,684 - INFO - Found image for International Journal of Malaria and Tropical Diseases (IJMTD): https://d13i5xhouzkrd.cloudfront.net/168968043753/previews/article-1.png
+2024-12-02 06:41:06,524 - INFO - Image saved for journal: International Journal of Malaria and Tropical Diseases (IJMTD)
+2024-12-02 06:41:07,646 - INFO - Found image for International Journal of Medicine and Biomedical Research: https://ijmr.com.ua/web/images/cover.jpg
+2024-12-02 06:41:08,776 - WARNING - Failed to download image for journal: International Journal of Medicine and Biomedical Research - Status code: 403
+2024-12-02 06:41:09,487 - INFO - Found image for International Journal of Medicine and Health Development: https://img.exaly.com/journal-chart/94735/impact-factor/graph.svg
+2024-12-02 06:41:10,255 - INFO - Image saved for journal: International Journal of Medicine and Health Development
+2024-12-02 06:41:10,917 - INFO - Found image for International Journal of Natural and Applied Sciences: https://ipindexing.com/media/journal-cover-page/59840f2052ebe_International%20Research%20Journal%20Of%20Natural%20And%20Applied%20Sciences.jpg
+2024-12-02 06:41:14,661 - INFO - Image saved for journal: International Journal of Natural and Applied Sciences
+2024-12-02 06:41:15,425 - INFO - Found image for International Journal of Tropical Agriculture and Food Systems: https://foodsystemsjournal.org/public/journals/1/homepageImage_en_US.jpg
+2024-12-02 06:41:17,072 - WARNING - Failed to download image for journal: International Journal of Tropical Agriculture and Food Systems - Status code: 403
+2024-12-02 06:41:17,883 - INFO - Found image for Jos Journal of Medicine: https://www.ajol.info/public/journals/420/homepageImage_en_US.jpg
+2024-12-02 06:41:19,056 - INFO - Image saved for journal: Jos Journal of Medicine
+2024-12-02 06:41:19,931 - INFO - Found image for Journal of African Association of Physiological Sciences: https://ojshostng.com/public/journals/3/cover_issue_130_en_US.jpg
+2024-12-02 06:41:22,166 - INFO - Image saved for journal: Journal of African Association of Physiological Sciences
+2024-12-02 06:41:23,079 - INFO - Found image for Journal of Agricultural Extension: https://www.ajol.info/public/journals/396/homepageImage_en_US.jpg
+2024-12-02 06:41:24,933 - INFO - Image saved for journal: Journal of Agricultural Extension
+2024-12-02 06:41:25,860 - INFO - Found image for Journal of Agricultural Research and Development: https://www.ajol.info/public/journals/365/homepageImage.jpg
+2024-12-02 06:41:26,794 - INFO - Image saved for journal: Journal of Agricultural Research and Development
+2024-12-02 06:41:28,137 - INFO - Found image for Journal of Agriculture and Food Sciences: https://www.agriculturaljournals.com/images/international-journal-of-agriculture-and-food-science-coverpage.jpg
+2024-12-02 06:41:31,011 - INFO - Image saved for journal: Journal of Agriculture and Food Sciences
+2024-12-02 06:41:32,023 - INFO - Found image for Journal of Agriculture and Social Research (JASR): https://assets.echocommunity.org/links/0057874f-c9aa-4fc4-b937-c622fd8fbac9/medium.jpg
+2024-12-02 06:41:33,635 - INFO - Image saved for journal: Journal of Agriculture and Social Research (JASR)
+2024-12-02 06:41:34,782 - INFO - Found image for Journal of Environmental Extension: https://www.ajol.info/public/journals/13/homepageImage.jpg
+2024-12-02 06:41:36,037 - INFO - Image saved for journal: Journal of Environmental Extension
+2024-12-02 06:41:36,728 - INFO - Found image for Journal of Agriculture, Forestry and the Social Sciences: https://www.ajol.info/public/journals/232/homepageImage.gif
+2024-12-02 06:41:37,687 - INFO - Image saved for journal: Journal of Agriculture, Forestry and the Social Sciences
+2024-12-02 06:41:38,370 - INFO - Found image for Journal of Applied Chemistry and Agricultural Research: https://www.ajol.info/public/journals/337/homepageImage.jpg
+2024-12-02 06:41:39,347 - INFO - Image saved for journal: Journal of Applied Chemistry and Agricultural Research
+2024-12-02 06:41:40,106 - INFO - Found image for Journal of Applied Science, Engineering and Technology: https://journal.ic-star.org/public/journals/1/cover_issue_4_en_US.png
+2024-12-02 06:41:42,867 - INFO - Image saved for journal: Journal of Applied Science, Engineering and Technology
+2024-12-02 06:41:43,587 - INFO - Found image for Journal of Applied Sciences and Environmental Management: http://www.bioline.org.br/imgs/covers/ja_cover.jpg
+2024-12-02 06:41:44,849 - INFO - Image saved for journal: Journal of Applied Sciences and Environmental Management
+2024-12-02 06:41:45,531 - INFO - Found image for Journal of Aquatic Sciences: https://www.sciepub.com/common/showimages.aspx?idj=90002&idt=1
+2024-12-02 06:41:47,927 - INFO - Image saved for journal: Journal of Aquatic Sciences
+2024-12-02 06:41:48,809 - INFO - Found image for Journal of Basic and Clinical Reproductive Sciences: https://www.pulsus.com/admin/citation-images/journal-of-basic-and-clinical-reproductive-sciences-citation.png
+2024-12-02 06:41:49,875 - INFO - Image saved for journal: Journal of Basic and Clinical Reproductive Sciences
+2024-12-02 06:41:50,614 - INFO - Found image for Journal of Biomedical Investigation: https://www.ajol.info/public/journals/200/homepageImage.gif
+2024-12-02 06:41:51,768 - INFO - Image saved for journal: Journal of Biomedical Investigation
+2024-12-02 06:41:52,494 - INFO - Found image for Journal of Community Medicine and Primary Health Care: https://www.ajol.info/public/journals/221/homepageImage_en_US.png
+2024-12-02 06:41:53,960 - INFO - Image saved for journal: Journal of Community Medicine and Primary Health Care
+2024-12-02 06:41:54,748 - INFO - Found image for Journal of Computer Science and Its Application: https://www.ajol.info/public/journals/446/homepageImage_en_US.jpg
+2024-12-02 06:41:55,908 - INFO - Image saved for journal: Journal of Computer Science and Its Application
+2024-12-02 06:41:56,696 - INFO - Found image for Journal of Cultural Studies: http://us.sagepub.com/sites/default/files/upm-binaries/styles/sage_thumbnail_width_150px/feed/117593_specs_24_1_72ppiRGB_150pixw.jpg
+2024-12-02 06:41:57,325 - INFO - Image saved for journal: Journal of Cultural Studies
+2024-12-02 06:41:58,026 - INFO - Found image for Journal of Dietitians Association of Nigeria: https://www.ajol.info/public/journals/573/homepageImage_en_US.jpg
+2024-12-02 06:42:01,587 - INFO - Image saved for journal: Journal of Dietitians Association of Nigeria
+2024-12-02 06:42:02,540 - INFO - Found image for Journal of Educational Foundations: https://img1.wsimg.com/isteam/ip/7b7d8256-7ebe-43a8-9f8d-677e64c4940a/Screen%20Shot%202022-08-17%20at%205.10.36%20PM.png
+2024-12-02 06:42:05,130 - INFO - Image saved for journal: Journal of Educational Foundations
+2024-12-02 06:42:05,817 - INFO - Found image for Journal of Experimental and Clinical Anatomy: https://www.ajol.info/public/journals/206/homepageImage.gif
+2024-12-02 06:42:07,510 - INFO - Image saved for journal: Journal of Experimental and Clinical Anatomy
+2024-12-02 06:42:08,274 - INFO - Found image for Journal of Health and Visual Sciences: https://www.ajol.info/public/journals/371/homepageImage_en_US.jpg
+2024-12-02 06:42:09,989 - INFO - Image saved for journal: Journal of Health and Visual Sciences
+2024-12-02 06:42:10,831 - INFO - Found image for Journal of History and Diplomatic Studies: https://www.ajol.info/public/journals/447/homepageImage_en_US.jpg
+2024-12-02 06:42:12,093 - INFO - Image saved for journal: Journal of History and Diplomatic Studies
+2024-12-02 06:42:12,877 - INFO - Found image for Journal of Librarianship and Information Science in Africa: https://www.ajol.info/public/journals/158/homepageImage.gif
+2024-12-02 06:42:14,351 - INFO - Image saved for journal: Journal of Librarianship and Information Science in Africa
+2024-12-02 06:42:15,127 - INFO - Found image for Journal of Medical Investigation and Practice: https://www.ejmi.org/images/kapak.jpg
+2024-12-02 06:42:16,456 - ERROR - Error saving image for journal Journal of Medical Investigation and Practice: HTTPSConnectionPool(host='www.ejmi.org', port=443): Max retries exceeded with url: /images/kapak.jpg (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1000)')))
+2024-12-02 06:42:17,522 - INFO - Found image for Journal of Medical Laboratory Science: https://www.ajol.info/public/journals/577/homepageImage_en_US.jpg
+2024-12-02 06:42:19,477 - INFO - Image saved for journal: Journal of Medical Laboratory Science
+2024-12-02 06:42:20,247 - INFO - Found image for Journal of Medicine and Biomedical Research: https://www.ajol.info/public/journals/61/homepageImage_en_US.png
+2024-12-02 06:42:22,310 - INFO - Image saved for journal: Journal of Medicine and Biomedical Research
+2024-12-02 06:42:23,170 - INFO - Found image for Journal of Medicine and Medical Sciences: https://www.ajol.info/public/journals/62/homepageImage.jpg
+2024-12-02 06:42:24,292 - INFO - Image saved for journal: Journal of Medicine and Medical Sciences
+2024-12-02 06:42:25,163 - INFO - Found image for Journal of Medicine in the Tropics: https://www.ajol.info/public/journals/252/homepageImage_en_US.jpg
+2024-12-02 06:42:26,451 - INFO - Image saved for journal: Journal of Medicine in the Tropics
+2024-12-02 06:42:27,216 - INFO - Found image for Journal of Meteorology and Climate Science: https://www.ajol.info/public/journals/491/homepageImage_en_US.jpg
+2024-12-02 06:42:28,089 - INFO - Image saved for journal: Journal of Meteorology and Climate Science
+2024-12-02 06:42:29,078 - INFO - Found image for Journal of Mining and Geology: https://www.opastpublishers.com/content/flyers/journal-of-geology--mining-flyer.jpg
+2024-12-02 06:42:30,469 - WARNING - Failed to download image for journal: Journal of Mining and Geology - Status code: 406
+2024-12-02 06:42:31,513 - INFO - Found image for Journal of Modeling, Design and Management of Engineering Systems: https://www.ajol.info/public/journals/107/homepageImage_en_US.jpg
+2024-12-02 06:42:32,395 - INFO - Image saved for journal: Journal of Modeling, Design and Management of Engineering Systems
+2024-12-02 06:42:33,160 - INFO - Found image for Journal of Pharmaceutical and Allied Sciences: https://www.ajol.info/public/journals/249/homepageImage_en_US.jpg
+2024-12-02 06:42:34,255 - INFO - Image saved for journal: Journal of Pharmaceutical and Allied Sciences
+2024-12-02 06:42:34,991 - INFO - Found image for Journal of Pharmacy & Bioresources: https://onlinelibrary.wiley.com/cover/20427174
+2024-12-02 06:42:35,129 - WARNING - Failed to download image for journal: Journal of Pharmacy & Bioresources - Status code: 403
+2024-12-02 06:42:36,225 - INFO - Found image for Journal of Phytomedicine and Therapeutics: https://ars.els-cdn.com/content/image/X26670313.jpg
+2024-12-02 06:42:37,454 - INFO - Image saved for journal: Journal of Phytomedicine and Therapeutics
+2024-12-02 06:42:38,379 - INFO - Found image for Journal of Radiography and Radiation Sciences: https://www.ajol.info/public/journals/597/homepageImage_en_US.jpg
+2024-12-02 06:42:40,311 - INFO - Image saved for journal: Journal of Radiography and Radiation Sciences
+2024-12-02 06:42:41,152 - INFO - Found image for Journal of Religion and Human Relations: https://www.ajol.info/public/journals/497/homepageImage_en_US.jpg
+2024-12-02 06:42:42,425 - INFO - Image saved for journal: Journal of Religion and Human Relations
+2024-12-02 06:42:43,089 - INFO - Found image for Journal of the Nigerian Optometric Association: https://www.ajol.info/public/journals/422/homepageImage_en_US.jpg
+2024-12-02 06:42:44,130 - INFO - Image saved for journal: Journal of the Nigerian Optometric Association
+2024-12-02 06:42:45,132 - INFO - Found image for Journal of Research in Forestry, Wildlife and Environment: https://www.ajol.info/public/journals/473/homepageImage_en_US.jpg
+2024-12-02 06:42:46,310 - INFO - Image saved for journal: Journal of Research in Forestry, Wildlife and Environment
+2024-12-02 06:42:47,031 - INFO - Found image for Journal of Research in National Development: https://i1.rgstatic.net/publication/327755333_Journal_of_Research_in_National_Development/links/5e0933b492851c8364a48301/largepreview.png
+2024-12-02 06:42:48,259 - INFO - Image saved for journal: Journal of Research in National Development
+2024-12-02 06:42:49,022 - INFO - Found image for Journal of Surgical Technique and Case Report: https://www.ajol.info/public/journals/421/homepageImage_en_US.jpg
+2024-12-02 06:42:50,263 - INFO - Image saved for journal: Journal of Surgical Technique and Case Report
+2024-12-02 06:42:51,378 - INFO - Found image for Journal of Sustainable Development Law and Policy: https://www.ajol.info/public/journals/549/homepageImage_en_US.jpg
+2024-12-02 06:42:52,698 - INFO - Image saved for journal: Journal of Sustainable Development Law and Policy
+2024-12-02 06:42:53,548 - INFO - Found image for Journal of Technology and Education in Nigeria: https://www.ajol.info/public/journals/263/homepageImage.gif
+2024-12-02 06:42:54,834 - INFO - Image saved for journal: Journal of Technology and Education in Nigeria
+2024-12-02 06:42:55,577 - INFO - Found image for Journal of the Association of Nigerian Musicologists: https://www.ajol.info/public/journals/462/homepageImage_en_US.jpg
+2024-12-02 06:42:56,594 - INFO - Image saved for journal: Journal of the Association of Nigerian Musicologists
+2024-12-02 06:42:57,318 - INFO - Found image for Journal of the Nigerian Association of Mathematical Physics: http://nampjournals.org/wp-content/uploads/2022/07/Journal-cover-PNG.png
+2024-12-02 06:42:58,441 - WARNING - Failed to download image for journal: Journal of the Nigerian Association of Mathematical Physics - Status code: 412
+2024-12-02 06:42:59,268 - INFO - Found image for Journal of the Nigerian Infection Control Association: https://www.ajol.info/public/journals/63/homepageImage.jpg
+2024-12-02 06:43:00,536 - INFO - Image saved for journal: Journal of the Nigerian Infection Control Association
+2024-12-02 06:43:01,515 - INFO - Found image for Journal of the Obafemi Awolowo University Medical Student's Association (IFEMED): https://www.ajol.info/public/journals/352/homepageImage.jpg
+2024-12-02 06:43:02,550 - INFO - Image saved for journal: Journal of the Obafemi Awolowo University Medical Student's Association (IFEMED)
+2024-12-02 06:43:03,156 - INFO - Found image for Kanem Journal of Medical Sciences: https://kjmsmedicaljournal.com/public/journals/1/cover_issue_39_en.jpg
+2024-12-02 06:43:05,550 - INFO - Image saved for journal: Kanem Journal of Medical Sciences
+2024-12-02 06:43:06,229 - INFO - Found image for Kashere Journal of Education: https://www.ajol.info/public/journals/603/homepageImage_en_US.png
+2024-12-02 06:43:07,764 - INFO - Image saved for journal: Kashere Journal of Education
+2024-12-02 06:43:08,477 - INFO - Found image for Lagos Historical Review: https://www.ajol.info/public/journals/224/homepageImage.gif
+2024-12-02 06:43:09,668 - INFO - Image saved for journal: Lagos Historical Review
+2024-12-02 06:43:10,424 - INFO - Found image for Nigeria Journal of Pure and Applied Physics: https://www.ajol.info/public/journals/122/homepageImage_en_US.jpg
+2024-12-02 06:43:11,595 - INFO - Image saved for journal: Nigeria Journal of Pure and Applied Physics
+2024-12-02 06:43:12,368 - INFO - Found image for Lagos Journal of Library and Information Science: https://www.ajol.info/public/journals/260/homepageImage.gif
+2024-12-02 06:43:13,344 - INFO - Image saved for journal: Lagos Journal of Library and Information Science
+2024-12-02 06:43:14,018 - INFO - Found image for Lagos Notes and Records: https://m.media-amazon.com/images/I/61xFSuc-jmL._AC_UF1000,1000_QL80_.jpg
+2024-12-02 06:43:14,883 - INFO - Image saved for journal: Lagos Notes and Records
+2024-12-02 06:43:15,648 - INFO - Found image for LBS Management Review: https://www.runnings.com/media/catalog/product/2/9/293309_9f09.jpg
+2024-12-02 06:43:17,081 - WARNING - Failed to download image for journal: LBS Management Review - Status code: 403
+2024-12-02 06:43:17,797 - INFO - Found image for Mary Slessor Journal of Medicine: https://www.ajol.info/public/journals/65/homepageImage.jpg
+2024-12-02 06:43:18,945 - INFO - Image saved for journal: Mary Slessor Journal of Medicine
+2024-12-02 06:43:19,643 - INFO - Found image for Mgbakoigba: Journal of African Studies: https://www.ajol.info/public/journals/541/homepageImage_en_US.jpg
+2024-12-02 06:43:20,727 - INFO - Image saved for journal: Mgbakoigba: Journal of African Studies
+2024-12-02 06:43:21,483 - INFO - Found image for Moor Journal of Agricultural Research: https://iart.gov.ng/moorjournal/public/journals/1/cover_issue_3_en_US.jpg
+2024-12-02 06:43:24,680 - INFO - Image saved for journal: Moor Journal of Agricultural Research
+2024-12-02 06:43:25,682 - INFO - Found image for Nigeria Agricultural Journal: https://www.ajol.info/public/journals/16/homepageImage_en_US.jpg
+2024-12-02 06:43:26,738 - INFO - Image saved for journal: Nigeria Agricultural Journal
+2024-12-02 06:43:27,629 - INFO - Found image for Nigeria Journal of Business Administration: https://www.acseusa.org/journal/public/journals/1/cover_issue_40_en_US.png
+2024-12-02 06:43:31,432 - INFO - Image saved for journal: Nigeria Journal of Business Administration
+2024-12-02 06:43:32,133 - INFO - Found image for Nigerian Dental Journal: https://nigeriandentaljournal.ng/public/journals/1/cover_issue_36_en_US.jpg
+2024-12-02 06:43:34,432 - INFO - Image saved for journal: Nigerian Dental Journal
+2024-12-02 06:43:35,204 - INFO - Found image for Nigerian Endocrine Practice: https://www.ajol.info/public/journals/467/homepageImage_en_US.jpg
+2024-12-02 06:43:36,071 - INFO - Image saved for journal: Nigerian Endocrine Practice
+2024-12-02 06:43:36,741 - INFO - Found image for Nigerian Food Journal: https://www.ajol.info/public/journals/231/homepageImage_en_US.jpg
+2024-12-02 06:43:38,031 - INFO - Image saved for journal: Nigerian Food Journal
+2024-12-02 06:43:38,789 - INFO - Found image for Nigerian Health Journal: https://www.ajol.info/public/journals/476/homepageImage_en_US.jpg
+2024-12-02 06:43:39,956 - INFO - Image saved for journal: Nigerian Health Journal
+2024-12-02 06:43:40,632 - INFO - Found image for Nigerian Journal of Animal Production: https://njap.org.ng/public/journals/1/homepageImage_en_US.png
+2024-12-02 06:43:42,857 - INFO - Image saved for journal: Nigerian Journal of Animal Production
+2024-12-02 06:43:43,704 - INFO - Found image for Nigerian Journal of Animal Science: https://www.ajol.info/public/journals/208/homepageImage_en_US.jpg
+2024-12-02 06:43:44,783 - INFO - Image saved for journal: Nigerian Journal of Animal Science
+2024-12-02 06:43:45,548 - INFO - Found image for Nigerian Journal of Basic and Applied Sciences: https://www.ajol.info/public/journals/411/homepageImage_en_US.jpg
+2024-12-02 06:43:46,498 - INFO - Image saved for journal: Nigerian Journal of Basic and Applied Sciences
+2024-12-02 06:43:47,288 - INFO - Found image for Nigerian Journal of Biotechnology: https://www.ajol.info/public/journals/514/homepageImage_en_US.jpg
+2024-12-02 06:43:48,868 - INFO - Image saved for journal: Nigerian Journal of Biotechnology
+2024-12-02 06:43:49,540 - INFO - Found image for Nigerian Journal of Botany: https://www.ajol.info/public/journals/613/homepageImage_en_US.jpg
+2024-12-02 06:43:51,536 - INFO - Image saved for journal: Nigerian Journal of Botany
+2024-12-02 06:43:52,306 - INFO - Found image for Nigerian Journal of Chemical Research: https://www.ajol.info/public/journals/262/homepageImage.gif
+2024-12-02 06:43:53,418 - INFO - Image saved for journal: Nigerian Journal of Chemical Research
+2024-12-02 06:43:54,251 - INFO - Found image for Nigerian Journal of Christian Studies: https://www.ajol.info/public/journals/598/homepageImage_en_US.jpg
+2024-12-02 06:43:55,576 - INFO - Image saved for journal: Nigerian Journal of Christian Studies
+2024-12-02 06:43:56,299 - INFO - Found image for Nigerian Journal of Clinical and Counselling Psychology: https://www.ajol.info/public/journals/142/homepageImage.jpg
+2024-12-02 06:43:57,159 - INFO - Image saved for journal: Nigerian Journal of Clinical and Counselling Psychology
+2024-12-02 06:43:57,835 - INFO - Found image for Journal of Consumer Sciences: https://higherlogicdownload.s3.amazonaws.com/AAFCS/MessageImages/917e592d76b345cb84251b71160500cb.jpg
+2024-12-02 06:44:03,491 - INFO - Image saved for journal: Journal of Consumer Sciences
+2024-12-02 06:44:04,158 - INFO - Found image for Nigerian Journal of Clinical Medicine: https://www.ajol.info/public/journals/66/homepageImage_en_US.png
+2024-12-02 06:44:05,794 - INFO - Image saved for journal: Nigerian Journal of Clinical Medicine
+2024-12-02 06:44:07,112 - INFO - Found image for Nigerian Journal of Clinical Practice: https://www.ajol.info/public/journals/66/homepageImage_en_US.png
+2024-12-02 06:44:08,484 - INFO - Image saved for journal: Nigerian Journal of Clinical Practice
+2024-12-02 06:44:09,201 - INFO - Found image for Nigerian Journal of Dental Research: https://njdres.com/public/journals/1/cover_issue_21_en_US.jpg
+2024-12-02 06:44:11,760 - INFO - Image saved for journal: Nigerian Journal of Dental Research
+2024-12-02 06:44:12,582 - INFO - Found image for Nigerian Journal of Economic History: https://www.ajol.info/public/journals/271/homepageImage.JPG

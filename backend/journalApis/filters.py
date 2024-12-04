@@ -18,44 +18,6 @@ class JournalFilter(django_filters.FilterSet):
         model = Journal
         fields = []
 
-    #Using icontains to search
-    '''
-
-    contains vs icontains
-    ----------------------------------------------------------------
-    *contains is case sensitive while icontains is case insensitive
-    ----------------------------------------------------------------
-
-    def custom_search(self, queryset, name, value):
-        return queryset.filter(
-            Q(journal_title__icontains=value) |
-            Q(platform__platform__icontains=value) |
-            Q(country__country__icontains=value) |
-            Q(publishers_name__icontains=value) |
-            Q(thematic_area__thematic_area__icontains=value) |
-            Q(issn_number__icontains=value) |
-            Q(language__language__icontains=value)
-        ).distinct()
-
-
-    ---------------------------------------------------------------------
-    Using Postgres searchVector lookup
-    ---------------------------------------------------------------------
-    def custom_search(self, queryset, name, value):
-        # Annotating the queryset with SearchVector for full-text search
-        return queryset.annotate(
-            search=SearchVector(
-                'journal_title',
-                'platform__platform',
-                'country__country',
-                'publishers_name',
-                'thematic_area__thematic_area',
-                'issn_number',
-                'language__language'
-            ),
-        ).filter(search=value).distinct()
-
-    '''
     def custom_search(self, queryset, name, value):
         # Create a SearchQuery for the full-text search
         search_query = SearchQuery(value)
@@ -92,53 +54,7 @@ class JournalFilter(django_filters.FilterSet):
             Q(summary__icontains=value)
         ).order_by('-rank').distinct()
 
-# class ArticleFilter(django_filters.FilterSet):
-#     # Filters for Article fields
-#     query = django_filters.CharFilter(method='custom_search', label='Search')
-#     has_pdf = django_filters.BooleanFilter(field_name='pdf', lookup_expr='isnull', exclude=True)
-#     has_doi = django_filters.BooleanFilter(field_name='doi', lookup_expr='isnull', exclude=True)
-#     publication_date_after = django_filters.DateFilter(field_name='publication_date', lookup_expr='gte')
-#     publication_date_before = django_filters.DateFilter(field_name='publication_date', lookup_expr='lte')
 
-#     # Filters for related Journal fields
-#     journal_title = django_filters.CharFilter(field_name='volume__journal__journal_title', lookup_expr='icontains', label='Journal Title')
-#     journal_country = django_filters.CharFilter(field_name='volume__journal__country__country', lookup_expr='icontains', label='Journal Country')
-#     journal_language = django_filters.CharFilter(field_name='volume__journal__language__language', lookup_expr='icontains', label='Journal Language')
-#     journal_open_access = django_filters.BooleanFilter(field_name='volume__journal__open_access_journal', label='Open Access Journal')
-#     journal_google_scholar = django_filters.BooleanFilter(field_name='volume__journal__google_scholar_index', label='Indexed on Google Scholar')
-
-#     class Meta:
-#         model = Article
-#         fields = []
-
-#     def custom_search(self, queryset, name, value):
-#         # Full-text search setup for Article fields
-#         search_query = SearchQuery(value)
-#         search_vector = SearchVector(
-#             'title',
-#             'abstract',
-#             'keywords',
-#             'authors',
-#             'subjects',
-#             'article_type',
-#             'publisher'
-#         )
-#         queryset = queryset.annotate(rank=SearchRank(search_vector, search_query))
-
-#         # Article and related Journal filtering
-#         return queryset.filter(
-#             Q(rank__gte=0.1) |  # Full-text search
-#             Q(title__icontains=value) |
-#             Q(abstract__icontains=value) |
-#             Q(keywords__icontains=value) |
-#             Q(authors__icontains=value) |
-#             Q(subjects__icontains=value) |
-#             Q(article_type__icontains=value) |
-#             Q(publisher__icontains=value) |
-#             Q(volume__journal__journal_title__icontains=value) |  # Related Journal fields
-#             Q(volume__journal__country__country__icontains=value) |
-#             Q(volume__journal__language__language__icontains=value)
-#         ).order_by('-rank').distinct()
 
 
 
