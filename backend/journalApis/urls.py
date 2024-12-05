@@ -3,6 +3,7 @@ from django.urls import path
 from .views import generate_journal_description
 from .views import JournalPaginationListView,JournalSearchView,JournalDetailView,JournalCreateView,JournalPaginationListUserView,ArticleSearchView
 from .views import LanguageViewSet,PlatformViewSet,CountryViewSet,ThematicAreaViewSet,VolumeViewSet,ArticleViewSet,UserLanguageViewSet,UserThematicAreaViewSet  # Import your viewset
+from .views import FeedbackViewSet
 
 # Create individual views for list and detail actions
 language_list = LanguageViewSet.as_view({
@@ -106,6 +107,21 @@ user_thematic_detail = UserThematicAreaViewSet.as_view({
     'delete': 'destroy'
 })
 
+
+
+
+feedback_list=FeedbackViewSet.as_view({
+    'get': 'list',
+    'post': 'create'
+})
+
+feedback_detail=FeedbackViewSet.as_view({
+    'get': 'retrieve',
+    'put': 'update',
+    'patch': 'partial_update',
+    'delete': 'destroy'
+})
+
 urlpatterns=[
    path('',views.getJournals),
    
@@ -142,5 +158,9 @@ urlpatterns=[
 
    path('api/user-thematic/', user_thematic_list, name='user-language-list'),
    path('api/user-thematic/<int:pk>/', user_thematic_detail, name='user-language-detail'),
+
+   path('api/feedback/', feedback_list, name='feedback-list'),  # List and create languages
+   path('api/feedback/<int:pk>/', feedback_detail, name='feedback-detail'),  # Retrieve, update, delete specific language
+   
    
 ]

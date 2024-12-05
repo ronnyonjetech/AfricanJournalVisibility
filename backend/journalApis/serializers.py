@@ -1,7 +1,10 @@
 from rest_framework import serializers
-from .models import Journal,Language,Platform,Country,ThematicArea,Volume, Article,JournalImage
+from .models import Journal,Language,Platform,Country,ThematicArea,Volume, Article,JournalImage,Feedback
+import re
 
 
+def strip_tags(value):
+    return re.sub(r'<[^>]*>', '', value)
 
 class LanguageSerializer(serializers.ModelSerializer):
     class Meta:
@@ -26,10 +29,16 @@ class ThematicAreaSerializer(serializers.ModelSerializer):
 
 # Serializer for Article model
 class ArticleSerializer(serializers.ModelSerializer):
+    abstract = serializers.SerializerMethodField()
     class Meta:
         model = Article
         fields = '__all__'
         # fields = ['id', 'title', 'authors', 'keywords','pdf','publication_date']
+
+    def get_abstract(self, obj):
+        if obj.abstract:
+            return strip_tags(obj.abstract)
+        return obj.abstract
 
 # Serializer for Volume model, including nested articles
 class VolumeSerializer(serializers.ModelSerializer):
@@ -60,4 +69,10 @@ class JournalSerializer(serializers.ModelSerializer):
 class JournalSerializer1(serializers.ModelSerializer):
     class Meta:
         model = Journal
+        fields = '__all__'
+
+# Serializer for Article model
+class FeedBackSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Feedback
         fields = '__all__'

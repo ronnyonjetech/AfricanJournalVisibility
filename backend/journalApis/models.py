@@ -211,3 +211,8 @@ class JournalsWithoutArticles(Journal):
         proxy = True  # Define this model as a proxy
         verbose_name = "Journal (No Articles)"
         verbose_name_plural = "Journals (No Articles)"
+
+class Feedback(models.Model):
+    name=models.CharField(max_length=2000,blank=True,null=True)
+    email=models.CharField(max_length=2000,blank=True,null=True)
+    question=models.TextField(blank=True,null=True)

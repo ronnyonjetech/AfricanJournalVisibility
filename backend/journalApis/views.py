@@ -9,8 +9,9 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import Journal
+from .models import Journal,Feedback
 from .serializers import JournalSerializer,JournalSerializer1,LanguageSerializer,PlatformSerializer,CountrySerializer,ThematicAreaSerializer,VolumeSerializer,ArticleSerializer
+from .serializers import FeedBackSerializer
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
 from .filters import JournalFilter,ArticleFilter
@@ -261,3 +262,7 @@ class ArticleSearchView(generics.ListAPIView):
 
         # Add additional filtering logic if necessary
         return queryset
+
+class FeedbackViewSet(viewsets.ModelViewSet):
+     queryset = Feedback.objects.all()
+     serializer_class = FeedBackSerializer   
