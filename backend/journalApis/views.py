@@ -76,11 +76,23 @@ class JournalPaginationListUserView(APIView):
 
 
 class JournalSearchView(generics.ListAPIView):
-    queryset = Journal.objects.all()
+    # queryset = Journal.objects.all()
     serializer_class = JournalSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_class = JournalFilter
     pagination_class = JournalPagination
+
+    def get_queryset(self):
+        # Annotate journals with the number of related volumes
+        queryset = Journal.objects.annotate(volume_count=Count('volumes')).order_by('-volume_count', 'journal_title')
+
+        # Apply filters if requested
+        filtered_queryset = self.filter_queryset(queryset)
+
+        # Return static list if no filters match
+        if not filtered_queryset.exists():
+            return queryset
+        return filtered_queryset
 
 
 class JournalDetailView(APIView):
