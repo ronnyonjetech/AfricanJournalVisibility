@@ -746,3 +746,275 @@
 2024-12-02 06:44:09,201 - INFO - Found image for Nigerian Journal of Dental Research: https://njdres.com/public/journals/1/cover_issue_21_en_US.jpg
 2024-12-02 06:44:11,760 - INFO - Image saved for journal: Nigerian Journal of Dental Research
 2024-12-02 06:44:12,582 - INFO - Found image for Nigerian Journal of Economic History: https://www.ajol.info/public/journals/271/homepageImage.JPG
+2024-12-05 10:37:13,090 - INFO - Found image for Scriptura : Journal for Contextual Hermeneutics in Southern Africa: https://journals.co.za/cms/asset/69fe0335-f57b-4d85-8b33-d3909a27edc2/default_cover.jpg
+2024-12-05 10:37:13,210 - WARNING - Failed to download image for journal: Scriptura : Journal for Contextual Hermeneutics in Southern Africa - Status code: 403
+2024-12-05 10:37:13,576 - INFO - Found image for African Journal of International Affairs: https://www.tandfonline.com/doi/cover-img/10.1080/rsaj20
+2024-12-05 10:37:13,740 - WARNING - Failed to download image for journal: African Journal of International Affairs - Status code: 403
+2024-12-05 10:37:14,215 - INFO - Found image for Science et Technique, Sciences de la Santé: https://knowledgehub.iphce.org/wp-content/uploads/2021/04/Science-et-Technique-Sciences-de-la-Sante.jpg
+2024-12-05 10:37:16,307 - WARNING - Failed to download image for journal: Science et Technique, Sciences de la Santé - Status code: 404
+2024-12-05 10:37:16,854 - INFO - Found image for East Africa Science: https://cega.berkeley.edu/wp-content/uploads/2018/12/visiting-fellows_22770798561_o-1-e1544133990757.jpg
+2024-12-05 10:37:17,335 - WARNING - Failed to download image for journal: East Africa Science - Status code: 403
+2024-12-05 10:37:17,730 - INFO - Found image for African Journal of Sustainable Development: https://www.un.org/osaa/sites/www.un.org.osaa/files/confirmed_reworked_94_3_9.9.24.png
+2024-12-05 10:37:17,834 - WARNING - Failed to download image for journal: African Journal of Sustainable Development - Status code: 403
+2024-12-05 10:37:18,221 - INFO - Found image for Acta Academica: https://journals.co.za/cms/asset/2aa78d07-0cb8-4127-9aa2-ae6716bb6e2d/academ.v52.n2.cover.jpg
+2024-12-05 10:37:18,322 - WARNING - Failed to download image for journal: Acta Academica - Status code: 403
+2024-12-05 10:37:18,657 - INFO - Found image for Acta Criminologica : African Journal of Criminology & Victimology: https://journals.co.za/cms/asset/10685c46-3ef4-4c72-ba50-74ac85248a93/crim.v37.n1.cover.jpg
+2024-12-05 10:37:18,834 - WARNING - Failed to download image for journal: Acta Criminologica : African Journal of Criminology & Victimology - Status code: 403
+2024-12-05 10:37:19,239 - INFO - Found image for Acta Patristica et Byzantina: https://journals.co.za/cms/asset/4e9786bb-68d3-48f7-a3e2-28519e82b5eb/default_cover.jpg
+2024-12-05 10:37:19,374 - WARNING - Failed to download image for journal: Acta Patristica et Byzantina - Status code: 403
+2024-12-05 10:37:19,764 - INFO - Found image for AFFRIKA Journal of Politics, Economics and Society: https://journals.co.za/cms/asset/dd3dddee-c3ee-47d8-8d54-7c42f730bae1/default_cover.jpg
+2024-12-05 10:37:19,912 - WARNING - Failed to download image for journal: AFFRIKA Journal of Politics, Economics and Society - Status code: 403
+2024-12-05 10:37:20,373 - INFO - Found image for Africa Conflict Monthly Monitor: https://journals.co.za/cms/asset/d3da549d-3529-42e3-98fb-ea40515dd188/default_cover.jpg
+2024-12-05 10:37:20,497 - WARNING - Failed to download image for journal: Africa Conflict Monthly Monitor - Status code: 403
+2024-12-05 10:37:21,025 - INFO - Found image for Africa Journal of Public Sector Development and Governance: https://journals.co.za/cms/asset/9cbff72e-420a-4d54-b98b-e32f3b97152c/ajpsdg.v6.n1.cover.jpeg
+2024-12-05 10:37:21,129 - WARNING - Failed to download image for journal: Africa Journal of Public Sector Development and Governance - Status code: 403
+2024-12-05 10:37:21,507 - INFO - Found image for African Journal of Development Studies (formerly AFFRIKA Journal of Politics, Economics and Society): https://journals.co.za/cms/asset/dd3dddee-c3ee-47d8-8d54-7c42f730bae1/default_cover.jpg
+2024-12-05 10:37:21,636 - WARNING - Failed to download image for journal: African Journal of Development Studies (formerly AFFRIKA Journal of Politics, Economics and Society) - Status code: 403
+2024-12-05 10:37:22,187 - INFO - Found image for African Journal of Farm Child and Youth Development: https://journals.co.za/releasedAssets/images/publication-bg-38408d2212c48741f502c866cffa7fd9.jpg
+2024-12-05 10:37:22,321 - WARNING - Failed to download image for journal: African Journal of Farm Child and Youth Development - Status code: 403
+2024-12-05 10:37:22,754 - INFO - Found image for African Journal of Gender, Society and Development (formerly Journal of Gender, Information and Development in Africa): https://journals.co.za/cms/asset/1b7edf60-9410-45fd-81bf-42a21ec62625/default_cover.jpg
+2024-12-05 10:37:22,928 - WARNING - Failed to download image for journal: African Journal of Gender, Society and Development (formerly Journal of Gender, Information and Development in Africa) - Status code: 403
+2024-12-05 10:37:23,337 - INFO - Found image for African Journal of Peace and Conflict Studies (formerly Ubuntu : Journal of Conflict and Social Transformation): https://journals.co.za/cms/asset/d9c52c46-f497-429a-8ece-e76be5373fd1/default_cover.jpg
+2024-12-05 10:37:23,462 - WARNING - Failed to download image for journal: African Journal of Peace and Conflict Studies (formerly Ubuntu : Journal of Conflict and Social Transformation) - Status code: 403
+2024-12-05 10:37:23,864 - INFO - Found image for African Journal of Public Affairs: https://journals.co.za/cms/asset/4e8a68d7-c1a1-4b20-a9d9-38768a42a3e3/ajpa.v15.n1.cover.jpg
+2024-12-05 10:37:23,979 - WARNING - Failed to download image for journal: African Journal of Public Affairs - Status code: 403
+2024-12-05 10:37:24,338 - INFO - Found image for African Journal of Rhetoric: https://journals.co.za/cms/asset/08ca7362-4a7a-4a8a-87c0-e6dc25b93c71/aar.rhetoric.v16.n1.cover.jpg
+2024-12-05 10:37:24,465 - WARNING - Failed to download image for journal: African Journal of Rhetoric - Status code: 403
+2024-12-05 10:37:24,844 - INFO - Found image for African Population Studies: https://uaps-uepa.org/wp-content/uploads/2022/10/UAPS-UEPA-Logo.png
+2024-12-05 10:37:25,355 - WARNING - Failed to download image for journal: African Population Studies - Status code: 406
+2024-12-05 10:37:25,774 - INFO - Found image for African Review: https://brill.com/coverimage?doc=%2Fjournals%2Ftare%2Ftare-overview.xml&width=300
+2024-12-05 10:37:26,276 - WARNING - Failed to download image for journal: African Review - Status code: 403
+2024-12-05 10:37:26,650 - INFO - Found image for African Yearbook of Rhetoric: https://journals.co.za/cms/asset/2e36b3ef-eaa7-4b0b-b739-f51f1c2f0679/default_cover.jpg
+2024-12-05 10:37:26,767 - WARNING - Failed to download image for journal: African Yearbook of Rhetoric - Status code: 403
+2024-12-05 10:37:27,207 - INFO - Found image for International Journal of Medicine and Biomedical Research: https://ijmr.com.ua/web/images/cover.jpg
+2024-12-05 10:37:27,660 - WARNING - Failed to download image for journal: International Journal of Medicine and Biomedical Research - Status code: 403
+2024-12-05 10:37:28,108 - INFO - Found image for International Journal of Tropical Agriculture and Food Systems: https://foodsystemsjournal.org/public/journals/1/homepageImage_en_US.jpg
+2024-12-05 10:37:28,583 - WARNING - Failed to download image for journal: International Journal of Tropical Agriculture and Food Systems - Status code: 403
+2024-12-05 10:37:28,980 - INFO - Found image for Ars nova: https://upload.wikimedia.org/wikipedia/commons/b/bf/Roman_de_Fauvel.jpg
+2024-12-05 10:37:29,189 - WARNING - Failed to download image for journal: Ars nova - Status code: 403
+2024-12-05 10:37:29,640 - INFO - Found image for BER : Architects and Quantity Surveyors' Survey: https://gallowayus.com/wp-content/uploads/2024/02/Prost-Brewing-Co_Northglenn-Facility_Twilights-1-1024x683.webp
+2024-12-05 10:37:30,033 - WARNING - Failed to download image for journal: BER : Architects and Quantity Surveyors' Survey - Status code: 403
+2024-12-05 10:37:30,440 - INFO - Found image for Journal of Medical Investigation and Practice: https://www.ejmi.org/images/kapak.jpg
+2024-12-05 10:37:31,492 - WARNING - Failed to download image for journal: Journal of Medical Investigation and Practice - Status code: 403
+2024-12-05 10:37:31,919 - INFO - Found image for BER : Retail Sector Survey: https://journals.co.za/cms/asset/1e5cd45f-73b5-4487-9186-5b7659786520/retail.v38.n2.cover.jpg
+2024-12-05 10:37:32,029 - WARNING - Failed to download image for journal: BER : Retail Sector Survey - Status code: 403
+2024-12-05 10:37:32,430 - INFO - Found image for Journal of Mining and Geology: https://www.opastpublishers.com/content/flyers/journal-of-geology--mining-flyer.jpg
+2024-12-05 10:37:32,650 - WARNING - Failed to download image for journal: Journal of Mining and Geology - Status code: 406
+2024-12-05 10:37:32,930 - INFO - Found image for Boleswa Occasional Papers in Theology and Religion: https://journals.co.za/cms/asset/3b74bed3-70e0-4bca-bf8b-776d2031fe68/aja18183816_3.fp.png
+2024-12-05 10:37:33,049 - WARNING - Failed to download image for journal: Boleswa Occasional Papers in Theology and Religion - Status code: 403
+2024-12-05 10:37:33,433 - INFO - Found image for Journal of the Nigerian Association of Mathematical Physics: http://nampjournals.org/wp-content/uploads/2022/07/Journal-cover-PNG.png
+2024-12-05 10:37:33,590 - WARNING - Failed to download image for journal: Journal of the Nigerian Association of Mathematical Physics - Status code: 412
+2024-12-05 10:37:34,011 - INFO - Found image for Cardiovascular Journal of South Africa: https://journals.co.za/cms/asset/f715a845-9590-481d-90fb-41dc3220d6f8/cardio1.v34.n1.cover.jpg
+2024-12-05 10:37:34,117 - WARNING - Failed to download image for journal: Cardiovascular Journal of South Africa - Status code: 403
+2024-12-05 10:37:34,525 - INFO - Found image for Communicatio : South African Journal of Communication Theory and Research: https://www.tandfonline.com/action/showCoverImage?journalCode=rcsa20
+2024-12-05 10:37:34,679 - WARNING - Failed to download image for journal: Communicatio : South African Journal of Communication Theory and Research - Status code: 403
+2024-12-05 10:37:35,089 - INFO - Found image for Comparative and International Law Journal of Southern Africa: https://journals.co.za/cms/asset/812e4b94-1758-4dd6-a9f3-a45e867c0fa6/default_cover.jpg
+2024-12-05 10:37:35,207 - WARNING - Failed to download image for journal: Comparative and International Law Journal of Southern Africa - Status code: 403
+2024-12-05 10:37:35,584 - INFO - Found image for Constitutional Court Review: https://images.squarespace-cdn.com/content/v1/5af3f84a4eddec846552ea29/1527924637142-HFLUYCEBTLIPGFTH3SM0/ccr2016.jpeg
+2024-12-05 10:37:35,895 - INFO - Image saved for journal: Constitutional Court Review
+2024-12-05 10:37:36,294 - INFO - Found image for Nigerian Journal of General Practice: https://www.ajol.info/public/journals/527/homepageImage_en_US.jpg
+2024-12-05 10:37:36,847 - INFO - Image saved for journal: Nigerian Journal of General Practice
+2024-12-05 10:37:37,207 - INFO - Found image for Oromia Law Journal: https://www.ajol.info/public/journals/482/homepageImage_en_US.jpg
+2024-12-05 10:37:37,573 - INFO - Image saved for journal: Oromia Law Journal
+2024-12-05 10:37:37,951 - INFO - Found image for Critical Studies in Teaching and Learning (CriSTaL): https://epubs.ac.za/public/journals/16/cover_issue_172_en_US.jpg
+2024-12-05 10:37:40,013 - INFO - Image saved for journal: Critical Studies in Teaching and Learning (CriSTaL)
+2024-12-05 10:37:40,471 - INFO - Found image for Nigerian Journal of Technology: https://www.nijotech.com/public/journals/1/cover_issue_106_en_US.jpg
+2024-12-05 10:37:41,362 - INFO - Image saved for journal: Nigerian Journal of Technology
+2024-12-05 10:37:41,751 - INFO - Found image for Nigerian Journal of Guidance and Counselling: https://un-pub.eu/ojs/public/journals/12/cover_issue_558_en_US.jpg
+2024-12-05 10:37:43,281 - INFO - Image saved for journal: Nigerian Journal of Guidance and Counselling
+2024-12-05 10:37:43,717 - INFO - Found image for Nigerian Journal of Health and Biomedical Sciences: https://img.exaly.com/journal-chart/99230/impact-factor/graph.svg
+2024-12-05 10:37:44,020 - INFO - Image saved for journal: Nigerian Journal of Health and Biomedical Sciences
+2024-12-05 10:37:44,455 - INFO - Found image for Nigerian Journal of Horticultural Science: https://www.ajol.info/public/journals/18/homepageImage_en_US.jpg
+2024-12-05 10:37:44,823 - INFO - Image saved for journal: Nigerian Journal of Horticultural Science
+2024-12-05 10:37:45,190 - INFO - Found image for Nigerian Journal of Medicine: https://www.ajol.info/public/journals/278/homepageImage_en_US.jpg
+2024-12-05 10:37:45,851 - INFO - Image saved for journal: Nigerian Journal of Medicine
+2024-12-05 10:37:46,174 - INFO - Found image for Culna: https://c8.alamy.com/comp/AKR741/nest-of-moist-pebbles-on-pale-rock-formations-and-beach-pebbles-foreshore-AKR741.jpg
+2024-12-05 10:37:46,528 - INFO - Image saved for journal: Culna
+2024-12-05 10:37:47,008 - INFO - Found image for Nigerian Journal of Nutritional Sciences: https://www.ajol.info/public/journals/440/homepageImage_en_US.jpg
+2024-12-05 10:37:47,380 - INFO - Image saved for journal: Nigerian Journal of Nutritional Sciences
+2024-12-05 10:37:47,745 - INFO - Found image for Nigerian Journal of Ophthalmology: https://www.ajol.info/public/journals/69/homepageImage.gif
+2024-12-05 10:37:48,196 - INFO - Image saved for journal: Nigerian Journal of Ophthalmology
+2024-12-05 10:37:48,745 - INFO - Found image for Dairy Mail Africa : Publication for the Dairy Industry in Africa: https://img.discountmags.com/https%3A%2F%2Fimg.discountmags.com%2Fproducts%2Fextras%2F1714256-the-dairy-mail-cover-september-2024-issue.jpg%3Fbg%3DFFF%26fit%3Dscale%26h%3D1019%26mark%3DaHR0cHM6Ly9zMy5hbWF6b25hd3MuY29tL2pzcy1hc3NldHMvaW1hZ2VzL2RpZ2l0YWwtZnJhbWUtdjIzLnBuZw%253D%253D%26markpad%3D-40%26pad%3D40%26w%3D775%26s%3Db19c9886864ae01f5a0eae9d07f09a3d?auto=format%2Ccompress&cs=strip&h=1018&w=774&s=4dcef446fa3ef4269ba0592831766706
+2024-12-05 10:37:49,490 - ERROR - Error saving image for journal Dairy Mail Africa : Publication for the Dairy Industry in Africa: Storage can not find an available filename for "journals/images/https3A2F2Fimg.discountmags.com2Fproducts2Fextras2F1714256-the-dairy-mail-cover-september-2024-issue_w5ZDP4r.jpg3Fbg3DFFF26fit3Dscale26h3D101926mark3DaHR0cHM6Ly9zMy5hbWF6b25hd3MuY29tL2pzcy1hc3NldHMvaW1hZ2VzL2RpZ2l0YWwtZnJhbWUtdjIzLnBuZw253D253D26markpad3D-4026pad3D4026w3D77526s3Db19c9886864ae01f5a0eae9d07f09a3dautoformat2Ccompresscsstriph1018w774s4dcef446fa3ef4269ba0592831766706". Please make sure that the corresponding file field allows sufficient "max_length".
+2024-12-05 10:37:49,892 - INFO - Found image for Nigerian Journal of Parasitology: https://www.ajol.info/public/journals/284/homepageImage_en_US.png
+2024-12-05 10:37:50,402 - INFO - Image saved for journal: Nigerian Journal of Parasitology
+2024-12-05 10:37:50,783 - INFO - Found image for Nigerian Journal of Otorhinolaryngology: https://www.njorl.org.ng/public/assets/img/logo.png
+2024-12-05 10:37:51,172 - INFO - Image saved for journal: Nigerian Journal of Otorhinolaryngology
+2024-12-05 10:37:51,524 - INFO - Found image for Nigerian Journal of Paediatrics: https://www.ajol.info/public/journals/70/homepageImage_en_US.jpg
+2024-12-05 10:37:51,873 - INFO - Image saved for journal: Nigerian Journal of Paediatrics
+2024-12-05 10:37:52,303 - INFO - Found image for Nigerian Journal of Pharmaceutical Research: https://www.ajol.info/public/journals/257/homepageImage.gif
+2024-12-05 10:37:52,757 - INFO - Image saved for journal: Nigerian Journal of Pharmaceutical Research
+2024-12-05 10:37:53,175 - INFO - Found image for De Jure: https://i.ytimg.com/vi/klClwMgFcCU/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCA-LM-HdEh38uU4hHU3uGuj7fQXA
+2024-12-05 10:37:53,304 - ERROR - Error saving image for journal De Jure: Storage can not find an available filename for "journals/images/hq720_X8cAj9b.jpgsqp-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJDrsAOn4CLCA-LM-HdEh38uU4hHU3uGuj7fQXA". Please make sure that the corresponding file field allows sufficient "max_length".
+2024-12-05 10:37:53,713 - INFO - Found image for Nigerian Journal of Physiological Sciences: https://ojshostng.com/public/journals/8/cover_issue_124_en_US.jpg
+2024-12-05 10:37:54,356 - INFO - Image saved for journal: Nigerian Journal of Physiological Sciences
+2024-12-05 10:37:54,753 - INFO - Found image for Nigerian Journal of Plastic Surgery: https://www.ajol.info/public/journals/327/homepageImage.JPG
+2024-12-05 10:37:55,168 - INFO - Image saved for journal: Nigerian Journal of Plastic Surgery
+2024-12-05 10:37:55,545 - INFO - Found image for Nigerian Journal of Postgraduate Medicine: https://npmcn.edu.ng/wp-content/uploads/2024/01/npmj-235x300.png
+2024-12-05 10:37:55,962 - INFO - Image saved for journal: Nigerian Journal of Postgraduate Medicine
+2024-12-05 10:37:56,368 - INFO - Found image for De Rebus: https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=100063535003368
+2024-12-05 10:37:56,494 - INFO - Image saved for journal: De Rebus
+2024-12-05 10:37:56,865 - INFO - Found image for Diabetes Lifestyle: https://domf5oio6qrcr.cloudfront.net/medialibrary/9266/iStock-844895800.jpg
+2024-12-05 10:37:56,997 - INFO - Image saved for journal: Diabetes Lifestyle
+2024-12-05 10:37:57,371 - INFO - Found image for Nigerian Journal of Soil and Environmental Research: https://www.ajol.info/public/journals/179/homepageImage.gif
+2024-12-05 10:37:57,753 - INFO - Image saved for journal: Nigerian Journal of Soil and Environmental Research
+2024-12-05 10:37:58,189 - INFO - Found image for Nigerian Journal of Surgery: https://www.ajol.info/public/journals/451/homepageImage_en_US.jpg
+2024-12-05 10:37:58,532 - INFO - Image saved for journal: Nigerian Journal of Surgery
+2024-12-05 10:37:58,940 - INFO - Found image for Social and Health Sciences: https://media.springernature.com/lw685/springer-static/image/chp%3A10.1007%2F978-3-031-25110-8_1/MediaObjects/500927_1_En_1_Fig1_HTML.png
+2024-12-05 10:37:59,722 - INFO - Image saved for journal: Social and Health Sciences
+2024-12-05 10:38:00,183 - INFO - Found image for Nigerian Journal of Technological Development: https://www.ajol.info/public/journals/538/homepageImage_en_US.jpg
+2024-12-05 10:38:00,626 - INFO - Image saved for journal: Nigerian Journal of Technological Development
+2024-12-05 10:38:01,007 - INFO - Found image for Critical Arts: https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=100063746955822
+2024-12-05 10:38:01,152 - INFO - Image saved for journal: Critical Arts
+2024-12-05 10:38:01,559 - INFO - Found image for Nigerian Journal of Surgical Sciences: https://img.exaly.com/journal-chart/84900/impact-factor/graph.svg
+2024-12-05 10:38:01,872 - INFO - Image saved for journal: Nigerian Journal of Surgical Sciences
+2024-12-05 10:38:02,273 - INFO - Found image for Nigerian Journal of Technological Research: https://img.exaly.com/journal-chart/83640/impact-factor/graph.svg
+2024-12-05 10:38:02,577 - INFO - Image saved for journal: Nigerian Journal of Technological Research
+2024-12-05 10:38:02,973 - INFO - Found image for Discourse: https://www.thoughtco.com/thmb/ASZgQcLuvrEIOK-AziqP1-R291E=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/getty_discourse-550382885-58b9a0a55f9b58af5c7a0293.jpg
+2024-12-05 10:38:03,092 - INFO - Image saved for journal: Discourse
+2024-12-05 10:38:03,502 - INFO - Found image for South Africa Rural Development Quarterly: https://www.ifad.org/thefieldreport/media/15998_corrected-mr.jpg
+2024-12-05 10:38:04,147 - INFO - Image saved for journal: South Africa Rural Development Quarterly
+2024-12-05 10:38:04,513 - INFO - Found image for Nigerian Medical Journal: https://www.ajol.info/public/journals/370/homepageImage_en_US.jpg
+2024-12-05 10:38:05,036 - INFO - Image saved for journal: Nigerian Medical Journal
+2024-12-05 10:38:05,412 - INFO - Found image for Nigerian Music Review: https://www.ajol.info/public/journals/256/homepageImage.gif
+2024-12-05 10:38:05,975 - INFO - Image saved for journal: Nigerian Music Review
+2024-12-05 10:38:06,331 - INFO - Found image for Nigerian Quarterly Journal of Hospital Medicine: https://www.ajol.info/public/journals/72/homepageImage.gif
+2024-12-05 10:38:06,691 - INFO - Image saved for journal: Nigerian Quarterly Journal of Hospital Medicine
+2024-12-05 10:38:07,057 - INFO - Found image for Dutch Reformed Theological Journal = Nederduitse Gereformeerde Teologiese Tydskrif: https://ojs.reformedjournals.co.za/public/journals/1/cover_issue_14_en_US.jpg
+2024-12-05 10:38:07,568 - INFO - Image saved for journal: Dutch Reformed Theological Journal = Nederduitse Gereformeerde Teologiese Tydskrif
+2024-12-05 10:38:07,963 - INFO - Found image for East African Geographical Review: https://www.tandfonline.com/cms/asset/84bf3594-09a5-49fe-b88c-4fe501b6a1bf/rafg20.v043.i07.cover.jpg
+2024-12-05 10:38:08,094 - WARNING - Failed to download image for journal: East African Geographical Review - Status code: 403
+2024-12-05 10:38:08,462 - INFO - Found image for Nigerian Veterinary Journal: https://www.ajol.info/public/journals/19/homepageImage_en_US.jpg
+2024-12-05 10:38:08,915 - INFO - Image saved for journal: Nigerian Veterinary Journal
+2024-12-05 10:38:09,255 - INFO - Found image for Educor Multidisciplinary Journal: https://journals.co.za/cms/asset/37e3dd6e-06c4-4d4d-9a65-2ba0b0ea4b8d/default_cover.jpg
+2024-12-05 10:38:09,361 - WARNING - Failed to download image for journal: Educor Multidisciplinary Journal - Status code: 403
+2024-12-05 10:38:09,858 - INFO - Found image for Emergency Services SA: https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=100064785693842
+2024-12-05 10:38:09,971 - INFO - Image saved for journal: Emergency Services SA
+2024-12-05 10:38:10,414 - INFO - Found image for Orient Journal of Medicine: https://orientjom.org.ng/public/journals/1/cover_issue_6_en_US.jpg
+2024-12-05 10:38:10,827 - WARNING - Failed to download image for journal: Orient Journal of Medicine - Status code: 406
+2024-12-05 10:38:11,283 - INFO - Found image for Plant Products Research Journal: https://mdpi-res.com/bookfiles/book/6834/Plant_and_MarineDerived_Natural_Product_Research_in_Drug_Discovery_Strengths_and_Perspective.png?v=1708985104
+2024-12-05 10:38:11,999 - INFO - Image saved for journal: Plant Products Research Journal
+2024-12-05 10:38:12,423 - INFO - Found image for Enterprise Risk: https://www.investopedia.com/thmb/4Wb65cn2aY5-x7pNCUW6r2PVcgo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Enterprise-risk-management_final-3fb67ffdaafb4d3b879de7a0940f6fe7.png
+2024-12-05 10:38:12,544 - INFO - Image saved for journal: Enterprise Risk
+2024-12-05 10:38:12,987 - INFO - Found image for Sahel Medical Journal: https://www.ajol.info/public/journals/73/homepageImage.jpg
+2024-12-05 10:38:13,439 - INFO - Image saved for journal: Sahel Medical Journal
+2024-12-05 10:38:13,973 - INFO - Found image for Research Journal of Health Sciences: https://d45jl3w9libvn.cloudfront.net/jaypee/static/journals/JOHSR/12/2/JOHSR_Cover.jpg
+2024-12-05 10:38:15,099 - INFO - Image saved for journal: Research Journal of Health Sciences
+2024-12-05 10:38:15,451 - INFO - Found image for Sahel Journal of Veterinary Sciences: https://www.ajol.info/public/journals/347/homepageImage_en_US.jpg
+2024-12-05 10:38:16,430 - INFO - Image saved for journal: Sahel Journal of Veterinary Sciences
+2024-12-05 10:38:16,947 - INFO - Found image for Ergonomics SA : Journal of the Ergonomics Society of South Africa: https://www.ajol.info/public/journals/544/homepageImage_en_US.png
+2024-12-05 10:38:17,531 - INFO - Image saved for journal: Ergonomics SA : Journal of the Ergonomics Society of South Africa
+2024-12-05 10:38:18,013 - INFO - Found image for Savannah Journal of Medical Research and Practice: https://www.ajol.info/public/journals/496/homepageImage_en_US.jpg
+2024-12-05 10:38:18,400 - INFO - Image saved for journal: Savannah Journal of Medical Research and Practice
+2024-12-05 10:38:19,181 - INFO - Found image for Science World Journal: https://www.ajol.info/public/journals/413/homepageImage_en_US.jpg
+2024-12-05 10:38:19,752 - INFO - Image saved for journal: Science World Journal
+2024-12-05 10:38:20,128 - INFO - Found image for Scientia Africana: https://www.ajol.info/public/journals/387/homepageImage_en_US.jpg
+2024-12-05 10:38:20,549 - INFO - Image saved for journal: Scientia Africana
+2024-12-05 10:38:20,987 - INFO - Found image for Pinnacle Medicine and Medical Sciences: https://www.shebaonline.org/wp-content/uploads/2017/03/Featured-image-new-24.jpg
+2024-12-05 10:38:21,162 - WARNING - Failed to download image for journal: Pinnacle Medicine and Medical Sciences - Status code: 403
+2024-12-05 10:38:21,571 - INFO - Found image for Sokoto Journal of Medical Laboratory Science: https://www.ajol.info/public/journals/577/homepageImage_en_US.jpg
+2024-12-05 10:38:22,255 - INFO - Image saved for journal: Sokoto Journal of Medical Laboratory Science
+2024-12-05 10:38:22,627 - INFO - Found image for Sokoto Journal of Veterinary Sciences: http://www.sokvetjournal.net/images/stories/front.png
+2024-12-05 10:38:23,063 - INFO - Image saved for journal: Sokoto Journal of Veterinary Sciences
+2024-12-05 10:38:23,469 - INFO - Found image for Sophia: An African Journal of Philosophy: https://www.ajol.info/public/journals/297/homepageImage_en_US.jpg
+2024-12-05 10:38:23,923 - INFO - Image saved for journal: Sophia: An African Journal of Philosophy
+2024-12-05 10:38:24,269 - INFO - Found image for Tropical Freshwater Biology: https://www.ajol.info/public/journals/119/homepageImage_en_US.jpg
+2024-12-05 10:38:24,742 - INFO - Image saved for journal: Tropical Freshwater Biology
+2024-12-05 10:38:25,185 - INFO - Found image for ESR Review : Economic and Social Rights in South Africa: https://journals.co.za/cms/asset/d1dbf7e7-4982-412f-97de-fe06519e7bb5/esrrev.v25.n1.cover.jpg
+2024-12-05 10:38:25,319 - WARNING - Failed to download image for journal: ESR Review : Economic and Social Rights in South Africa - Status code: 403
+2024-12-05 10:38:25,785 - INFO - Found image for South African Dental Journal: https://scielo.org.za/img/revistas/sadj/glogo.gif
+2024-12-05 10:38:27,091 - INFO - Image saved for journal: South African Dental Journal
+2024-12-05 10:38:27,530 - INFO - Found image for Tropical Journal of Pharmaceutical Research: https://www.ajol.info/public/journals/80/homepageImage_en_US.jpg
+2024-12-05 10:38:28,013 - INFO - Image saved for journal: Tropical Journal of Pharmaceutical Research
+2024-12-05 10:38:28,468 - INFO - Found image for Tropical Journal of Medical Research: https://www.ajol.info/public/journals/201/homepageImage_en_US.jpg
+2024-12-05 10:38:28,938 - INFO - Image saved for journal: Tropical Journal of Medical Research
+2024-12-05 10:38:29,401 - INFO - Found image for Farming in South Africa: https://www.solidaridadnetwork.org/wp-content/uploads/2023/01/SEF-Project-SouthAfrica-Solidaridad-2023-spinach-transplant.jpg
+2024-12-05 10:38:30,027 - WARNING - Failed to download image for journal: Farming in South Africa - Status code: 403
+2024-12-05 10:38:30,550 - INFO - Found image for Farmlink Africa: https://lookaside.instagram.com/seo/google_widget/crawler/?media_id=3371411366269467006
+2024-12-05 10:38:31,188 - WARNING - Failed to download image for journal: Farmlink Africa - Status code: 429
+2024-12-05 10:38:31,718 - INFO - Found image for West African Journal of Medicine: https://www.ajol.info/public/journals/177/homepageImage_en_US.jpg
+2024-12-05 10:38:32,091 - INFO - Image saved for journal: West African Journal of Medicine
+2024-12-05 10:38:32,413 - INFO - Found image for UJAH: Unizik Journal of Arts and Humanities: https://www.ajol.info/public/journals/442/homepageImage_en_US.jpg
+2024-12-05 10:38:32,833 - INFO - Image saved for journal: UJAH: Unizik Journal of Arts and Humanities
+2024-12-05 10:38:33,180 - INFO - Found image for Focus on Arms in Africa: https://www.smallarmssurvey.org/sites/default/files/publications/tu18-cover.png
+2024-12-05 10:38:33,915 - INFO - Image saved for journal: Focus on Arms in Africa
+2024-12-05 10:38:34,298 - INFO - Found image for Fundamina : A Journal of Legal History: https://www.legalhistory.org.za/images/fundamina.jpg
+2024-12-05 10:38:36,129 - INFO - Image saved for journal: Fundamina : A Journal of Legal History
+2024-12-05 10:38:36,629 - INFO - Found image for West African Journal of Radiology: https://uniprrcdn.digiscapetech.com/general/images/wajr-thumbnail.jpeg
+2024-12-05 10:38:37,063 - INFO - Image saved for journal: West African Journal of Radiology
+2024-12-05 10:38:37,440 - INFO - Found image for Zoologist (The): https://unity.edu/wp-content/uploads/2020/02/Unity-How-To-Become-A-Zoologist-Blog-Cover.jpg
+2024-12-05 10:38:37,605 - INFO - Image saved for journal: Zoologist (The)
+2024-12-05 10:38:37,993 - INFO - Found image for Ghanaian Journal of Economics: https://www.ajol.info/public/journals/871/homepageImage_en_US.jpg
+2024-12-05 10:38:38,630 - INFO - Image saved for journal: Ghanaian Journal of Economics
+2024-12-05 10:38:38,996 - INFO - Found image for Acta Theologica: https://www.ajol.info/public/journals/30/homepageImage_en_US.jpg
+2024-12-05 10:38:39,397 - INFO - Image saved for journal: Acta Theologica
+2024-12-05 10:38:39,719 - INFO - Found image for Annales Aequatoria: https://www.inasp.org.uk/ajol/journals/images/aq.gif
+2024-12-05 10:38:40,160 - INFO - Image saved for journal: Annales Aequatoria
+2024-12-05 10:38:40,532 - INFO - Found image for Acta Structilia: https://www.ajol.info/public/journals/468/homepageImage_en_US.jpg
+2024-12-05 10:38:41,441 - INFO - Image saved for journal: Acta Structilia
+2024-12-05 10:38:41,882 - INFO - Found image for Africa Insight: https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=100063888410530
+2024-12-05 10:38:42,010 - INFO - Image saved for journal: Africa Insight
+2024-12-05 10:38:42,387 - INFO - Found image for Graphix: https://kids.scholastic.com/content/kids64/en/books/graphix/_jcr_content/root/responsivegrid/responsivegrid_copy_/image.coreimg.100.1285.jpeg/1719252554323/header-graphix-june24.jpeg
+2024-12-05 10:38:42,724 - INFO - Image saved for journal: Graphix
+2024-12-05 10:38:42,835 - WARNING - No image found for journal: African Journal of AIDS Research
+2024-12-05 10:38:42,840 - INFO - No image found for journal: African Journal of AIDS Research
+2024-12-05 10:38:43,346 - INFO - Found image for African Journal for Physical Activity and Health Sciences: https://www.ajol.info/public/journals/153/homepageImage_en_US.png
+2024-12-05 10:38:44,082 - INFO - Image saved for journal: African Journal for Physical Activity and Health Sciences
+2024-12-05 10:38:44,499 - INFO - Found image for African Journal of Aquatic Science: https://covers.tandf.co.uk/og/TAAS.png
+2024-12-05 10:38:44,847 - INFO - Image saved for journal: African Journal of Aquatic Science
+2024-12-05 10:38:44,967 - WARNING - No image found for journal: HR Future
+2024-12-05 10:38:44,970 - INFO - No image found for journal: HR Future
+2024-12-05 10:38:45,075 - WARNING - No image found for journal: African Journal of Marine Science
+2024-12-05 10:38:45,078 - INFO - No image found for journal: African Journal of Marine Science
+2024-12-05 10:38:45,518 - INFO - Found image for African Journal of Health Professions Education: https://www.ajol.info/public/journals/410/homepageImage_en_US.gif
+2024-12-05 10:38:45,979 - INFO - Image saved for journal: African Journal of Health Professions Education
+2024-12-05 10:38:46,085 - WARNING - No image found for journal: Human Capital Management
+2024-12-05 10:38:46,088 - INFO - No image found for journal: Human Capital Management
+2024-12-05 10:38:46,200 - WARNING - No image found for journal: South African Food Review
+2024-12-05 10:38:46,205 - INFO - No image found for journal: South African Food Review
+2024-12-05 10:38:46,306 - WARNING - No image found for journal: Critical Studies in Teaching and Learning
+2024-12-05 10:38:46,311 - INFO - No image found for journal: Critical Studies in Teaching and Learning
+2024-12-05 10:38:46,664 - INFO - Found image for African Journal of Psychiatry: https://journals.co.za/pb-assets/productImages/medjda2_cover-1601823309393.jpg
+2024-12-05 10:38:46,918 - INFO - Image saved for journal: African Journal of Psychiatry
+2024-12-05 10:38:47,037 - WARNING - No image found for journal: African Journal on Conflict Resolution
+2024-12-05 10:38:47,040 - INFO - No image found for journal: African Journal on Conflict Resolution
+2024-12-05 10:38:47,161 - WARNING - No image found for journal: IMFO : Official Journal of the Institute of Municipal Finance Officers
+2024-12-05 10:38:47,165 - INFO - No image found for journal: IMFO : Official Journal of the Institute of Municipal Finance Officers
+2024-12-05 10:38:47,290 - WARNING - No image found for journal: Indilinga African Journal of Indigenous Knowledge Systems
+2024-12-05 10:38:47,294 - INFO - No image found for journal: Indilinga African Journal of Indigenous Knowledge Systems
+2024-12-05 10:38:47,432 - WARNING - No image found for journal: African Zoology
+2024-12-05 10:38:47,436 - INFO - No image found for journal: African Zoology
+2024-12-05 10:38:47,556 - WARNING - No image found for journal: African Safety Promotion: A Journal of Injury and Violence Prevention
+2024-12-05 10:38:47,559 - INFO - No image found for journal: African Safety Promotion: A Journal of Injury and Violence Prevention
+2024-12-05 10:38:47,681 - WARNING - No image found for journal: Innovation : journal of appropriate librarianship and information work in Southern Africa
+2024-12-05 10:38:47,685 - INFO - No image found for journal: Innovation : journal of appropriate librarianship and information work in Southern Africa
+2024-12-05 10:38:47,797 - WARNING - No image found for journal: Institute for Security Studies Monographs
+2024-12-05 10:38:47,799 - INFO - No image found for journal: Institute for Security Studies Monographs
+2024-12-05 10:38:47,907 - WARNING - No image found for journal: English in Africa
+2024-12-05 10:38:47,910 - INFO - No image found for journal: English in Africa
+2024-12-05 10:38:48,014 - WARNING - No image found for journal: ESARBICA Journal: Journal of the Eastern and Southern Africa Regional Branch of the International Council on Archives
+2024-12-05 10:38:48,017 - INFO - No image found for journal: ESARBICA Journal: Journal of the Eastern and Southern Africa Regional Branch of the International Council on Archives
+2024-12-05 10:38:48,124 - WARNING - No image found for journal: Institute of African Studies Research Review
+2024-12-05 10:38:48,127 - INFO - No image found for journal: Institute of African Studies Research Review
+2024-12-05 10:38:48,240 - WARNING - No image found for journal: Interim : Interdisciplinary Journal
+2024-12-05 10:38:48,243 - INFO - No image found for journal: Interim : Interdisciplinary Journal
+2024-12-05 10:38:48,343 - WARNING - No image found for journal: Indilinga: African Journal of Indigenous Knowledge Systems
+2024-12-05 10:38:48,347 - INFO - No image found for journal: Indilinga: African Journal of Indigenous Knowledge Systems
+2024-12-05 10:38:48,448 - WARNING - No image found for journal: Indo-Pacific Journal of Phenomenology
+2024-12-05 10:38:48,451 - INFO - No image found for journal: Indo-Pacific Journal of Phenomenology
+2024-12-05 10:38:48,551 - WARNING - No image found for journal: Innvation
+2024-12-05 10:38:48,555 - INFO - No image found for journal: Innvation
+2024-12-05 10:38:48,684 - WARNING - No image found for journal: International Journal of African Renaissance Studies
+2024-12-05 10:38:48,687 - INFO - No image found for journal: International Journal of African Renaissance Studies
+2024-12-05 10:38:48,788 - WARNING - No image found for journal: International Retail and Marketing Review
+2024-12-05 10:38:48,791 - INFO - No image found for journal: International Retail and Marketing Review
+2024-12-05 10:38:48,903 - WARNING - No image found for journal: International Journal of Emotional Psychology and Sport Ethics
+2024-12-05 10:38:48,908 - INFO - No image found for journal: International Journal of Emotional Psychology and Sport Ethics
+2024-12-05 10:38:49,023 - WARNING - No image found for journal: Journal for Islamic Studies
+2024-12-05 10:38:49,028 - INFO - No image found for journal: Journal for Islamic Studies
+2024-12-05 10:38:49,136 - WARNING - No image found for journal: International SportMed Journal
+2024-12-05 10:38:49,139 - INFO - No image found for journal: International SportMed Journal
+2024-12-05 10:38:49,246 - WARNING - No image found for journal: Journal for Language Teaching
+2024-12-05 10:38:49,251 - INFO - No image found for journal: Journal for Language Teaching
+2024-12-05 10:38:49,381 - WARNING - No image found for journal: Journal for the Study of Religion
+2024-12-05 10:38:49,385 - INFO - No image found for journal: Journal for the Study of Religion
