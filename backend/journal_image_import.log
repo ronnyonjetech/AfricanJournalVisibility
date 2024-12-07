@@ -746,3 +746,231 @@
 2024-12-02 06:44:09,201 - INFO - Found image for Nigerian Journal of Dental Research: https://njdres.com/public/journals/1/cover_issue_21_en_US.jpg
 2024-12-02 06:44:11,760 - INFO - Image saved for journal: Nigerian Journal of Dental Research
 2024-12-02 06:44:12,582 - INFO - Found image for Nigerian Journal of Economic History: https://www.ajol.info/public/journals/271/homepageImage.JPG
+2024-12-07 21:12:34,382 - INFO - Found image for Abraka Humanities Review: https://www.ajol.info/public/journals/664/homepageImage_en_US.jpg
+2024-12-07 21:12:37,012 - INFO - Image saved for journal: Abraka Humanities Review
+2024-12-07 21:12:37,916 - INFO - Found image for ABUAD Journal of Engineering Research and Development: https://www.ajol.info/public/journals/786/homepageImage_en_US.jpg
+2024-12-07 21:12:39,713 - INFO - Image saved for journal: ABUAD Journal of Engineering Research and Development
+2024-12-07 21:12:40,627 - INFO - Found image for Abyssinia Journal of Engineering and Computing: https://www.ajol.info/public/journals/788/homepageImage_en_US.jpg
+2024-12-07 21:12:42,004 - INFO - Image saved for journal: Abyssinia Journal of Engineering and Computing
+2024-12-07 21:12:42,879 - INFO - Found image for Abyssinia Journal of Science and Technology: https://www.ajol.info/public/journals/630/homepageImage_en_US.jpg
+2024-12-07 21:12:45,802 - INFO - Image saved for journal: Abyssinia Journal of Science and Technology
+2024-12-07 21:12:47,079 - INFO - Found image for Academic Web Journal of Medical Science: https://www.siumed.edu/sites/default/files/styles/uncropped_450/public/2023-09/Web-Image.jpg?itok=26rvK6B0
+2024-12-07 21:12:49,975 - INFO - Image saved for journal: Academic Web Journal of Medical Science
+2024-12-07 21:12:51,380 - INFO - Found image for Academy Journal of Science and Engineering: https://www.ajol.info/public/journals/635/homepageImage_en_US.png
+2024-12-07 21:12:53,717 - INFO - Image saved for journal: Academy Journal of Science and Engineering
+2024-12-07 21:12:54,657 - INFO - Found image for ACCORD Occasional Paper: http://blackwax.org/jpg/accord-occasional-paper-2008-2-security-sector-reform-in-africa.jpg
+2024-12-07 21:12:56,651 - INFO - Image saved for journal: ACCORD Occasional Paper
+2024-12-07 21:12:57,626 - INFO - Found image for Acta Academica: https://journals.co.za/cms/asset/2aa78d07-0cb8-4127-9aa2-ae6716bb6e2d/academ.v52.n2.cover.jpg
+2024-12-07 21:12:57,796 - WARNING - Failed to download image for journal: Acta Academica - Status code: 403
+2024-12-07 21:12:58,752 - INFO - Found image for Acta Classica : Proceedings of the Classical Association of South Africa: https://cosmobooks-co-uk.cdn.bibliopolis.com/pictures/415149.jpg?width=768&height=1000&fit=bounds&auto=webp&v=1668584519
+2024-12-07 21:13:00,492 - INFO - Image saved for journal: Acta Classica : Proceedings of the Classical Association of South Africa
+2024-12-07 21:13:01,313 - INFO - Found image for Acta Commercii: https://aosis.co.za/wp-content/uploads/2023/06/ACTA-COMMERCII-Special-Issue.png
+2024-12-07 21:13:05,041 - INFO - Image saved for journal: Acta Commercii
+2024-12-07 21:13:05,861 - INFO - Found image for Acta Criminologica : African Journal of Criminology & Victimology: https://journals.co.za/cms/asset/10685c46-3ef4-4c72-ba50-74ac85248a93/crim.v37.n1.cover.jpg
+2024-12-07 21:13:05,976 - WARNING - Failed to download image for journal: Acta Criminologica : African Journal of Criminology & Victimology - Status code: 403
+2024-12-07 21:13:06,842 - INFO - Found image for Acta Germanica : German Studies in Africa: https://images.booksense.com/images/792/870/9783631870792.jpg
+2024-12-07 21:13:08,141 - INFO - Image saved for journal: Acta Germanica : German Studies in Africa
+2024-12-07 21:13:08,788 - INFO - Found image for Acta Juridica: https://akjournals.com/coverimage?doc=%2Fjournals%2F026%2F026-overview.xml&width=200
+2024-12-07 21:13:10,230 - WARNING - Failed to download image for journal: Acta Juridica - Status code: 403
+2024-12-07 21:13:11,143 - INFO - Found image for Acta Patristica et Byzantina: https://journals.co.za/cms/asset/4e9786bb-68d3-48f7-a3e2-28519e82b5eb/default_cover.jpg
+2024-12-07 21:13:11,296 - WARNING - Failed to download image for journal: Acta Patristica et Byzantina - Status code: 403
+2024-12-07 21:13:11,963 - INFO - Found image for Acta Structilia: https://www.ajol.info/public/journals/468/homepageImage_en_US.jpg
+2024-12-07 21:13:16,045 - INFO - Image saved for journal: Acta Structilia
+2024-12-07 21:13:16,877 - INFO - Found image for Acta Structilia : Journal for the Physical and Development Sciences: https://www.ajol.info/public/journals/468/homepageImage_en_US.jpg
+2024-12-07 21:13:20,717 - INFO - Image saved for journal: Acta Structilia : Journal for the Physical and Development Sciences
+2024-12-07 21:13:21,486 - INFO - Found image for Acta Structilla: https://0.academia-photos.com/attachment_thumbnails/68709582/mini_magick20210812-32217-1pwwzxc.png?1628767011
+2024-12-07 21:13:23,465 - INFO - Image saved for journal: Acta Structilla
+2024-12-07 21:13:24,660 - INFO - Found image for Acta Theologica: https://www.ajol.info/public/journals/30/homepageImage_en_US.jpg
+2024-12-07 21:13:25,698 - INFO - Image saved for journal: Acta Theologica
+2024-12-07 21:13:26,810 - INFO - Found image for Advanced Dental Journal: https://adjc.journals.ekb.eg/data/adjc/coversheet/cover_en.jpg
+2024-12-07 21:13:29,429 - INFO - Image saved for journal: Advanced Dental Journal
+2024-12-07 21:13:30,394 - INFO - Found image for Advanced Research in Economics and Business Strategy Journal: https://www.ajol.info/public/journals/775/homepageImage_en_US.jpg
+2024-12-07 21:13:34,676 - INFO - Image saved for journal: Advanced Research in Economics and Business Strategy Journal
+2024-12-07 21:13:35,481 - INFO - Found image for Advances in Computing and Engineering: https://cdn11.bigcommerce.com/s-eb528d73s5/images/stencil/1280x1280/products/42289/45171/028215__97553.1636341861.png?c=1
+2024-12-07 21:13:36,912 - INFO - Image saved for journal: Advances in Computing and Engineering
+2024-12-07 21:13:38,075 - INFO - Found image for Advances in Medical, Pharmaceutical and Dental Research: https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=505684778834780
+2024-12-07 21:13:38,739 - INFO - Image saved for journal: Advances in Medical, Pharmaceutical and Dental Research
+2024-12-07 21:13:39,918 - INFO - Found image for Advocate: https://www.kcsarc.org/wp-content/uploads/2021/08/AmplifyMegaphone.png
+2024-12-07 21:13:42,536 - INFO - Image saved for journal: Advocate
+2024-12-07 21:13:43,400 - INFO - Found image for Afak For Sciences: https://afak-revues.com/public/journals/1/cover_issue_36_ar_IQ.jpg
+2024-12-07 21:13:45,924 - INFO - Image saved for journal: Afak For Sciences
+2024-12-07 21:13:46,881 - INFO - Found image for Afak's magazine for political and legal researches: https://pbs.twimg.com/media/GdPVFbVakAAFaK-?format=jpg&name=large
+2024-12-07 21:13:48,602 - INFO - Image saved for journal: Afak's magazine for political and legal researches
+2024-12-07 21:13:49,441 - INFO - Found image for AFFRIKA Journal of Politics, Economics and Society: https://journals.co.za/cms/asset/dd3dddee-c3ee-47d8-8d54-7c42f730bae1/default_cover.jpg
+2024-12-07 21:13:49,558 - WARNING - Failed to download image for journal: AFFRIKA Journal of Politics, Economics and Society - Status code: 403
+2024-12-07 21:13:50,466 - INFO - Found image for AFMA Matrix: https://www.afma.co.za/wp-content/uploads/A_OFC-Matrix-October-2024.webp
+2024-12-07 21:13:52,366 - INFO - Image saved for journal: AFMA Matrix
+2024-12-07 21:13:53,434 - INFO - Found image for Africa affairs: https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=100032452857245
+2024-12-07 21:13:54,093 - INFO - Image saved for journal: Africa affairs
+2024-12-07 21:13:55,585 - INFO - Found image for Africa Conflict Monitor: https://journals.co.za/cms/asset/d3da549d-3529-42e3-98fb-ea40515dd188/default_cover.jpg
+2024-12-07 21:13:55,730 - WARNING - Failed to download image for journal: Africa Conflict Monitor - Status code: 403
+2024-12-07 21:13:56,609 - INFO - Found image for Africa Conflict Monthly Monitor: https://journals.co.za/cms/asset/d3da549d-3529-42e3-98fb-ea40515dd188/default_cover.jpg
+2024-12-07 21:13:56,716 - WARNING - Failed to download image for journal: Africa Conflict Monthly Monitor - Status code: 403
+2024-12-07 21:13:57,531 - INFO - Found image for Africa Country Benchmark Report (ACBR): https://cdn-ilbginp.nitrocdn.com/XwOQKXqdDcxnNHXxVRmYvmUxrzcxaxwr/assets/images/optimized/rev-a97a521/www.inonafrica.com/wp-content/uploads/2019/08/ACBR-purchase-banner-2019.png
+2024-12-07 21:13:58,289 - INFO - Image saved for journal: Africa Country Benchmark Report (ACBR)
+2024-12-07 21:13:59,274 - INFO - Found image for Africa Design Review Journal: https://uonjournals.uonbi.ac.ke/ojs/public/journals/23/cover_issue_138_en_US.jpg
+2024-12-07 21:13:59,595 - INFO - Image saved for journal: Africa Design Review Journal
+2024-12-07 21:14:00,706 - INFO - Found image for Africa Development: https://www.afdb.org/sites/default/files/2019/06/07/csm_01-high-five-landing-page-africa_f3ceeab1ba.jpg
+2024-12-07 21:14:00,924 - WARNING - Failed to download image for journal: Africa Development - Status code: 403
+2024-12-07 21:14:01,934 - INFO - Found image for Africa Dialogue Monograph Series: http://blackwax.org/jpg/accord-monograph-2012-1.jpg
+2024-12-07 21:14:03,558 - INFO - Image saved for journal: Africa Dialogue Monograph Series
+2024-12-07 21:14:04,399 - INFO - Found image for Africa Education Review: https://www.tandfonline.com/doi/cover-img/10.1080/raer20.v004.i02
+2024-12-07 21:14:04,642 - WARNING - Failed to download image for journal: Africa Education Review - Status code: 403
+2024-12-07 21:14:05,624 - INFO - Found image for Africa Growth Agenda: https://www.africagrowth.com/images/contents_july_11.jpg
+2024-12-07 21:14:08,241 - INFO - Image saved for journal: Africa Growth Agenda
+2024-12-07 21:14:09,309 - INFO - Found image for Africa Health: https://www.afro.who.int/sites/default/files/2019-03/d7a94382a75116bb2ab5d1a5204b28.png
+2024-12-07 21:14:12,370 - INFO - Image saved for journal: Africa Health
+2024-12-07 21:14:13,303 - INFO - Found image for Africain de Chirurgie Orthopédique et Traumatologique: https://hub.jbjs.org/php/image_api.php?op=load&id=482879
+2024-12-07 21:14:14,838 - WARNING - Failed to download image for journal: Africain de Chirurgie Orthopédique et Traumatologique - Status code: 500
+2024-12-07 21:14:15,758 - INFO - Found image for Africa Insight: https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=100063888410530
+2024-12-07 21:14:16,300 - INFO - Image saved for journal: Africa Insight
+2024-12-07 21:14:17,089 - INFO - Found image for Africa Institute Occasional Paper: https://m.media-amazon.com/images/I/61kDodrknRL._AC_UF1000,1000_QL80_.jpg
+2024-12-07 21:14:17,916 - INFO - Image saved for journal: Africa Institute Occasional Paper
+2024-12-07 21:14:18,933 - INFO - Found image for Africa Journal of Comparative Constitutional Law: https://www.jutajournals.co.za/wp-content/uploads/2019/09/AJCL.jpg
+2024-12-07 21:14:19,820 - INFO - Image saved for journal: Africa Journal of Comparative Constitutional Law
+2024-12-07 21:14:20,674 - INFO - Found image for Africa Journal of Nursing and Midwifery: https://journals.co.za/cms/asset/71c7ae79-6068-4796-b0d2-e1d06fd50558/default_cover.jpg
+2024-12-07 21:14:20,784 - WARNING - Failed to download image for journal: Africa Journal of Nursing and Midwifery - Status code: 403
+2024-12-07 21:14:21,697 - INFO - Found image for Africa Journal of Physical Sciences: https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=100064312616272
+2024-12-07 21:14:22,211 - INFO - Image saved for journal: Africa Journal of Physical Sciences
+2024-12-07 21:14:23,029 - INFO - Found image for Africa Journal of Public Sector Development and Governance: https://journals.co.za/cms/asset/9cbff72e-420a-4d54-b98b-e32f3b97152c/ajpsdg.v6.n1.cover.jpeg
+2024-12-07 21:14:23,154 - WARNING - Failed to download image for journal: Africa Journal of Public Sector Development and Governance - Status code: 403
+2024-12-07 21:14:24,361 - INFO - Found image for Africa: Journal of the International African Institute: https://www.internationalafricaninstitute.org/images/africa_fb.jpg
+2024-12-07 21:14:26,374 - INFO - Image saved for journal: Africa: Journal of the International African Institute
+2024-12-07 21:14:27,333 - INFO - Found image for African Arts: http://www.tingatingaart.com/cdn/shop/articles/OIG.5GEQF_600x.jpg?v=1701088588
+2024-12-07 21:14:28,444 - INFO - Image saved for journal: African Arts
+2024-12-07 21:14:29,582 - INFO - Found image for African Association of Physiological Sciences Journal: https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=100072266953865
+2024-12-07 21:14:30,248 - INFO - Image saved for journal: African Association of Physiological Sciences Journal
+2024-12-07 21:14:31,067 - INFO - Found image for Africa Nazarene University Law Journal: https://journals.co.za/cms/asset/3dcd813d-0494-4522-bebb-d7ff1461adc7/jlc.anulj.v8.n1.cover.jpg
+2024-12-07 21:14:31,187 - WARNING - Failed to download image for journal: Africa Nazarene University Law Journal - Status code: 403
+2024-12-07 21:14:31,937 - INFO - Found image for African Community Health Newsletter: https://www.ifrc.org/sites/default/files/2023-08/REACH-Initiative-Flyer-2022.pdf.jpg
+2024-12-07 21:14:33,536 - INFO - Image saved for journal: African Community Health Newsletter
+2024-12-07 21:14:34,395 - INFO - Found image for African Conflict and Peacebuilding Review: https://dhjhkxawhe8q4.cloudfront.net/indiana-university-press-wp/wp-content/uploads/2019/04/20112420/African-Conflict-Peacebuilding-Review.jpg
+2024-12-07 21:14:36,691 - INFO - Image saved for journal: African Conflict and Peacebuilding Review
+2024-12-07 21:14:37,323 - INFO - Found image for African Crop Science Journal: http://bioline.org.br/imgs/covers/cs_cover.jpg
+2024-12-07 21:14:38,850 - INFO - Image saved for journal: African Crop Science Journal
+2024-12-07 21:14:39,921 - INFO - Found image for African Development and Europe: https://www.afdb.org/sites/default/files/styles/1700x900/public/ffpa-eu-a1.jpg?itok=80sEJxFj
+2024-12-07 21:14:40,040 - WARNING - Failed to download image for journal: African Development and Europe - Status code: 403
+2024-12-07 21:14:40,949 - INFO - Found image for African Development Finance Journal: https://uonjournals.uonbi.ac.ke/ojs/public/journals/8/cover_issue_271_en_US.jpg
+2024-12-07 21:14:41,340 - INFO - Image saved for journal: African Development Finance Journal
+2024-12-07 21:14:42,178 - INFO - Found image for African Economic History: https://uwpress.wisc.edu/journals/images/cover_aeh.jpg
+2024-12-07 21:14:44,130 - INFO - Image saved for journal: African Economic History
+2024-12-07 21:14:45,047 - INFO - Found image for African Economic History Review: https://cosmobooks-co-uk.cdn.bibliopolis.com/pictures/616703.jpg?width=768&height=1000&fit=bounds&auto=webp&v=1725670501
+2024-12-07 21:14:46,444 - INFO - Image saved for journal: African Economic History Review
+2024-12-07 21:14:47,359 - INFO - Found image for African Entomology: https://bioone.org/ContentImages/journals/afen/29/3/3/WebImages/003.029.0300.cover.jpg
+2024-12-07 21:14:48,337 - INFO - Image saved for journal: African Entomology
+2024-12-07 21:14:49,244 - INFO - Found image for African Environment: https://i.unu.edu/media/ourworld.unu.edu-en/article/50/dead-trees.jpg
+2024-12-07 21:14:51,237 - INFO - Image saved for journal: African Environment
+2024-12-07 21:14:52,021 - INFO - Found image for African Evaluation Journal: https://aosis.co.za/wp-content/uploads/2023/07/AEJ_Social-Media-1.jpg
+2024-12-07 21:14:54,237 - INFO - Image saved for journal: African Evaluation Journal
+2024-12-07 21:14:55,081 - INFO - Found image for African Evaluation Journal: https://aosis.co.za/wp-content/uploads/2023/07/AEJ_Social-Media-1.jpg
+2024-12-07 21:14:57,004 - INFO - Image saved for journal: African Evaluation Journal
+2024-12-07 21:14:57,844 - INFO - Found image for African Finance Journal: https://journals.co.za/pb-assets/productImages/finj_cover-1601826034313.jpg
+2024-12-07 21:14:59,374 - INFO - Image saved for journal: African Finance Journal
+2024-12-07 21:15:00,202 - INFO - Found image for African Health Monitor: https://www.afro.who.int/sites/default/files/2017-06/5_3.png
+2024-12-07 21:15:01,831 - INFO - Image saved for journal: African Health Monitor
+2024-12-07 21:15:02,658 - INFO - Found image for African Health Sciences: https://upload.wikimedia.org/wikipedia/en/f/f2/African_Health_Sciences_%28journal%29_cover.jpg
+2024-12-07 21:15:03,580 - WARNING - Failed to download image for journal: African Health Sciences - Status code: 403
+2024-12-07 21:15:04,399 - INFO - Found image for African Historical Review: https://www.tandfonline.com/cms/asset/b69283f9-b382-4f70-bb9c-d4a4747451b2/rahr20.v052.i02.cover.jpg
+2024-12-07 21:15:04,581 - WARNING - Failed to download image for journal: African Historical Review - Status code: 403
+2024-12-07 21:15:05,628 - INFO - Found image for African Historical Studies: https://www.bu.edu/africa/files/2012/02/IJAHS-small.jpg
+2024-12-07 21:15:08,584 - INFO - Image saved for journal: African Historical Studies
+2024-12-07 21:15:09,416 - INFO - Found image for African Human Mobility Review: https://sihma.org.za/photos/shares/UWC_logo.svg.png
+2024-12-07 21:15:12,071 - INFO - Image saved for journal: African Human Mobility Review
+2024-12-07 21:15:13,001 - INFO - Found image for African Human Morbility Review: https://scx2.b-cdn.net/gfx/news/hires/2023/africa-heat.jpg
+2024-12-07 21:15:17,938 - INFO - Image saved for journal: African Human Morbility Review
+2024-12-07 21:15:18,666 - INFO - Found image for African Human Rights law Journal: https://journals.co.za/cms/asset/8174186d-3501-489b-a11b-0057121ba444/default_cover.jpg
+2024-12-07 21:15:18,809 - WARNING - Failed to download image for journal: African Human Rights law Journal - Status code: 403
+2024-12-07 21:15:19,657 - INFO - Found image for African Human Rights Law Journal: https://journals.co.za/cms/asset/8174186d-3501-489b-a11b-0057121ba444/default_cover.jpg
+2024-12-07 21:15:19,768 - WARNING - Failed to download image for journal: African Human Rights Law Journal - Status code: 403
+2024-12-07 21:15:20,415 - INFO - Found image for African Human Rights Yearbook: https://achpr.au.int/sites/default/files/styles/au_organ_document_cover_display_424/public/images/2024-01/AYB-Vol7%282023%29.png?itok=F07D6Gu4
+2024-12-07 21:15:23,031 - INFO - Image saved for journal: African Human Rights Yearbook
+2024-12-07 21:15:24,060 - INFO - Found image for African Invertebrates: https://africaninvertebrates.pensoft.net/i/home_covers/africaninvertebrates.png
+2024-12-07 21:15:25,721 - INFO - Image saved for journal: African Invertebrates
+2024-12-07 21:15:26,518 - INFO - Found image for African Invertebrates: https://africaninvertebrates.pensoft.net/i/home_covers/africaninvertebrates.png
+2024-12-07 21:15:26,828 - INFO - Image saved for journal: African Invertebrates
+2024-12-07 21:15:27,849 - INFO - Found image for African Issues: https://u4d2z7k9.rocketcdn.me/wp-content/uploads/2022/11/2d5337aa-2b2c-4f9f-8618-d21270d8c55b_1.jpeg
+2024-12-07 21:15:30,768 - INFO - Image saved for journal: African Issues
+2024-12-07 21:15:31,740 - INFO - Found image for African Journal for Physical Activity and Health Sciences: https://www.ajol.info/public/journals/153/homepageImage_en_US.png
+2024-12-07 21:15:34,245 - INFO - Image saved for journal: African Journal for Physical Activity and Health Sciences
+2024-12-07 21:15:35,119 - INFO - Found image for African Journal for Physical Activity and Health Sciences (AJPHES): https://www.ajol.info/public/journals/153/homepageImage_en_US.png
+2024-12-07 21:15:37,178 - INFO - Image saved for journal: African Journal for Physical Activity and Health Sciences (AJPHES)
+2024-12-07 21:15:37,987 - INFO - Found image for African Journal for Physical Health Education, Recreation and Dance: https://www.ajol.info/public/journals/153/homepageImage_en_US.png
+2024-12-07 21:15:40,067 - INFO - Image saved for journal: African Journal for Physical Health Education, Recreation and Dance
+2024-12-07 21:15:40,956 - INFO - Found image for African Journal for Physical, Health Education, Recreation and Dance: https://www.ajol.info/public/journals/153/homepageImage_en_US.png
+2024-12-07 21:15:42,624 - INFO - Image saved for journal: African Journal for Physical, Health Education, Recreation and Dance
+2024-12-07 21:15:43,517 - INFO - Found image for African Journal of Accounting and Social Science Studies: https://www.ajol.info/public/journals/622/homepageImage_en_US.png
+2024-12-07 21:15:45,857 - INFO - Image saved for journal: African Journal of Accounting and Social Science Studies
+2024-12-07 21:15:46,691 - INFO - Found image for African Journal of Agriculture, Technology and Environment (AJATE) is: https://ajate.com.ng/wp-content/uploads/2023/02/1677516594-scaled.webp
+2024-12-07 21:15:48,228 - ERROR - Error saving image for journal African Journal of Agriculture, Technology and Environment (AJATE) is: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2024-12-07 21:15:49,046 - INFO - Found image for African Journal of AIDS and HIV Research: https://covers.tandf.co.uk/og/RAAR.png
+2024-12-07 21:15:50,750 - INFO - Image saved for journal: African Journal of AIDS and HIV Research
+2024-12-07 21:15:51,605 - INFO - Found image for African Journal of AIDS Research: https://www.ajol.info/public/journals/46/homepageImage.jpg
+2024-12-07 21:15:53,274 - INFO - Image saved for journal: African Journal of AIDS Research
+2024-12-07 21:15:54,067 - INFO - Found image for African Journal of Alcohol and Drug Abuse: https://www.ajol.info/public/journals/767/homepageImage_en_US.png
+2024-12-07 21:15:56,396 - INFO - Image saved for journal: African Journal of Alcohol and Drug Abuse
+2024-12-07 21:15:57,238 - INFO - Found image for African Journal of Applied Research: https://www.ajol.info/public/journals/660/homepageImage_en_US.jpg
+2024-12-07 21:16:03,901 - INFO - Image saved for journal: African Journal of Applied Research
+2024-12-07 21:16:04,715 - INFO - Found image for African Journal of Applied Zoology and Environmental Biology: https://d13i5xhouzkrd.cloudfront.net/168968043753/previews/article-1.png
+2024-12-07 21:16:06,625 - INFO - Image saved for journal: African Journal of Applied Zoology and Environmental Biology
+2024-12-07 21:16:07,683 - INFO - Found image for African Journal of Aquatic Science: https://covers.tandf.co.uk/og/TAAS.png
+2024-12-07 21:16:08,695 - INFO - Image saved for journal: African Journal of Aquatic Science
+2024-12-07 21:16:09,629 - INFO - Found image for African Journal of Biological Sciences: https://www.afjbs.com/uploads/widgets/6b92c9a292755dc50769a8060f650630.book.jpg
+2024-12-07 21:16:09,789 - WARNING - Failed to download image for journal: African Journal of Biological Sciences - Status code: 403
+2024-12-07 21:16:10,755 - INFO - Found image for African Journal of Biomedical Research: https://www.ajol.info/public/journals/264/homepageImage_en_US.jpg
+2024-12-07 21:16:12,126 - INFO - Image saved for journal: African Journal of Biomedical Research
+2024-12-07 21:16:13,008 - INFO - Found image for African Journal of Biotechnology: https://www.ajol.info/public/journals/82/homepageImage_en_US.jpg
+2024-12-07 21:16:14,064 - INFO - Image saved for journal: African Journal of Biotechnology
+2024-12-07 21:16:14,947 - INFO - Found image for African Journal of Business and Economic Research: https://www.adonis-abbey.com/journals/2_journal.jpg
+2024-12-07 21:16:16,920 - INFO - Image saved for journal: African Journal of Business and Economic Research
+2024-12-07 21:16:17,821 - INFO - Found image for African Journal of Business and Management (AJBUMA): https://sp-uploads.s3.amazonaws.com/uploads%2Fservices%2F161584%2FKnowledge+Management+Class+Notes_72638595-Paper6-Knowledge-Managementpage0.png
+2024-12-07 21:16:19,908 - INFO - Image saved for journal: African Journal of Business and Management (AJBUMA)
+2024-12-07 21:16:20,893 - INFO - Found image for African Journal of Business Ethics: https://ajobe.journals.ac.za/public/journals/1/cover_issue_26_en_US.jpg
+2024-12-07 21:16:23,561 - INFO - Image saved for journal: African Journal of Business Ethics
+2024-12-07 21:16:24,375 - INFO - Found image for African Journal of Career Development: https://i1.sndcdn.com/artworks-000550677708-0gi1jz-t500x500.jpg
+2024-12-07 21:16:25,466 - INFO - Image saved for journal: African Journal of Career Development
+2024-12-07 21:16:26,221 - INFO - Found image for African Journal of Chemical Education: https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=100040082276405
+2024-12-07 21:16:26,883 - INFO - Image saved for journal: African Journal of Chemical Education
+2024-12-07 21:16:27,856 - INFO - Found image for African Journal of Commercial Studies: https://ijcsacademia.com/public/journals/1/journalThumbnail_en.jpg
+2024-12-07 21:16:30,048 - INFO - Image saved for journal: African Journal of Commercial Studies
+2024-12-07 21:16:30,928 - INFO - Found image for African Journal of Cross-Cultural Psychology and Sport Facilitation: https://www.ajol.info/public/journals/282/homepageImage.JPG
+2024-12-07 21:16:31,986 - INFO - Image saved for journal: African Journal of Cross-Cultural Psychology and Sport Facilitation
+2024-12-07 21:16:32,971 - INFO - Found image for African Journal of Current Medical Research: https://www.ajol.info/public/journals/602/homepageImage_en_US.jpg
+2024-12-07 21:16:35,772 - INFO - Image saved for journal: African Journal of Current Medical Research
+2024-12-07 21:16:36,688 - INFO - Found image for African Journal of Democracy and Election Research: https://www.adonis-abbey.com/journals/41_journal.jpg
+2024-12-07 21:16:37,975 - INFO - Image saved for journal: African Journal of Democracy and Election Research
+2024-12-07 21:16:38,711 - INFO - Found image for African Journal of Democracy and Governance: https://www.ajol.info/public/journals/741/homepageImage_en_US.jpg
+2024-12-07 21:16:39,978 - INFO - Image saved for journal: African Journal of Democracy and Governance
+2024-12-07 21:16:40,554 - INFO - Found image for African Journal of Democracy and Governance: https://www.ajol.info/public/journals/741/homepageImage_en_US.jpg
+2024-12-07 21:16:41,927 - INFO - Image saved for journal: African Journal of Democracy and Governance
+2024-12-07 21:16:42,807 - INFO - Found image for African Journal of Dentistry and Implantology - Revue de la Médecine Dentaire: https://lookaside.fbsbx.com/lookaside/crawler/media/?media_id=926417148320885
+2024-12-07 21:16:43,477 - INFO - Image saved for journal: African Journal of Dentistry and Implantology - Revue de la Médecine Dentaire
+2024-12-07 21:16:44,343 - INFO - Found image for African Journal of Development Studies (formerly AFFRIKA Journal of Politics, Economics and Society): https://journals.co.za/cms/asset/dd3dddee-c3ee-47d8-8d54-7c42f730bae1/default_cover.jpg
+2024-12-07 21:16:44,489 - WARNING - Failed to download image for journal: African Journal of Development Studies (formerly AFFRIKA Journal of Politics, Economics and Society) - Status code: 403
+2024-12-07 21:16:45,304 - INFO - Found image for African Journal of Diabetes Medicine: https://www.hilarispublisher.com/admin/publon-images/african-journal-of-diabetes-medicine-publoan.png
+2024-12-07 21:16:46,244 - INFO - Image saved for journal: African Journal of Diabetes Medicine
+2024-12-07 21:16:47,107 - INFO - Found image for African Journal of Disability: https://scielo.org.za/img/revistas/ajod/glogo.gif
+2024-12-07 21:16:47,794 - INFO - Image saved for journal: African Journal of Disability
+2024-12-07 21:16:48,177 - WARNING - No image found for journal: African Journal of Disability
+2024-12-07 21:16:48,181 - INFO - No image found for journal: African Journal of Disability
+2024-12-07 21:16:49,055 - INFO - Found image for African Journal of Economic Review: https://www.ajol.info/public/journals/540/homepageImage_en_US.jpg
+2024-12-07 21:16:50,506 - INFO - Image saved for journal: African Journal of Economic Review
+2024-12-07 21:16:51,408 - INFO - Found image for African Journal of Educational Research and Development: https://ercptjournal.org/wp-content/uploads/2019/06/final-cover.jpg
+2024-12-07 21:16:53,971 - INFO - Image saved for journal: African Journal of Educational Research and Development
+2024-12-07 21:16:54,894 - INFO - Found image for African Journal of Educational Studies in Mathematics and Sciences: https://www.ajol.info/public/journals/295/homepageImage_en_US.jpg
+2024-12-07 21:16:56,449 - INFO - Image saved for journal: African Journal of Educational Studies in Mathematics and Sciences
+2024-12-07 21:16:57,245 - INFO - Found image for African Journal of Education and Social Sciences: https://www.ajol.info/public/journals/589/homepageImage_en_US.jpg
+2024-12-07 21:16:58,488 - INFO - Image saved for journal: African Journal of Education and Social Sciences
+2024-12-07 21:16:59,396 - INFO - Found image for African Journal of Education, Science and Technology: https://ajest.info/public/journals/1/cover_issue_36_en_US.jpg
+2024-12-07 21:17:03,934 - INFO - Image saved for journal: African Journal of Education, Science and Technology
+2024-12-07 21:17:04,721 - WARNING - No image found for journal: african-journal-of-emergency-medicine
+2024-12-07 21:17:04,724 - INFO - No image found for journal: african-journal-of-emergency-medicine
+2024-12-07 21:17:05,234 - WARNING - No image found for journal: African Journal of Emergency Medicine
+2024-12-07 21:17:05,237 - INFO - No image found for journal: African Journal of Emergency Medicine
+2024-12-07 21:17:05,847 - WARNING - No image found for journal: African Journal of Empirical Research
+2024-12-07 21:17:05,850 - INFO - No image found for journal: African Journal of Empirical Research
+2024-12-07 21:17:06,359 - WARNING - No image found for journal: African Journal of Employee Relations
+2024-12-07 21:17:06,363 - INFO - No image found for journal: African Journal of Employee Relations
+2024-12-07 21:17:07,295 - WARNING - No image found for journal: African Journal of Enology
+2024-12-07 21:17:07,299 - INFO - No image found for journal: African Journal of Enology
+2024-12-07 21:17:07,910 - WARNING - No image found for journal: African Journal of Entrepreneurship and Innovations (AJeIN)
+2024-12-07 21:17:07,913 - INFO - No image found for journal: African Journal of Entrepreneurship and Innovations (AJeIN)

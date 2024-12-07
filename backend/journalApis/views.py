@@ -84,7 +84,7 @@ class JournalSearchView(generics.ListAPIView):
 
     def get_queryset(self):
         # Annotate journals with the number of related volumes
-        queryset = Journal.objects.annotate(volume_count=Count('volumes')).order_by('-volume_count', 'journal_title')
+        queryset = Journal.objects.annotate(volume_count=Count('volumes')).order_by('journal_title')
 
         # Apply filters if requested
         filtered_queryset = self.filter_queryset(queryset)

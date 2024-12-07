@@ -24,7 +24,7 @@ class Command(BaseCommand):
         cse_id = 'f796f7d77795148d9'     # Ensure this is set in settings.py
 
         # Get all journals that do not already have an associated image
-        journals = Journal.objects.filter(image__isnull=True)
+        journals = Journal.objects.filter(image__isnull=True).order_by('journal_title')
 
         self.stdout.write(self.style.SUCCESS(f"Found {journals.count()} journals without images."))
 
