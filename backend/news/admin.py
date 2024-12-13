@@ -19,7 +19,7 @@ import requests
 
 def fetch_newsletter_data():
     # Fetch data from your API
-    api_url = 'http://127.0.0.1:8000/news/newsletters/'
+    api_url = 'https://aphrc.site/news/newsletters/'
     response = requests.get(api_url)
     
     if response.status_code == 200:
