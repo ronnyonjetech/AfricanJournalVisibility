@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('journal_api/',include('journalApis.urls')),
     path('api/',include('authApi.urls')),
+    path('news/',include('news.urls')),
     path('schema/',SpectacularAPIView.as_view(),name="schema"),
     path('',SpectacularSwaggerView.as_view(url_name='schema')),
     path('redoc/', SpectacularRedocView.as_view(url_name='schema'), name='redoc'),  
