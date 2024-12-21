@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-yfax-5v=kmb7nud9zp36%hi_oa84yl=gh%nv_*u=qyxncq^b2=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','localhost',"africanjournalvisibility.onrender.com","198.211.110.243","aphrc.site"]
+ALLOWED_HOSTS = ['127.0.0.1','localhost',"198.211.110.243","aphrc.site"]
 
 
 # Application definition
@@ -375,3 +375,17 @@ CELERY_BEAT_SCHEDULE={
 CELERY_BROKER_URL =os.environ.get("CELERY_BROKER","amqp://guest:guest@rabbitmq:5672//") 
 CELERY_RESULT_BACKEND =os.environ.get("CELERY_BACKEND","rpc://") 
 CELERY_TIMEZONE = 'Africa/Nairobi'
+
+
+
+# Ensure CSRF works correctly behind a proxy
+CSRF_TRUSTED_ORIGINS = ['https://aphrc.site']
+
+# If using secure cookies
+CSRF_COOKIE_SECURE = True
+
+# If you're using a reverse proxy, set this to True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# If you're in production, make sure to have this enabled
+SECURE_SSL_REDIRECT = True  # Redirect HTTP to HTTPS automatically
