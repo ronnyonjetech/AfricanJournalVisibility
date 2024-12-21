@@ -44,3 +44,9 @@ COPY . /usr/src/BackEnd/
 # Expose port 8000 for Django application
 EXPOSE 8000
 
+# Install gunicorn explicitly if not listed in requirements.txt
+RUN pip install gunicorn
+
+
+# Set default command to run the Django app with gunicorn
+CMD ["gunicorn", "backend.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "3"]

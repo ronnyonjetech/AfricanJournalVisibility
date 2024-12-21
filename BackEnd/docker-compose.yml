@@ -1,4 +1,3 @@
-# version: "3.8"
 
 services:
   pgdb:
@@ -26,7 +25,8 @@ services:
   django:
     build: .
     container_name: django_app
-    command: python manage.py runserver 0.0.0.0:8000
+    # command: python manage.py runserver 0.0.0.0:8000
+    command: gunicorn backend.wsgi:application --bind 0.0.0.0:8000 --workers 3
     volumes:
       - .:/usr/src/BackEnd/
     ports:
@@ -89,6 +89,5 @@ services:
       - RABBITMQ_DEFAULT_USER=guest
       - RABBITMQ_DEFAULT_PASS=guest
 
-  
   
   
