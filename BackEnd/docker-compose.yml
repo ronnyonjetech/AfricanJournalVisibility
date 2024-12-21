@@ -1,0 +1,94 @@
+# version: "3.8"
+
+services:
+  pgdb:
+    container_name: pgdb
+    image: postgres
+    restart: always
+    ports:
+      - 5432:5432
+    environment: 
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+  pgadmin:
+    container_name: pgadmin4
+    image: dpage/pgadmin4
+    restart: always
+
+    environment: 
+      PGADMIN_DEFAULT_EMAIL: a@a.com 
+      PGADMIN_DEFAULT_PASSWORD: a 
+    ports:
+     - "5050:80"
+
+  django:
+    build: .
+    container_name: django_app
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/usr/src/BackEnd/
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=1
+      - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1
+      - CELERY_BROKER=amqp://rabbitmq:5672//
+      - CELERY_BACKEND=rpc://
+    depends_on:
+      - pgdb
+      - rabbitmq
+
+  celery:
+    build: .
+    command: celery -A backend worker --loglevel=INFO
+    container_name: celery
+    volumes:
+      - .:/usr/src/BackEnd/
+    environment:
+      - CELERY_BROKER=amqp://guest:guest@rabbitmq:5672//
+      - CELERY_BACKEND=rpc://
+    depends_on:
+      - pgdb
+      - rabbitmq
+
+  celery-beat:
+      build: .
+      command: celery -A backend beat -l INFO --scheduler django_celery_beat.schedulers:DatabaseScheduler
+      container_name: beat
+      volumes:
+        - .:/usr/src/BackEnd/
+      environment:
+        - CELERY_BROKER=amqp://guest:guest@rabbitmq:5672//
+        - CELERY_BACKEND=rpc://
+      depends_on:
+        - pgdb
+        - rabbitmq
+        - django  
+
+  flower:
+      build: .
+      container_name: flower_monitor
+      
+      command: celery -A backend flower --port=5555
+      ports:
+        - "5555:5555"
+      environment:
+        - CELERY_BROKER=amqp://guest:guest@rabbitmq:5672//
+      depends_on:
+        - rabbitmq
+
+  rabbitmq:
+    container_name: rabbitmq_broker
+    image: rabbitmq:3.8-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+
+  
+  
+  
