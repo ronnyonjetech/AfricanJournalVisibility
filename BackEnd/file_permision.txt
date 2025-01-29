@@ -1,0 +1,2 @@
+For user group
+sudo chown ron:ron funding/

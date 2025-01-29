@@ -33,7 +33,7 @@ class Command(BaseCommand):
                 # Create a new Journal record
                 Journal.objects.create(
                     issn_number=issn_number,  # This can be None
-                    journal_title=row.get('Journal tittle ', '').strip(),
+                    journal_title=row.get('Journal_title', '').strip(),
                     platform=platform,
                     country=country,
                     publishers_name=row.get('Publishers Name'),
@@ -43,9 +43,9 @@ class Command(BaseCommand):
                     aim_identifier=converted_aim,
                     medline=self.convert_to_boolean(row.get('Medline (Medicine and Health Journals)')),
                     google_scholar_index=self.convert_to_boolean(row.get('Indexed on Google Scholar')),
-                    impact_factor=self.convert_to_int(row.get('Impact Factor')),
+                    impact_factor=self.convert_to_float(row.get('Impact Factor')),
                     sjr=self.convert_to_boolean(row.get('Scimago Jornal and Country Rank (SJR); Scopus')),
-                    h_index=self.convert_to_int(row.get('H-Index')),
+                    h_index=self.convert_to_float(row.get('H-Index')),
                     eigen_factor=self.convert_to_boolean(row.get('Eigenfactor ')),
                     eigen_metrix=row.get('Eigenfactor metrix'),
                     snip=self.convert_to_boolean(row.get('Source Normalized Impact per Paper (SNIP)')),

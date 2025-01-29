@@ -37,7 +37,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Install django-jazzmin if not in requirements.txt
 RUN pip install django-jazzmin
-
+RUN pip install duckduckgo-search
 # Copy the rest of the application code into the container
 COPY . /usr/src/BackEnd/
 

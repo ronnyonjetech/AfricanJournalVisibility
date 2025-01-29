@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist',
     'journalApis',
     'news',
+    'funding',
     'drf_spectacular',
     'django_filters',
     'django.contrib.postgres',
@@ -362,12 +363,12 @@ JAZZMIN_UI_TWEAKS = {
 CELERY_BEAT_SCHEDULE={
     "send_email":{
         "task":"news.tasks.run_custom_command",
-        "schedule":crontab(hour=8, minute=0, day_of_week=1, day_of_month='15-21'),    
+        "schedule":crontab(hour=8, minute=0, day_of_week=0),    
     },
-    "collect_journal_cover_images" :{
-        "task":"news.tasks.journal_images_generator",
-        "schedule":crontab(hour=8, minute=0),
-    }
+    # "collect_journal_cover_images" :{
+    #     "task":"news.tasks.journal_images_generator",
+    #     "schedule":crontab(hour=8, minute=0),
+    # }
 }
 
 
@@ -389,3 +390,13 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # If you're in production, make sure to have this enabled
 SECURE_SSL_REDIRECT = True  # Redirect HTTP to HTTPS automatically
+
+'''
+SECURE_SSL_REDIRECT = False
+SECURE_HSTS_SECONDS = 0
+SECURE_HSTS_PRELOAD = False
+SECURE_HSTS_INCLUDE_SUBDOMAINS = False
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
+
+'''
