@@ -1,6 +1,17 @@
 from django.db import models
 # from django.contrib.auth.models import User
 from django.conf import settings
+
+
+
+class FundingType(models.Model):
+    name = models.CharField(max_length=255, unique=True, help_text="Type of funding (e.g., Grant, Fellowship, Scholarship).")
+
+    def __str__(self):
+        return self.name
+
+
+
 class Funding(models.Model):
     # List of currency symbols
     CURRENCY_CHOICES = [
@@ -22,10 +33,7 @@ class Funding(models.Model):
         max_length=255, blank=True, null=True, 
         help_text="Region for the funding (e.g., Africa, Asia, Europe)."
     )
-    funding_type = models.CharField(
-        max_length=255, blank=True, null=True, 
-        help_text="Type of funding (e.g., Grant, Fellowship, Scholarship)."
-    )
+    funding_type = models.ForeignKey(FundingType, on_delete=models.SET_NULL, null=True, blank=True, help_text="Type of funding.")
     description = models.TextField(blank=True, null=True, help_text="Detailed description of the funding.")
     elligibility = models.TextField(blank=True, null=True, help_text="Eligibility criteria for applicants.")
     currency = models.CharField(

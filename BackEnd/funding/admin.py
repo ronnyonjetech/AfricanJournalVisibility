@@ -2,7 +2,7 @@
 # Register your models here.
 from django.contrib import admin
 from .models import Funding
-
+from .models import FundingType
 @admin.register(Funding)
 class FundingAdmin(admin.ModelAdmin):
     list_display = (
@@ -18,3 +18,9 @@ class FundingAdmin(admin.ModelAdmin):
     search_fields = ('funding_title', 'organization', 'description', 'tags')
     ordering = ('-deadline',)  # Orders by deadline in descending order
     date_hierarchy = 'deadline'  # Adds a date hierarchy for the deadline field
+
+
+@admin.register(FundingType)
+class FundingTypeAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    search_fields = ('name',)

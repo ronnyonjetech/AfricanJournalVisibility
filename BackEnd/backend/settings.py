@@ -360,15 +360,25 @@ JAZZMIN_UI_TWEAKS = {
 #     },
 # }
 
-CELERY_BEAT_SCHEDULE={
-    "send_email":{
-        "task":"news.tasks.run_custom_command",
-        "schedule":crontab(hour=8, minute=0, day_of_week=0),    
+# CELERY_BEAT_SCHEDULE={
+#     "send_email":{
+#         "task":"news.tasks.run_custom_command",
+#         "schedule":crontab(hour=8, minute=0, day_of_week=0),    
+#     },
+
+
+    
+# }
+
+CELERY_BEAT_SCHEDULE = {
+    "send_email": {
+        "task": "news.tasks.run_custom_command",
+        "schedule": crontab(hour=8, minute=0, day_of_month='*'),  # Runs at 08:00 AM on the last day of the month
     },
-    # "collect_journal_cover_images" :{
-    #     "task":"news.tasks.journal_images_generator",
-    #     "schedule":crontab(hour=8, minute=0),
-    # }
+    "update_funding_status": {
+        "task": "funding.tasks.update_funding_status",
+        "schedule": crontab(hour=0, minute=0),  # Runs daily at midnight
+    },
 }
 
 
@@ -398,5 +408,4 @@ SECURE_HSTS_PRELOAD = False
 SECURE_HSTS_INCLUDE_SUBDOMAINS = False
 SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SECURE = False
-
 '''
