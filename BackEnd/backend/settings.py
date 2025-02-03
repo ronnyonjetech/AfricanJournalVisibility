@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.postgres',
     'django_celery_beat',
     'django_celery_results',
+    'blog',
     
 ]
 REST_FRAMEWORK = { 
@@ -388,7 +389,7 @@ CELERY_RESULT_BACKEND =os.environ.get("CELERY_BACKEND","rpc://")
 CELERY_TIMEZONE = 'Africa/Nairobi'
 
 
-
+'''
 # Ensure CSRF works correctly behind a proxy
 CSRF_TRUSTED_ORIGINS = ['https://aphrc.site']
 
@@ -400,12 +401,12 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # If you're in production, make sure to have this enabled
 SECURE_SSL_REDIRECT = True  # Redirect HTTP to HTTPS automatically
-
 '''
+
 SECURE_SSL_REDIRECT = False
 SECURE_HSTS_SECONDS = 0
 SECURE_HSTS_PRELOAD = False
 SECURE_HSTS_INCLUDE_SUBDOMAINS = False
 SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SECURE = False
-'''
+

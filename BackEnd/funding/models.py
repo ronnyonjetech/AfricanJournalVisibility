@@ -43,7 +43,11 @@ class Funding(models.Model):
         null=True,
         help_text="Currency symbol for the grant amount (e.g., $, €, £)."
     )
-    grant_amount = models.DecimalField(
+    grant_amount_lower = models.DecimalField(
+        max_digits=15, decimal_places=2, blank=True, null=True, 
+        help_text="Amount of the grant (if applicable)."
+    )
+    grant_amount_upper = models.DecimalField(
         max_digits=15, decimal_places=2, blank=True, null=True, 
         help_text="Amount of the grant (if applicable)."
     )
