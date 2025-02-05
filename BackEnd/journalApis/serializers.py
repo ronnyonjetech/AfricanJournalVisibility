@@ -40,13 +40,25 @@ class ArticleSerializer(serializers.ModelSerializer):
             return strip_tags(obj.abstract)
         return obj.abstract
 
-# Serializer for Volume model, including nested articles
-class VolumeSerializer(serializers.ModelSerializer):
-    articles = ArticleSerializer(many=True, read_only=True)  # Nested ArticleSerializer to include all articles in this volume
+# # Serializer for Volume model, including nested articles
+# class VolumeSerializer(serializers.ModelSerializer):
+#     articles = ArticleSerializer(many=True, read_only=True)  # Nested ArticleSerializer to include all articles in this volume
 
+#     class Meta:
+#         model = Volume
+#         fields = ['id','volume_number','issue_number','year','created_at','articles']
+
+class VolumeSerializer(serializers.ModelSerializer):
+    journal_id = serializers.PrimaryKeyRelatedField(queryset=Journal.objects.all(), source='journal', write_only=True)
+    articles = ArticleSerializer(many=True, read_only=True)  # Nested ArticleSerializer for read-only
+    
     class Meta:
         model = Volume
-        fields = ['id','volume_number','issue_number','year','created_at','articles']
+        fields = ['id', 'journal_id', 'volume_number', 'issue_number', 'year', 'created_at', 'articles']
+    
+    def create(self, validated_data):
+        return Volume.objects.create(**validated_data)
+
 
 # Serializer for JournalImage model
 class JournalImageSerializer(serializers.ModelSerializer):
