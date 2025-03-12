@@ -277,4 +277,81 @@ class ArticleSearchView(generics.ListAPIView):
 
 class FeedbackViewSet(viewsets.ModelViewSet):
      queryset = Feedback.objects.all()
-     serializer_class = FeedBackSerializer   
+     serializer_class = FeedBackSerializer  
+
+
+
+# class JournalCountryCountAPIView(APIView):
+#     def get(self, request, *args, **kwargs):
+#         country_counts = (
+#             Journal.objects.values("country__country")  # Fetch country name
+#             .annotate(journal_count=Count("id"))
+#             .order_by("-journal_count")
+#         )
+
+#         # Rename the key for better clarity
+#         formatted_data = [
+#             {"country": item["country__country"], "journal_count": item["journal_count"]}
+#             for item in country_counts
+#         ]
+
+#         return Response(formatted_data)
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from django.db.models import Count, Q
+from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
+from .models import Journal
+from .filters import JournalFilter
+
+class JournalCountryCountAPIView(APIView):
+    def get(self, request, *args, **kwargs):
+        # Apply the same filters as JournalFilter
+        filtered_queryset = JournalFilter(request.GET, queryset=Journal.objects.all()).qs
+
+        query = request.GET.get("query", "")
+        if query:
+            search_query = SearchQuery(query)
+
+            search_vector = SearchVector(
+                'journal_title',
+                'summary',
+                'h_index',
+                'platform__platform',
+                'country__country',
+                'publishers_name',
+                'thematic_area__thematic_area',
+                'issn_number',
+                'language__language'
+            )
+
+            filtered_queryset = filtered_queryset.annotate(
+                rank=SearchRank(search_vector, search_query)
+            ).filter(
+                Q(rank__gte=0.1) |
+                Q(journal_title__icontains=query) |
+                Q(platform__platform__icontains=query) |
+                Q(country__country__icontains=query) |
+                Q(publishers_name__icontains=query) |
+                Q(thematic_area__thematic_area__icontains=query) |
+                Q(issn_number__icontains=query) |
+                Q(language__language__icontains=query) |
+                Q(h_index__icontains=query) |
+                Q(summary__icontains=query)
+            ).order_by('-rank').distinct()
+
+        # Count journals per country
+        country_counts = (
+            filtered_queryset
+            .values("country__country")  # Fetch country name
+            .annotate(journal_count=Count("id", distinct=True))  # Ensure correct count
+            .order_by("-journal_count")
+        )
+
+        # Format the response
+        formatted_data = [
+            {"country": item["country__country"], "journal_count": item["journal_count"]}
+            for item in country_counts
+        ]
+
+        return Response(formatted_data)

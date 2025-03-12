@@ -1,24 +1,28 @@
-from __future__ import absolute_import,unicode_literals
+# from __future__ import absolute_import,unicode_literals
 
-from celery import shared_task
-from django.core.management import call_command
-from datetime import datetime, timedelta
-# @shared_task
-# def add(x,y):
-#     return x+y
+# from celery import shared_task
+# from django.core.management import call_command
+# from datetime import datetime, timedelta
+
 
 # @shared_task
 # def run_custom_command():
 #     call_command('send_newsletter')
 
-# @shared_task
-# def journal_images_generator():
-#     call_command('fetch_journal_images')
+from __future__ import absolute_import, unicode_literals
+
+from celery import shared_task
+from django.core.management import call_command
+from datetime import datetime
+import calendar
 
 @shared_task
 def run_custom_command():
-    today = datetime.today()
-    # Check if today is the last day of the month
-    if today.day == (today.replace(day=28) + timedelta(days=4)).day:
-        # Run the management command if it's the last day
-        call_command('send_newsletter')
+    today = datetime.today().date()
+    last_day = calendar.monthrange(today.year, today.month)[1]  # Get last day of the month
+
+    if today.day == last_day:
+        call_command('send_newsletter')  # Run the newsletter command
+        print("✅ Newsletter sent on the last day of the month")
+    else:
+        print(f"⏩ Skipping: {today} is not the last day of the month")

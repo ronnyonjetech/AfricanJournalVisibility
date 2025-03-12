@@ -374,11 +374,13 @@ JAZZMIN_UI_TWEAKS = {
 CELERY_BEAT_SCHEDULE = {
     "send_email": {
         "task": "news.tasks.run_custom_command",
-        "schedule": crontab(hour=8, minute=0, day_of_month='*'),  # Runs at 08:00 AM on the last day of the month
+        "schedule": crontab(hour=8, minute=0, day_of_month="28-31"),
+       
     },
     "update_funding_status": {
         "task": "funding.tasks.update_funding_status",
         "schedule": crontab(hour=0, minute=0),  # Runs daily at midnight
+        # "schedule": crontab(minute="*")  # Runs every minute
     },
 }
 
@@ -389,9 +391,9 @@ CELERY_RESULT_BACKEND =os.environ.get("CELERY_BACKEND","rpc://")
 CELERY_TIMEZONE = 'Africa/Nairobi'
 
 
-
+'''
 # Ensure CSRF works correctly behind a proxy
-CSRF_TRUSTED_ORIGINS = ['https://aphrc.site']
+CSRF_TRUSTED_ORIGINS = ["https://backend.afrikajournals.org","https://afrikajournals.org"]
 
 # If using secure cookies
 CSRF_COOKIE_SECURE = True
@@ -403,6 +405,7 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 SECURE_SSL_REDIRECT = True  # Redirect HTTP to HTTPS automatically
 
 '''
+
 SECURE_SSL_REDIRECT = False
 SECURE_HSTS_SECONDS = 0
 SECURE_HSTS_PRELOAD = False
@@ -410,4 +413,3 @@ SECURE_HSTS_INCLUDE_SUBDOMAINS = False
 SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SECURE = False
 
-'''

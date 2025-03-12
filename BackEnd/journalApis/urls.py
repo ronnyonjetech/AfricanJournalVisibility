@@ -4,7 +4,7 @@ from .views import generate_journal_description
 from .views import JournalPaginationListView,JournalSearchView,JournalDetailView,JournalCreateView,JournalPaginationListUserView,ArticleSearchView
 from .views import LanguageViewSet,PlatformViewSet,CountryViewSet,ThematicAreaViewSet,VolumeViewSet,ArticleViewSet,UserLanguageViewSet,UserThematicAreaViewSet  # Import your viewset
 from .views import FeedbackViewSet
-
+from .views import JournalCountryCountAPIView
 # Create individual views for list and detail actions
 language_list = LanguageViewSet.as_view({
     'get': 'list',
@@ -161,6 +161,6 @@ urlpatterns=[
 
    path('api/feedback/', feedback_list, name='feedback-list'),  # List and create languages
    path('api/feedback/<int:pk>/', feedback_detail, name='feedback-detail'),  # Retrieve, update, delete specific language
-   
+   path('api/journals/country-count/', JournalCountryCountAPIView.as_view(), name='journal-country-count'),
    
 ]

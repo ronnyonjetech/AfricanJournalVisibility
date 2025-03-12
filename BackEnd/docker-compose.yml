@@ -1,12 +1,11 @@
-
 services:
   pgdb:
     container_name: pgdb
     image: postgres
     restart: always
     ports:
-      # - 5432:5432
-      - "127.0.0.1:5432:5432" # Bind to localhost
+      - 5432:5432
+      # - "127.0.0.1:5432:5432" # Bind to localhost
     environment: 
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
@@ -21,8 +20,8 @@ services:
       PGADMIN_DEFAULT_EMAIL: a@a.com 
       PGADMIN_DEFAULT_PASSWORD: a 
     ports:
-    #  - "5050:80"
-      - "127.0.0.1:5050:80" # Bind to localhost
+        - "5050:80"
+      # - "127.0.0.1:5050:80" # Bind to localhost
 
   django:
     build: .
@@ -32,8 +31,8 @@ services:
     volumes:
       - .:/usr/src/BackEnd/
     ports:
-      # - "8000:8000"
-      - "127.0.0.1:8000:8000" # Bind to localhost
+      - "8000:8000"
+      # - "127.0.0.1:8000:8000" # Bind to localhost
 
     environment:
       - DEBUG=1
@@ -77,8 +76,8 @@ services:
       
       command: celery -A backend flower --port=5555
       ports:
-        # - "5555:5555"
-        - "127.0.0.1:5555:5555" # Bind to localhost
+        - "5555:5555"
+        # - "127.0.0.1:5555:5555" # Bind to localhost
       environment:
         - CELERY_BROKER=amqp://guest:guest@rabbitmq:5672//
       depends_on:
@@ -88,10 +87,10 @@ services:
     container_name: rabbitmq_broker
     image: rabbitmq:3.8-management
     ports:
-      # - "5672:5672"
-      # - "15672:15672"
-      - "127.0.0.1:5672:5672"   # Bind to localhost
-      - "127.0.0.1:15672:15672" # Bind to localhost
+      - "5672:5672"
+      - "15672:15672"
+      # - "127.0.0.1:5672:5672"   # Bind to localhost
+      # - "127.0.0.1:15672:15672" # Bind to localhost
     environment:
       - RABBITMQ_DEFAULT_USER=guest
       - RABBITMQ_DEFAULT_PASS=guest
