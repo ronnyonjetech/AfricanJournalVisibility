@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-yfax-5v=kmb7nud9zp36%hi_oa84yl=gh%nv_*u=qyxncq^b2=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','localhost',"198.211.110.243","aphrc.site"]
+ALLOWED_HOSTS = ['.ngrok-free.app','127.0.0.1','localhost',"192.168.100.8","10.176.203.209","aphrc.site","backend.afrikajournals.org"]
 
 
 # Application definition
@@ -51,8 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.postgres',
     'django_celery_beat',
     'django_celery_results',
-    'blog',
-    
+    'blog',   
 ]
 REST_FRAMEWORK = { 
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
@@ -366,8 +365,6 @@ JAZZMIN_UI_TWEAKS = {
 #         "task":"news.tasks.run_custom_command",
 #         "schedule":crontab(hour=8, minute=0, day_of_week=0),    
 #     },
-
-
     
 # }
 

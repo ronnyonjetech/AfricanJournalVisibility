@@ -5,6 +5,10 @@ from .views import JournalPaginationListView,JournalSearchView,JournalDetailView
 from .views import LanguageViewSet,PlatformViewSet,CountryViewSet,ThematicAreaViewSet,VolumeViewSet,ArticleViewSet,UserLanguageViewSet,UserThematicAreaViewSet  # Import your viewset
 from .views import FeedbackViewSet
 from .views import JournalCountryCountAPIView
+from .views import journal_details
+# from .views import get_all_volumes
+# from .views import delete_volume
+from .views import UserVolumeViewSet
 # Create individual views for list and detail actions
 language_list = LanguageViewSet.as_view({
     'get': 'list',
@@ -162,5 +166,10 @@ urlpatterns=[
    path('api/feedback/', feedback_list, name='feedback-list'),  # List and create languages
    path('api/feedback/<int:pk>/', feedback_detail, name='feedback-detail'),  # Retrieve, update, delete specific language
    path('api/journals/country-count/', JournalCountryCountAPIView.as_view(), name='journal-country-count'),
-   
+#    path('api/volumes/', get_all_volumes, name='get_all_volumes'),
+#    path('api/volumes/<int:volume_id>/delete/', delete_volume, name='delete_volume'),
+   path('api/user-volumes/', UserVolumeViewSet.as_view({'get': 'list'}), name='user-volumes-list'),
+   path('api/user-volumes/<int:pk>/', UserVolumeViewSet.as_view({'delete': 'destroy'}), name='user-volumes-delete'),
+   path('api/journal_volumes/<int:journal_id>/', journal_details, name='journal_details'),
+
 ]

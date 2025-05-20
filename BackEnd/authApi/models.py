@@ -50,6 +50,7 @@ class NewUser(AbstractBaseUser, PermissionsMixin):
     # phone_number=models.CharField(max_length=12,unique=True)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
+    approved = models.BooleanField(default=False)  # New field added
 
     objects = CustomAccountManager()
 

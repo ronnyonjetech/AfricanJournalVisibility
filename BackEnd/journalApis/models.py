@@ -42,7 +42,7 @@ class Journal(models.Model):
      #thematic_area=models.ForeignKey(ThematicArea,on_delete=models.CASCADE,unique=True,null=True, blank=True)
      thematic_area=models.ForeignKey(ThematicArea,on_delete=models.CASCADE,null=True, blank=True)
      issn_number=models.CharField(max_length=100, null=True, blank=True)
-    #  link = models.URLField(max_length=2048, blank=True, null=True)
+     #link = models.URLField(max_length=2048, blank=True, null=True)
      link = models.TextField(blank=True, null=True)
      aim_identifier = models.BooleanField(blank=True, null=True)
      medline=models.BooleanField(blank=True, null=True)
@@ -63,6 +63,7 @@ class Journal(models.Model):
      summary = models.TextField(null=True, blank=True)
      user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
      
+
      class Meta:
         indexes = [
             # Composite index on platform, country, language, and thematic_area
@@ -216,3 +217,8 @@ class Feedback(models.Model):
     name=models.CharField(max_length=2000,blank=True,null=True)
     email=models.CharField(max_length=2000,blank=True,null=True)
     question=models.TextField(blank=True,null=True)
+
+
+
+
+    

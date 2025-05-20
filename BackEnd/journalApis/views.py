@@ -10,7 +10,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Journal,Feedback
-from .serializers import JournalSerializer,JournalSerializer1,LanguageSerializer,PlatformSerializer,CountrySerializer,ThematicAreaSerializer,VolumeSerializer,ArticleSerializer
+from .serializers import JournalSerializer,JournalSerializer1,LanguageSerializer,PlatformSerializer,CountrySerializer,ThematicAreaSerializer,VolumeSerializer,ArticleSerializer,VolumeSerializer1
 from .serializers import FeedBackSerializer
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
@@ -303,6 +303,7 @@ from django.db.models import Count, Q
 from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 from .models import Journal
 from .filters import JournalFilter
+from rest_framework.pagination import PageNumberPagination
 
 class JournalCountryCountAPIView(APIView):
     def get(self, request, *args, **kwargs):
@@ -355,3 +356,98 @@ class JournalCountryCountAPIView(APIView):
         ]
 
         return Response(formatted_data)
+
+# @api_view(['GET'])
+# def get_all_volumes(request):
+#     paginator = PageNumberPagination()
+#     paginator.page_size = 10  # You can override the default page size here
+#     volumes = Volume.objects.all()
+    
+#     result_page = paginator.paginate_queryset(volumes, request)
+#     serializer = VolumeSerializer1(result_page, many=True)
+    
+#     return paginator.get_paginated_response(serializer.data)
+
+# @api_view(['DELETE'])
+# def delete_volume(request, volume_id):
+#     try:
+#         volume = Volume.objects.get(id=volume_id)
+#         volume.delete()
+#         return Response({"message": "Volume deleted successfully"}, status=status.HTTP_204_NO_CONTENT)
+#     except Volume.DoesNotExist:
+#         return Response({"error": "Volume not found"}, status=status.HTTP_404_NOT_FOUND)
+
+
+class UserVolumeViewSet(viewsets.ModelViewSet):
+    serializer_class = VolumeSerializer1
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        # Filter volumes belonging to journals owned by the logged-in user
+        return Volume.objects.filter(journal__user=user).distinct()
+
+    def list(self, request, *args, **kwargs):
+        user = request.user
+        
+        # Fetch volumes linked to journals owned by the user
+        queryset = Volume.objects.filter(journal__user=user).annotate(
+            article_count=Count('articles')
+        ).distinct()
+
+        data = []
+        for volume in queryset:
+            data.append({
+                'id': volume.id,
+                'journal': volume.journal.journal_title,
+                'volume_number': volume.volume_number,
+                'issue_number': volume.issue_number,
+                'year': volume.year,
+                'article_count': volume.article_count
+            })
+
+        return Response(data)
+
+    def destroy(self, request, *args, **kwargs):
+        """Allow users to delete only their own volumes."""
+        user = request.user
+        volume = self.get_object()
+
+        if volume.journal.user != user:
+            return Response({"error": "You do not have permission to delete this volume."}, status=403)
+
+        volume.delete()
+        return Response({"message": "Volume deleted successfully"}, status=204)
+
+
+@api_view(['GET'])
+def journal_details(request, journal_id):
+    try:
+        journal = Journal.objects.get(id=journal_id)
+    except Journal.DoesNotExist:
+        return Response({"error": "Journal not found"}, status=404)
+
+    # Get all volumes for the journal
+    volumes = Volume.objects.filter(journal=journal).order_by('volume_number')
+    
+    journal_data = {}
+
+    for volume in volumes:
+        # Get all articles for the volume
+        articles = Article.objects.filter(volume=volume).values(
+            "id", "title", "authors", "publication_date", "doi","url","pdf","electronic_issn",
+            "print_issn","publisher"
+        )
+
+        # Convert QuerySet to a list of dictionaries
+        articles_list = list(articles)
+
+        # Structure data as {volume_number: {articles: [...], year: year}}
+        journal_data[f"Volume {volume.volume_number}"] = {
+            "year": volume.year,
+            "issue_number":volume.issue_number,
+            "articles": articles_list,
+        }
+
+    return Response(journal_data) 
+

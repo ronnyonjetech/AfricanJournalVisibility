@@ -1,2 +1,5 @@
 For user group
 sudo chown ron:ron funding/
+sudo chown -R $USER:$USER volumes
+
+ngrok http 192.168.100.8:8000

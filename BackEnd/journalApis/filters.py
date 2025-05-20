@@ -17,6 +17,11 @@ class JournalFilter(django_filters.FilterSet):
     member_of_committee_on_publication_ethics = django_filters.BooleanFilter(field_name='publisher_in_cope')
     online_publisher_in_africa = django_filters.BooleanFilter(field_name='online_publisher_africa')
     hosted_on_inasps = django_filters.BooleanFilter(field_name='hosted_on_inasps')
+    country = django_filters.CharFilter(field_name='country__country', lookup_expr='icontains', label='Country')
+    thematic_area = django_filters.CharFilter(field_name='thematic_area__thematic_area', lookup_expr='icontains', label='Thematic Area')
+    language = django_filters.CharFilter(field_name='language__language', lookup_expr='icontains', label='Language')
+
+
 
     class Meta:
         model = Journal
@@ -74,12 +79,23 @@ class ArticleFilter(django_filters.FilterSet):
 
     # Filter for a specific publication date
     publication_date = django_filters.DateFilter(field_name="publication_date", label="Publication Date (Specific Day)", lookup_expr="exact")
+
     # Date range filter
     publication_date_range = django_filters.DateFromToRangeFilter(field_name="publication_date", label="Publication Date Range")
+
+    # Country filter (via related Journal)
+    country = django_filters.CharFilter(field_name='journal__country__country', lookup_expr='icontains', label='Country')
+   
+
+    thematic_area = django_filters.CharFilter(field_name='journal__thematic_area__thematic_area', lookup_expr='icontains', label='Thematic Area')
+
+    language = django_filters.CharFilter(field_name='journal__language__language', lookup_expr='icontains', label='Language')
 
     class Meta:
         model = Article
         fields = []
+
+    
 
     def custom_search(self, queryset, name, value):
         if not value:
@@ -125,5 +141,6 @@ class ArticleFilter(django_filters.FilterSet):
             Q(journal__language__language__icontains=value) |
             Q(journal__thematic_area__thematic_area__icontains=value)
         ).order_by('-rank')  # Removed .distinct() to avoid recursion errors
+
 
 
