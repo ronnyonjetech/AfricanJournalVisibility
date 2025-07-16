@@ -6,6 +6,9 @@ from .views import LanguageViewSet,PlatformViewSet,CountryViewSet,ThematicAreaVi
 from .views import FeedbackViewSet
 from .views import JournalCountryCountAPIView
 from .views import journal_details
+from .views import UserArticleViewSet
+from .views import UserJournalViewSet
+from .views import get_user_counts
 # from .views import get_all_volumes
 # from .views import delete_volume
 from .views import UserVolumeViewSet
@@ -99,6 +102,34 @@ user_language_detail = UserLanguageViewSet.as_view({
 })
 
 # We are manually mapping the viewset's actions to URLs
+user_journal_list = UserJournalViewSet.as_view({
+    'get': 'list',
+    'post': 'create'
+})
+
+user_journal_detail = UserJournalViewSet.as_view({
+    'get': 'retrieve',
+    'put': 'update',
+    'patch': 'partial_update',
+    'delete': 'destroy'
+})
+
+
+
+# We are manually mapping the viewset's actions to URLs
+user_article_list = UserArticleViewSet.as_view({
+    'get': 'list',
+    'post': 'create'
+})
+
+user_article_detail = UserArticleViewSet.as_view({
+    'get': 'retrieve',
+    'put': 'update',
+    'patch': 'partial_update',
+    'delete': 'destroy'
+})
+
+# We are manually mapping the viewset's actions to URLs
 user_thematic_list = UserThematicAreaViewSet.as_view({
     'get': 'list',
     'post': 'create'
@@ -159,6 +190,12 @@ urlpatterns=[
 
    path('api/user-languages/', user_language_list, name='user-language-list'),
    path('api/user-languages/<int:pk>/', user_language_detail, name='user-language-detail'),
+   
+   path('api/user-articles/', user_article_list, name='user-articles-list'),
+   path('api/user-articles/<int:pk>/', user_article_detail, name='user-articles-detail'),
+
+   path('api/user-journals/', user_journal_list, name='user-journal-list'),
+   path('api/user-journals/<int:pk>/', user_journal_detail, name='user-journal-detail'),
 
    path('api/user-thematic/', user_thematic_list, name='user-language-list'),
    path('api/user-thematic/<int:pk>/', user_thematic_detail, name='user-language-detail'),
@@ -171,5 +208,6 @@ urlpatterns=[
    path('api/user-volumes/', UserVolumeViewSet.as_view({'get': 'list'}), name='user-volumes-list'),
    path('api/user-volumes/<int:pk>/', UserVolumeViewSet.as_view({'delete': 'destroy'}), name='user-volumes-delete'),
    path('api/journal_volumes/<int:journal_id>/', journal_details, name='journal_details'),
-
+   
+   path('api/user-counts/', get_user_counts, name='get_user_counts')
 ]

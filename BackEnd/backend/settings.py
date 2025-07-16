@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-yfax-5v=kmb7nud9zp36%hi_oa84yl=gh%nv_*u=qyxncq^b2=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.ngrok-free.app','127.0.0.1','localhost',"192.168.100.8","10.176.203.209","aphrc.site","backend.afrikajournals.org"]
+ALLOWED_HOSTS = ['127.0.0.1','localhost',"192.168.100.8","10.176.203.209","aphrc.site","backend.afrikajournals.org"]
 
 
 # Application definition
@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'django_celery_results',
     'blog',   
 ]
+
 REST_FRAMEWORK = { 
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10,
@@ -83,9 +84,9 @@ SPECTACULAR_SETTINGS = {
 }
 
 #https://aphrc.org/wp-content/themes/understrap-child/img/APHRC-primary-logo-large.png
-
+#"ACCESS_TOKEN_LIFETIME": timedelta(minutes=1440),
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=1440),
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=120),
     "ROTATE_REFRESH_TOKENS": True,
     "BLACKLIST_AFTER_ROTATION": True,

@@ -1,8 +1,4 @@
 from django.shortcuts import render
-
-# Create your views here.
-# Create your views here.
-# views.py
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -22,7 +18,20 @@ from rest_framework import viewsets  # This imports viewsets
 from rest_framework.permissions import IsAuthenticated 
 from .models import Language,Platform,Country,ThematicArea,Volume,Article
 from django.conf import settings
-from django.db.models import Count
+from .serializers import CountsSerializer
+from rest_framework.decorators import permission_classes
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+
+# from django.db.models import Count
+
+# from rest_framework.views import APIView
+# from rest_framework.response import Response
+from django.db.models import Count, Q
+from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
+# from .models import Journal
+# from .filters import JournalFilter
+# from rest_framework.pagination import PageNumberPagination
 
 class JournalPagination(PageNumberPagination):
     # Set the page size here or in settings.py
@@ -203,7 +212,27 @@ class UserLanguageViewSet(viewsets.ModelViewSet):
                 'journal_count': language.journal_count
             })
 
-        return Response(data)    
+        return Response(data)  
+
+class UserArticleViewSet(viewsets.ModelViewSet):
+    serializer_class = ArticleSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        # Filtering languages associated with journals authored by the user
+        return Article.objects.filter(journal__user=user).distinct()
+
+class UserJournalViewSet(viewsets.ModelViewSet):
+    serializer_class = JournalSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        user = self.request.user
+        # Filtering languages associated with journals authored by the user
+        return Journal.objects.filter(user=user).distinct()
+
+   
 
 class UserThematicAreaViewSet(viewsets.ModelViewSet):
     serializer_class = ThematicAreaSerializer
@@ -297,13 +326,6 @@ class FeedbackViewSet(viewsets.ModelViewSet):
 
 #         return Response(formatted_data)
 
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from django.db.models import Count, Q
-from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
-from .models import Journal
-from .filters import JournalFilter
-from rest_framework.pagination import PageNumberPagination
 
 class JournalCountryCountAPIView(APIView):
     def get(self, request, *args, **kwargs):
@@ -451,3 +473,23 @@ def journal_details(request, journal_id):
 
     return Response(journal_data) 
 
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def get_user_counts(request):
+    user = request.user
+
+    # Journals uploaded by this user
+    journals = Journal.objects.filter(user=user)
+    journals_count = journals.count()
+
+    # Volumes under journals owned by this user
+    volumes_count = Volume.objects.filter(journal__user=user).count()
+
+    # Articles under journals owned by this user
+    articles_count = Article.objects.filter(journal__user=user).count()
+
+    return Response({
+        'journals': journals_count,
+        'volumes': volumes_count,
+        'articles': articles_count
+    })

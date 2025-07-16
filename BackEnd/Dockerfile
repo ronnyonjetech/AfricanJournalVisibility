@@ -29,8 +29,8 @@ ENV PATH="/root/.cargo/bin:${PATH}"
 WORKDIR /usr/src/BackEnd
 
 # Copy the requirements.txt into the container
-COPY req/requirements.txt ./
-
+# COPY req/requirements.txt ./
+COPY requirements.txt ./
 # Upgrade pip and install requirements
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
