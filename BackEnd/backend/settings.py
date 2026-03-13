@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-yfax-5v=kmb7nud9zp36%hi_oa84yl=gh%nv_*u=qyxncq^b2=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','localhost',"192.168.100.8","10.176.203.209","aphrc.site","backend.afrikajournals.org"]
+ALLOWED_HOSTS = ['127.0.0.1','localhost',"192.168.100.95","192.168.100.8","10.176.203.209","aphrc.site","backend.afrikajournals.org"]
 
 
 # Application definition
@@ -411,3 +411,4 @@ SECURE_HSTS_INCLUDE_SUBDOMAINS = False
 SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SECURE = False
 
+#docker exec -it django_app python manage.py migrate
