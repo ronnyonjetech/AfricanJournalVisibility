@@ -62,7 +62,7 @@ class Journal(models.Model):
      hosted_on_inasps=models.BooleanField(blank=True, null=True)
      summary = models.TextField(null=True, blank=True)
      user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
-     
+     approved = models.BooleanField(default=False, null=True, blank=True)
 
      class Meta:
         indexes = [

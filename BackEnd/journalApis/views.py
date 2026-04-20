@@ -493,3 +493,118 @@ def get_user_counts(request):
         'volumes': volumes_count,
         'articles': articles_count
     })
+
+
+
+
+
+
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework.permissions import BasePermission, IsAuthenticated
+from rest_framework import status
+from .models import Journal
+from .serializers import JournalSerializer
+from rest_framework.pagination import PageNumberPagination
+
+
+# ─── Custom Permission ────────────────────────────────────────────────────────
+
+class IsStaffAndActive(BasePermission):
+    """
+    Allows access only to users who are:
+      - Authenticated
+      - is_staff = True
+      - is_active = True  (not a deactivated account)
+    Blocks access to users where is_active = False regardless of staff status.
+    """
+    message = 'Access denied. You must be an active staff member to view this resource.'
+
+    def has_permission(self, request, view):
+        return (
+            request.user and
+            request.user.is_authenticated and
+            request.user.is_staff and
+            request.user.is_active
+        )
+
+
+# ─── Pagination ───────────────────────────────────────────────────────────────
+
+class UnapprovedJournalPagination(PageNumberPagination):
+    page_size = 10
+    page_size_query_param = 'page_size'
+    max_page_size = 100
+
+
+# ─── Views ────────────────────────────────────────────────────────────────────
+
+class UnapprovedJournalListView(APIView):
+    """
+    GET /api/journals/unapproved/
+    Returns a paginated list of all unapproved journals.
+    Only accessible by active staff members.
+    """
+    permission_classes = [IsStaffAndActive]
+
+    def get(self, request):
+        journals = Journal.objects.filter(approved=False).order_by('id')
+
+        paginator = UnapprovedJournalPagination()
+        paginated_journals = paginator.paginate_queryset(journals, request)
+        serializer = JournalSerializer(paginated_journals, many=True)
+
+        return paginator.get_paginated_response(serializer.data)
+
+
+class UnapprovedJournalDetailView(APIView):
+    """
+    GET  /api/journals/unapproved/<journal_id>/  — View a single unapproved journal
+    POST /api/journals/unapproved/<journal_id>/approve/  — Approve a journal
+    Only accessible by active staff members.
+    """
+    permission_classes = [IsStaffAndActive]
+
+    def get(self, request, journal_id):
+        try:
+            journal = Journal.objects.get(id=journal_id, approved=False)
+        except Journal.DoesNotExist:
+            return Response(
+                {'error': 'Unapproved journal not found.'},
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+        serializer = JournalSerializer(journal)
+        return Response(serializer.data)
+
+
+class ApproveJournalView(APIView):
+    """
+    PATCH /api/journals/<journal_id>/approve/
+    Approves a single journal by setting approved=True.
+    Only accessible by active staff members.
+    """
+    permission_classes = [IsStaffAndActive]
+
+    def patch(self, request, journal_id):
+        try:
+            journal = Journal.objects.get(id=journal_id)
+        except Journal.DoesNotExist:
+            return Response(
+                {'error': 'Journal not found.'},
+                status=status.HTTP_404_NOT_FOUND
+            )
+
+        if journal.approved:
+            return Response(
+                {'message': 'Journal is already approved.'},
+                status=status.HTTP_200_OK
+            )
+
+        journal.approved = True
+        journal.save(update_fields=['approved'])
+
+        return Response(
+            {'message': f'Journal "{journal.journal_title}" has been approved successfully.'},
+            status=status.HTTP_200_OK
+        )

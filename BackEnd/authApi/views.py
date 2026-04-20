@@ -33,6 +33,7 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         token['phone_number']=user.phone_number
         token['location']=user.location
         token['approved']=user.approved
+        token['is_staff']=user.is_staff
         # ...
         return token
     

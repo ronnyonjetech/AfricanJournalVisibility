@@ -12,6 +12,25 @@ from .views import get_user_counts
 # from .views import get_all_volumes
 # from .views import delete_volume
 from .views import UserVolumeViewSet
+
+
+
+
+from .views import (
+    UnapprovedJournalListView,
+    UnapprovedJournalDetailView,
+    ApproveJournalView,
+)
+
+
+
+
+
+
+
+
+
+
 # Create individual views for list and detail actions
 language_list = LanguageViewSet.as_view({
     'get': 'list',
@@ -209,5 +228,16 @@ urlpatterns=[
    path('api/user-volumes/<int:pk>/', UserVolumeViewSet.as_view({'delete': 'destroy'}), name='user-volumes-delete'),
    path('api/journal_volumes/<int:journal_id>/', journal_details, name='journal_details'),
    
-   path('api/user-counts/', get_user_counts, name='get_user_counts')
+   path('api/user-counts/', get_user_counts, name='get_user_counts'),
+
+       # List all unapproved journals (staff only)
+   path('api/journals/unapproved/', UnapprovedJournalListView.as_view(), name='unapproved-journal-list'),
+ 
+    # View a single unapproved journal by ID (staff only)
+   path('api/journals/unapproved/<int:journal_id>/', UnapprovedJournalDetailView.as_view(), name='unapproved-journal-detail'),
+ 
+    # Approve a specific journal (staff only)
+   path('api/journals/<int:journal_id>/approve/', ApproveJournalView.as_view(), name='approve-journal')
+
+
 ]
