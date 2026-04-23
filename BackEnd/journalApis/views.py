@@ -474,7 +474,7 @@ class ArticleViewSet(viewsets.ModelViewSet):
     #queryset = Article.objects.all()  # Fetch all languages
     #####################################################################################
     # After
-    queryset = Article.objects.filter(journal__approved=True)
+    queryset = Article.objects.filter(volume__journal__approved=True)
     serializer_class = ArticleSerializer
     #pagination_class = None  # This disables pagination for this viewset
 
@@ -491,7 +491,7 @@ class ArticleSearchView(generics.ListAPIView):
     # queryset = Article.objects.all()
     #######################################################################################
     # After
-    queryset = Article.objects.filter(journal__approved=True)
+    queryset = Article.objects.filter(volume__journal__approved=True)
     serializer_class = ArticleSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_class = ArticleFilter
