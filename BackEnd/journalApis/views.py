@@ -33,6 +33,8 @@ from django.contrib.postgres.search import SearchVector, SearchQuery, SearchRank
 # from .filters import JournalFilter
 # from rest_framework.pagination import PageNumberPagination
 
+from drf_spectacular.utils import extend_schema, extend_schema_view
+# ─── Pagination ───────────────────────────────────────────────────────────────
 class JournalPagination(PageNumberPagination):
     # Set the page size here or in settings.py
     page_size_query_param = 'page_size'
@@ -45,10 +47,18 @@ class ArticlePagination(PageNumberPagination):
     max_page_size = 100
     page_size = 10 
 
+
+# ─── Journals ─────────────────────────────────────────────────────────────────
+@extend_schema(
+    tags=['Journals'],
+    summary="List all journals (paginated)",
+    description="Returns a paginated list of all approved journals. Use `page` and `page_size` query params to control pagination.",
+)
 class JournalPaginationListView(APIView):
     def get(self, request):
         # Retrieve all journals from the database
-        journals = Journal.objects.all()
+        # journals = Journal.objects.all()
+        journals = Journal.objects.filter(approved=True)
 
         # Instantiate the pagination class
         paginator = JournalPagination()
@@ -62,6 +72,12 @@ class JournalPaginationListView(APIView):
         # Return the serialized data with pagination information
         return paginator.get_paginated_response(serializer.data)
     
+
+@extend_schema(
+    tags=['Journals'],
+    summary="List journals uploaded by the authenticated user",
+    description="Returns all journals uploaded by the currently authenticated user. Requires a valid JWT token.",
+)    
 class JournalPaginationListUserView(APIView):
     permission_classes = [IsAuthenticated]
 
@@ -84,6 +100,15 @@ class JournalPaginationListUserView(APIView):
         return Response(serializer.data)
 
 
+@extend_schema(
+    tags=['Journals'],
+    summary="Search and filter journals",
+    description=(
+        "Search and filter journals using query parameters. "
+        "Supports full-text search across title, country, language, thematic area, publisher, ISSN, platform and summary. "
+        "Results are paginated and ordered by journal title."
+    ),
+)
 class JournalSearchView(generics.ListAPIView):
     # queryset = Journal.objects.all()
     serializer_class = JournalSerializer
@@ -93,8 +118,10 @@ class JournalSearchView(generics.ListAPIView):
 
     def get_queryset(self):
         # Annotate journals with the number of related volumes
-        queryset = Journal.objects.annotate(volume_count=Count('volumes')).order_by('journal_title')
-
+        # queryset = Journal.objects.annotate(volume_count=Count('volumes')).order_by('journal_title')
+        ####################################################################################
+        queryset = Journal.objects.filter(approved=True).annotate(volume_count=Count('volumes')).order_by('journal_title')
+        ####################################################################################
         # Apply filters if requested
         filtered_queryset = self.filter_queryset(queryset)
 
@@ -104,32 +131,59 @@ class JournalSearchView(generics.ListAPIView):
         return filtered_queryset
 
 
+
+@extend_schema(
+    tags=['Journals'],
+    summary="Get journal by ID",
+    description="Retrieve full details of a single journal by its numeric ID.",
+)
 class JournalDetailView(APIView):
     def get(self, request, journal_id):
         # Retrieve the article with the specified ID
-        journal = get_object_or_404(Journal, id=journal_id)
-        
+        #journal = get_object_or_404(Journal, id=journal_id)
+        ##########################################################################################
+        # After
+        journal = get_object_or_404(Journal, id=journal_id, approved=True)
+        ##########################################################################################
         # Serialize the article
         serializer = JournalSerializer(journal)
         
         # Return the serialized article data
         return Response(serializer.data)
 
-
+@extend_schema(exclude=True)
 def getJournals(Request):
     pass
 
 
+# ─── Stats ────────────────────────────────────────────────────────────────────
 
+@extend_schema(
+    tags=['Stats'],
+    summary="Get journal statistics",
+    description=(
+        "Returns aggregate counts across all journals including: "
+        "open access journals, INASPS hosted, online publishers in Africa, "
+        "DOAJ listings, COPE memberships, and journals with an ISSN."
+    ),
+)
 @api_view(['GET'])
 def journal_stats(request):
     # Count total number of journals with specific attributes
-    open_access_count = Journal.objects.filter(open_access_journal=True).count()
-    hosted_on_inasps_count = Journal.objects.filter(hosted_on_inasps=True).count()
-    online_publisher_africa_count = Journal.objects.filter(online_publisher_africa=True).count()
-    doaj_count = Journal.objects.filter(listed_in_doaj=True).count()
-    cope_count = Journal.objects.filter(publisher_in_cope=True).count()
-    issn_count = Journal.objects.filter(present_issn=True).count()
+    # open_access_count = Journal.objects.filter(open_access_journal=True).count()
+    # hosted_on_inasps_count = Journal.objects.filter(hosted_on_inasps=True).count()
+    # online_publisher_africa_count = Journal.objects.filter(online_publisher_africa=True).count()
+    # doaj_count = Journal.objects.filter(listed_in_doaj=True).count()
+    # cope_count = Journal.objects.filter(publisher_in_cope=True).count()
+    # issn_count = Journal.objects.filter(present_issn=True).count()
+
+    ###############################################################################################
+    open_access_count = Journal.objects.filter(approved=True, open_access_journal=True).count()
+    hosted_on_inasps_count = Journal.objects.filter(approved=True, hosted_on_inasps=True).count()
+    online_publisher_africa_count = Journal.objects.filter(approved=True, online_publisher_africa=True).count()
+    doaj_count = Journal.objects.filter(approved=True, listed_in_doaj=True).count()
+    cope_count = Journal.objects.filter(approved=True, publisher_in_cope=True).count()
+    issn_count = Journal.objects.filter(approved=True, present_issn=True).count()
     
     # Create response dictionary
     stats = {
@@ -143,6 +197,27 @@ def journal_stats(request):
 
     return Response(stats)
 
+
+
+
+
+@extend_schema(
+    tags=['Journals'],
+    summary="Generate a journal description using AI",
+    description=(
+        "Accepts a journal title and uses Google Gemini AI to generate a three-paragraph "
+        "description. Useful when creating or editing a journal entry."
+    ),
+    request={
+        'application/json': {
+            'type': 'object',
+            'properties': {
+                'journal_text': {'type': 'string', 'example': 'African Journal of Public Health'}
+            },
+            'required': ['journal_text']
+        }
+    },
+)
 @api_view(['POST'])
 def generate_journal_description(request):
     genai.configure(api_key='AIzaSyBf6hhxPUxOgKFWnPhtgWnRj6htPPbkdWU')
@@ -175,6 +250,12 @@ def generate_journal_description(request):
         return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
+
+@extend_schema(
+    tags=['Journals'],
+    summary="Create a new journal",
+    description="Submit a new journal entry. All required fields must be provided in the request body.",
+)
 class JournalCreateView(APIView):
     def post(self, request):
         serializer = JournalSerializer1(data=request.data)
@@ -183,11 +264,39 @@ class JournalCreateView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
+
+# ─── Reference Data ViewSets ──────────────────────────────────────────────────
+ 
+@extend_schema_view(
+    list=extend_schema(tags=['Languages'], summary="List all languages"),
+    create=extend_schema(tags=['Languages'], summary="Create a language"),
+    retrieve=extend_schema(tags=['Languages'], summary="Get a language by ID"),
+    update=extend_schema(tags=['Languages'], summary="Update a language"),
+    partial_update=extend_schema(tags=['Languages'], summary="Partially update a language"),
+    destroy=extend_schema(tags=['Languages'], summary="Delete a language"),
+)
 class LanguageViewSet(viewsets.ModelViewSet):
     queryset = Language.objects.all()  # Fetch all languages
     serializer_class = LanguageSerializer
     pagination_class = None  # This disables pagination for this viewset
 
+
+
+# ─── User-scoped Reference Data ───────────────────────────────────────────────
+ 
+@extend_schema_view(
+    list=extend_schema(
+        tags=['Languages'],
+        summary="List languages used by authenticated user's journals",
+        description="Returns languages associated with the authenticated user's journals, with a journal count per language.",
+    ),
+    create=extend_schema(tags=['Languages'], summary="Create a language (authenticated user)"),
+    retrieve=extend_schema(tags=['Languages'], summary="Get a user language by ID"),
+    update=extend_schema(tags=['Languages'], summary="Update a user language"),
+    partial_update=extend_schema(tags=['Languages'], summary="Partially update a user language"),
+    destroy=extend_schema(tags=['Languages'], summary="Delete a user language"),
+)
 class UserLanguageViewSet(viewsets.ModelViewSet):
     serializer_class = LanguageSerializer
     permission_classes = [IsAuthenticated]
@@ -214,6 +323,19 @@ class UserLanguageViewSet(viewsets.ModelViewSet):
 
         return Response(data)  
 
+
+@extend_schema_view(
+    list=extend_schema(
+        tags=['Articles'],
+        summary="List articles for the authenticated user",
+        description="Returns all articles belonging to journals owned by the currently authenticated user.",
+    ),
+    create=extend_schema(tags=['Articles'], summary="Create an article (authenticated user)"),
+    retrieve=extend_schema(tags=['Articles'], summary="Get a user article by ID"),
+    update=extend_schema(tags=['Articles'], summary="Update a user article"),
+    partial_update=extend_schema(tags=['Articles'], summary="Partially update a user article"),
+    destroy=extend_schema(tags=['Articles'], summary="Delete a user article"),
+)
 class UserArticleViewSet(viewsets.ModelViewSet):
     serializer_class = ArticleSerializer
     permission_classes = [IsAuthenticated]
@@ -223,6 +345,19 @@ class UserArticleViewSet(viewsets.ModelViewSet):
         # Filtering languages associated with journals authored by the user
         return Article.objects.filter(journal__user=user).distinct()
 
+
+@extend_schema_view(
+    list=extend_schema(
+        tags=['Journals'],
+        summary="List journals for the authenticated user",
+        description="Returns all journals submitted by the currently authenticated user.",
+    ),
+    create=extend_schema(tags=['Journals'], summary="Create a journal (authenticated user)"),
+    retrieve=extend_schema(tags=['Journals'], summary="Get a user journal by ID"),
+    update=extend_schema(tags=['Journals'], summary="Update a user journal"),
+    partial_update=extend_schema(tags=['Journals'], summary="Partially update a user journal"),
+    destroy=extend_schema(tags=['Journals'], summary="Delete a user journal"),
+)
 class UserJournalViewSet(viewsets.ModelViewSet):
     serializer_class = JournalSerializer
     permission_classes = [IsAuthenticated]
@@ -233,7 +368,18 @@ class UserJournalViewSet(viewsets.ModelViewSet):
         return Journal.objects.filter(user=user).distinct()
 
    
-
+@extend_schema_view(
+    list=extend_schema(
+        tags=['Thematic Areas'],
+        summary="List thematic areas for the authenticated user's journals",
+        description="Returns thematic areas associated with the authenticated user's journals, with a journal count per thematic area.",
+    ),
+    create=extend_schema(tags=['Thematic Areas'], summary="Create a thematic area (authenticated user)"),
+    retrieve=extend_schema(tags=['Thematic Areas'], summary="Get a user thematic area by ID"),
+    update=extend_schema(tags=['Thematic Areas'], summary="Update a user thematic area"),
+    partial_update=extend_schema(tags=['Thematic Areas'], summary="Partially update a user thematic area"),
+    destroy=extend_schema(tags=['Thematic Areas'], summary="Delete a user thematic area"),
+)
 class UserThematicAreaViewSet(viewsets.ModelViewSet):
     serializer_class = ThematicAreaSerializer
     permission_classes = [IsAuthenticated]
@@ -260,36 +406,92 @@ class UserThematicAreaViewSet(viewsets.ModelViewSet):
 
         return Response(data)
 
+
+@extend_schema_view(
+    list=extend_schema(tags=['Platforms'], summary="List all platforms"),
+    create=extend_schema(tags=['Platforms'], summary="Create a platform"),
+    retrieve=extend_schema(tags=['Platforms'], summary="Get a platform by ID"),
+    update=extend_schema(tags=['Platforms'], summary="Update a platform"),
+    partial_update=extend_schema(tags=['Platforms'], summary="Partially update a platform"),
+    destroy=extend_schema(tags=['Platforms'], summary="Delete a platform"),
+)
 class PlatformViewSet(viewsets.ModelViewSet):
     queryset = Platform.objects.all()  # Fetch all languages
     serializer_class = PlatformSerializer
     pagination_class = None  # This disables pagination for this viewset
 
+
+@extend_schema_view(
+    list=extend_schema(tags=['Countries'], summary="List all countries"),
+    create=extend_schema(tags=['Countries'], summary="Create a country"),
+    retrieve=extend_schema(tags=['Countries'], summary="Get a country by ID"),
+    update=extend_schema(tags=['Countries'], summary="Update a country"),
+    partial_update=extend_schema(tags=['Countries'], summary="Partially update a country"),
+    destroy=extend_schema(tags=['Countries'], summary="Delete a country"),
+)
 class CountryViewSet(viewsets.ModelViewSet):
     queryset = Country.objects.all()  # Fetch all languages
     serializer_class = CountrySerializer
     pagination_class = None  # This disables pagination for this viewset
 
+@extend_schema_view(
+    list=extend_schema(tags=['Thematic Areas'], summary="List all thematic areas"),
+    create=extend_schema(tags=['Thematic Areas'], summary="Create a thematic area"),
+    retrieve=extend_schema(tags=['Thematic Areas'], summary="Get a thematic area by ID"),
+    update=extend_schema(tags=['Thematic Areas'], summary="Update a thematic area"),
+    partial_update=extend_schema(tags=['Thematic Areas'], summary="Partially update a thematic area"),
+    destroy=extend_schema(tags=['Thematic Areas'], summary="Delete a thematic area"),
+)
 class ThematicAreaViewSet(viewsets.ModelViewSet):
     queryset = ThematicArea.objects.all()  # Fetch all languages
     serializer_class = ThematicAreaSerializer
     pagination_class = None  # This disables pagination for this viewset
 
+# ─── Volumes ──────────────────────────────────────────────────────────────────
+
+@extend_schema_view(
+    list=extend_schema(tags=['Volumes'], summary="List all volumes"),
+    create=extend_schema(tags=['Volumes'], summary="Create a volume"),
+    retrieve=extend_schema(tags=['Volumes'], summary="Get a volume by ID"),
+    update=extend_schema(tags=['Volumes'], summary="Update a volume"),
+    partial_update=extend_schema(tags=['Volumes'], summary="Partially update a volume"),
+    destroy=extend_schema(tags=['Volumes'], summary="Delete a volume"),
+)
 class VolumeViewSet(viewsets.ModelViewSet):
     queryset = Volume.objects.all()  # Fetch all languages
     serializer_class = VolumeSerializer
     pagination_class = None  # This disables pagination for this viewset
 
+@extend_schema_view(
+    list=extend_schema(tags=['Articles'], summary="List all articles"),
+    create=extend_schema(tags=['Articles'], summary="Create an article"),
+    retrieve=extend_schema(tags=['Articles'], summary="Get an article by ID"),
+    update=extend_schema(tags=['Articles'], summary="Update an article"),
+    partial_update=extend_schema(tags=['Articles'], summary="Partially update an article"),
+    destroy=extend_schema(tags=['Articles'], summary="Delete an article"),
+)
 class ArticleViewSet(viewsets.ModelViewSet):
-    queryset = Article.objects.all()  # Fetch all languages
+    #queryset = Article.objects.all()  # Fetch all languages
+    #####################################################################################
+    # After
+    queryset = Article.objects.filter(journal__approved=True)
     serializer_class = ArticleSerializer
     #pagination_class = None  # This disables pagination for this viewset
 
+
+@extend_schema(
+    tags=['Articles'],
+    summary="Search and filter articles",
+    description="Search and filter articles using query parameters. Results are paginated.",
+)
 class ArticleSearchView(generics.ListAPIView):
     """
     API view to search and filter articles.
     """
-    queryset = Article.objects.all()
+    # queryset = Article.objects.all()
+    #######################################################################################
+    # After
+    queryset = Article.objects.filter(journal__approved=True)
     serializer_class = ArticleSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_class = ArticleFilter
@@ -304,6 +506,15 @@ class ArticleSearchView(generics.ListAPIView):
         # Add additional filtering logic if necessary
         return queryset
 
+
+@extend_schema_view(
+    list=extend_schema(tags=['Feedback'], summary="List all feedback"),
+    create=extend_schema(tags=['Feedback'], summary="Submit feedback"),
+    retrieve=extend_schema(tags=['Feedback'], summary="Get feedback by ID"),
+    update=extend_schema(tags=['Feedback'], summary="Update feedback"),
+    partial_update=extend_schema(tags=['Feedback'], summary="Partially update feedback"),
+    destroy=extend_schema(tags=['Feedback'], summary="Delete feedback"),
+)
 class FeedbackViewSet(viewsets.ModelViewSet):
      queryset = Feedback.objects.all()
      serializer_class = FeedBackSerializer  
@@ -327,11 +538,24 @@ class FeedbackViewSet(viewsets.ModelViewSet):
 #         return Response(formatted_data)
 
 
+# ─── Country Count ────────────────────────────────────────────────────────────
+ 
+@extend_schema(
+    tags=['Countries'],
+    summary="Get journal count per country",
+    description=(
+        "Returns a list of countries with the number of journals per country. "
+        "Supports the same search and filter parameters as the journal search endpoint. "
+        "Results are ordered by journal count descending."
+    ),
+)
 class JournalCountryCountAPIView(APIView):
     def get(self, request, *args, **kwargs):
         # Apply the same filters as JournalFilter
-        filtered_queryset = JournalFilter(request.GET, queryset=Journal.objects.all()).qs
-
+        #filtered_queryset = JournalFilter(request.GET, queryset=Journal.objects.all()).qs
+        ####################################################################################################
+        filtered_queryset = JournalFilter(request.GET, queryset=Journal.objects.filter(approved=True)).qs
+        ###################################################################################################
         query = request.GET.get("query", "")
         if query:
             search_query = SearchQuery(query)
@@ -400,6 +624,19 @@ class JournalCountryCountAPIView(APIView):
 #         return Response({"error": "Volume not found"}, status=status.HTTP_404_NOT_FOUND)
 
 
+@extend_schema_view(
+    list=extend_schema(
+        tags=['Volumes'],
+        summary="List volumes for the authenticated user",
+        description="Returns all volumes belonging to journals owned by the authenticated user, including article count per volume.",
+    ),
+    destroy=extend_schema(
+        tags=['Volumes'],
+        summary="Delete a volume (owner only)",
+        description="Deletes a volume. The authenticated user must own the journal the volume belongs to.",
+    ),
+)
+
 class UserVolumeViewSet(viewsets.ModelViewSet):
     serializer_class = VolumeSerializer1
     permission_classes = [IsAuthenticated]
@@ -442,6 +679,15 @@ class UserVolumeViewSet(viewsets.ModelViewSet):
         return Response({"message": "Volume deleted successfully"}, status=204)
 
 
+
+@extend_schema(
+    tags=['Volumes'],
+    summary="Get volumes and articles for a journal",
+    description=(
+        "Returns all volumes for a given journal ID, with each volume listing its articles "
+        "including title, authors, DOI, publication date, URL, PDF, and ISSN details."
+    ),
+)
 @api_view(['GET'])
 def journal_details(request, journal_id):
     try:
@@ -473,6 +719,11 @@ def journal_details(request, journal_id):
 
     return Response(journal_data) 
 
+@extend_schema(
+    tags=['Stats'],
+    summary="Get authenticated user's content counts",
+    description="Returns the number of journals, volumes and articles uploaded by the currently authenticated user.",
+)
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
 def get_user_counts(request):
@@ -509,7 +760,7 @@ from rest_framework.pagination import PageNumberPagination
 
 
 # ─── Custom Permission ────────────────────────────────────────────────────────
-
+# ─── Staff / Approval Views ───────────────────────────────────────────────────
 class IsStaffAndActive(BasePermission):
     """
     Allows access only to users who are:
@@ -538,7 +789,11 @@ class UnapprovedJournalPagination(PageNumberPagination):
 
 
 # ─── Views ────────────────────────────────────────────────────────────────────
-
+@extend_schema(
+    tags=['Journals'],
+    summary="List all unapproved journals (staff only)",
+    description="Returns a paginated list of journals that have not yet been approved. Accessible only by active staff members.",
+)
 class UnapprovedJournalListView(APIView):
     """
     GET /api/journals/unapproved/
@@ -557,6 +812,11 @@ class UnapprovedJournalListView(APIView):
         return paginator.get_paginated_response(serializer.data)
 
 
+@extend_schema(
+    tags=['Journals'],
+    summary="Get a single unapproved journal (staff only)",
+    description="Retrieve details of a specific unapproved journal by ID. Accessible only by active staff members.",
+)
 class UnapprovedJournalDetailView(APIView):
     """
     GET  /api/journals/unapproved/<journal_id>/  — View a single unapproved journal
@@ -578,6 +838,11 @@ class UnapprovedJournalDetailView(APIView):
         return Response(serializer.data)
 
 
+@extend_schema(
+    tags=['Journals'],
+    summary="Approve a journal (staff only)",
+    description="Sets a journal's `approved` field to `True`. Can only be performed by active staff members. Returns a confirmation message.",
+)
 class ApproveJournalView(APIView):
     """
     PATCH /api/journals/<journal_id>/approve/

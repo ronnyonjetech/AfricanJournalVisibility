@@ -7,11 +7,23 @@ from rest_framework_simplejwt.views import (
 )
 from django.contrib.auth import views as auth_views
 from .views import PasswordResetView, PasswordResetConfirmView, PasswordResetCompleteView
+from drf_spectacular.utils import extend_schema
+
+
+TaggedTokenRefreshView = extend_schema(
+    tags=['Auth'],
+    summary="Refresh JWT access token",
+    description=(
+        "Provide a valid refresh token to receive a new short-lived access token. "
+        "Send `{ \"refresh\": \"<token>\" }` in the request body."
+    ),
+)(TokenRefreshView)
 
 urlpatterns=[
     path('',views.getRoutes),
     path('token/',MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('token/refresh', TokenRefreshView.as_view(), name='token_refresh'),
+    # path('token/refresh', TokenRefreshView.as_view(), name='token_refresh'),
+    path('token/refresh', TaggedTokenRefreshView.as_view(), name='token_refresh'),
     path('register/',CustomUserCreate.as_view(),name="create_user"),
     path('logout/blacklist/', BlacklistTokenView.as_view(),
          name='blacklist'),

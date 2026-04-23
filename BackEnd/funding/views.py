@@ -3,7 +3,16 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import Funding
 from .serializers import FundingSerializer
+from drf_spectacular.utils import extend_schema, extend_schema_view
 
+
+@extend_schema_view(
+    list=extend_schema(tags=['Funding'], summary="List all funding opportunities"),
+    create=extend_schema(tags=['Funding'], summary="Create a funding opportunity"),
+    retrieve=extend_schema(tags=['Funding'], summary="Get a funding opportunity by ID"),
+    update=extend_schema(tags=['Funding'], summary="Update a funding opportunity"),
+    destroy=extend_schema(tags=['Funding'], summary="Delete a funding opportunity"),
+)
 class FundingViewSet(viewsets.ViewSet):
     """
     A ViewSet for listing, retrieving, creating, updating, and deleting funding instances.

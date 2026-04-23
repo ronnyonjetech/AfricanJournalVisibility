@@ -65,9 +65,27 @@ REST_FRAMEWORK = {
     )
    
 }
+# SPECTACULAR_SETTINGS = {
+#     'TITLE': 'APHRC API DOCUMENTATION',
+#     'DESCRIPTION': 'These are api end-points for African Journal Visibility project.CRUD operation processes',
+#     'VERSION': '1.0.0',
+#     'CONTACT': {
+#         'name': 'APHRC',
+#         'url': 'https://aphrc.org/',
+#         'email': 'helpdesk@aphrc.org',
+#     },
+#     'LICENSE': {
+#         'name': 'MIT',
+#         'url': 'https://opensource.org/licenses/MIT',
+#     },
+    
+#     'SERVE_INCLUDE_SCHEMA': False,
+#     # OTHER SETTINGS
+# }
+
 SPECTACULAR_SETTINGS = {
     'TITLE': 'APHRC API DOCUMENTATION',
-    'DESCRIPTION': 'These are api end-points for African Journal Visibility project.CRUD operation processes',
+    'DESCRIPTION': 'These are api end-points for African Journal Visibility project. CRUD operation processes',
     'VERSION': '1.0.0',
     'CONTACT': {
         'name': 'APHRC',
@@ -78,10 +96,35 @@ SPECTACULAR_SETTINGS = {
         'name': 'MIT',
         'url': 'https://opensource.org/licenses/MIT',
     },
-    
     'SERVE_INCLUDE_SCHEMA': False,
-    # OTHER SETTINGS
+
+    # ✅ Controls the order and grouping in Swagger UI
+    'TAGS': [
+        {'name': 'Auth',          'description': 'Registration, login and token management'},
+        {'name': 'Journals',      'description': 'Browse, search, create and manage journals'},
+        {'name': 'Articles',      'description': 'Submit, browse and manage articles'},
+        {'name': 'Volumes',       'description': 'Manage journal volumes'},
+        {'name': 'Languages',     'description': 'Language reference data'},
+        {'name': 'Platforms',     'description': 'Platform reference data'},
+        {'name': 'Countries',     'description': 'Country reference data'},
+        {'name': 'Thematic Areas','description': 'Thematic area classification'},
+        {'name': 'Feedback',      'description': 'User feedback on journals'},
+        {'name': 'Stats',         'description': 'Journal and user statistics'},
+        {'name': 'News',          'description': 'News articles and updates'},
+        {'name': 'Funding',       'description': 'Funding opportunities'},
+        {'name': 'Blog',          'description': 'Blog posts'},
+    ],
+
+    # ✅ Keeps parameters in the order you define, not alphabetically sorted
+    'SORT_OPERATION_PARAMETERS': False,
 }
+
+
+
+
+
+
+
 
 #https://aphrc.org/wp-content/themes/understrap-child/img/APHRC-primary-logo-large.png
 #"ACCESS_TOKEN_LIFETIME": timedelta(minutes=1440),
