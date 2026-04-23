@@ -447,6 +447,13 @@ SECURE_SSL_REDIRECT = True  # Redirect HTTP to HTTPS automatically
 
 '''
 
+# After (active)
+CSRF_TRUSTED_ORIGINS = [
+    "https://backend.afrikajournals.org",
+    "https://afrikajournals.org",
+    "https://afrijour.web.app",
+]
+
 SECURE_SSL_REDIRECT = False
 SECURE_HSTS_SECONDS = 0
 SECURE_HSTS_PRELOAD = False
