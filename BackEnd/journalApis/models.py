@@ -1,7 +1,8 @@
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
-    
+from django.core.exceptions import ValidationError
+   
 class Language(models.Model):
     language=models.CharField(max_length=1000)
     created_at=models.DateTimeField(auto_now_add=True)
@@ -219,6 +220,110 @@ class Feedback(models.Model):
     question=models.TextField(blank=True,null=True)
 
 
+######################################################################
+#     Manuscript Section   Added                                     #
+######################################################################
+class Manuscript(models.Model):
+    journal = models.ForeignKey(Journal, on_delete=models.CASCADE, related_name="manuscripts")
+    volume = models.ForeignKey(Volume, on_delete=models.SET_NULL, null=True, blank=True)
 
+    title = models.TextField()
+    abstract = models.TextField(blank=True, null=True)
+    file = models.FileField(upload_to="manuscripts/")
+
+    authors = models.TextField()
+
+    corresponding_author = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="submitted_manuscripts"
+    )
+
+    status = models.CharField(
+        max_length=30,
+        choices=[
+            ("submitted", "Submitted"),
+            ("under_review", "Under Review"),
+            ("revision", "Revision Required"),
+            ("accepted", "Accepted"),
+            ("rejected", "Rejected"),
+            ("published", "Published"),
+        ],
+        default="submitted"
+    )
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return f"{self.id} - {self.title}"
+    
+
+class Review(models.Model):
+    manuscript = models.ForeignKey(Manuscript, on_delete=models.CASCADE, related_name="reviews")
+    reviewer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+    recommendation = models.CharField(
+        max_length=20,
+        choices=[
+            ("accept", "Accept"),
+            ("minor", "Minor Revision"),
+            ("major", "Major Revision"),
+            ("reject", "Reject"),
+        ]
+    )
+
+    comments = models.TextField()
+    score = models.IntegerField(null=True, blank=True)
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+
+        ReviewerAssignment.objects.filter(
+            manuscript=self.manuscript,
+            reviewer=self.reviewer
+        ).update(is_completed=True)
+
+    def __str__(self):
+        return (
+            f"Review {self.id}: "
+            f"Manuscript {self.manuscript.id} - "
+            f"{self.manuscript.title} "
+            f"by {self.reviewer.user_name}"
+        )
+
+
+class ReviewerAssignment(models.Model):
+    manuscript = models.ForeignKey(Manuscript, on_delete=models.CASCADE)
+    reviewer = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+    assigned_at = models.DateTimeField(auto_now_add=True)
+
+    is_completed = models.BooleanField(default=False)
+
+    def __str__(self):
+        return (
+            f"{self.id} - "
+            f"{self.manuscript.title} → "
+            f"{self.reviewer.user_name}"
+        )
+
+
+class EditorialDecision(models.Model):
+    manuscript = models.OneToOneField(Manuscript, on_delete=models.CASCADE)
+
+    editor = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+
+    decision = models.CharField(
+        max_length=20,
+        choices=[
+            ("accept", "Accept"),
+            ("reject", "Reject"),
+            ("revise", "Revise"),
+        ]
+    )
+
+    notes = models.TextField(blank=True, null=True)
+    decided_at = models.DateTimeField(auto_now_add=True)
 
     

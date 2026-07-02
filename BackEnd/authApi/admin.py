@@ -19,19 +19,47 @@ class UserAdminConfig(UserAdmin):
     ordering = ('-start_date',)
     list_display = ('id','email','location','phone_number','user_name', 
                     'is_active', 'is_staff')
+    # fieldsets = (
+    #     (None, {'fields': ('email', 'user_name', 'location',)}),
+    #     ('Permissions', {'fields': ('is_staff', 'is_active')}),
+    #     #('Personal', {'fields': ('about',)}),
+    # )
     fieldsets = (
-        (None, {'fields': ('email', 'user_name', 'location',)}),
-        ('Permissions', {'fields': ('is_staff', 'is_active')}),
-        #('Personal', {'fields': ('about',)}),
+    (None, {'fields': ('email', 'user_name', 'location')}),
+    ('Permissions', {
+        'fields': (
+            'is_active',
+            'is_staff',
+            'is_superuser',
+            'groups',
+            'user_permissions',
+        )
+    }),
     )
     formfield_overrides = {
         models.TextField: {'widget': Textarea(attrs={'rows': 20, 'cols': 60})},
     }
+    # add_fieldsets = (
+    #     (None, {
+    #         'classes': ('wide',),
+    #         'fields': ('email', 'user_name','location','phone_number', 'password1', 'password2', 'is_active', 'is_staff')}
+    #      ),
+    # )
     add_fieldsets = (
-        (None, {
-            'classes': ('wide',),
-            'fields': ('email', 'user_name','location','phone_number', 'password1', 'password2', 'is_active', 'is_staff')}
-         ),
+    (None, {
+        'classes': ('wide',),
+        'fields': (
+            'email',
+            'user_name',
+            'location',
+            'phone_number',
+            'password1',
+            'password2',
+            'is_active',
+            'is_staff',
+            'groups',
+        )
+    }),
     )
 
 

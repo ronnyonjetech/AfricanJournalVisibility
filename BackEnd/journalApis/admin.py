@@ -52,3 +52,99 @@ class JournalsWithoutArticlesAdmin(admin.ModelAdmin):
 
 # Register the proxy model with the custom admin class
 admin.site.register(JournalsWithoutArticles, JournalsWithoutArticlesAdmin)
+
+
+class ManuscriptAdmin(admin.ModelAdmin):
+    list_display = (
+        'id',
+        'title',
+        'corresponding_author',
+        'journal',
+        'status',
+        'created_at'
+    )
+
+    list_filter = (
+        'status',
+        'journal',
+        'created_at'
+    )
+
+    search_fields = (
+        'title',
+        'abstract',
+        'corresponding_author__username',
+        'journal__journal_title'
+    )
+
+    ordering = ('-created_at',)
+
+    readonly_fields = ('created_at',)
+
+    fieldsets = (
+        ("Submission Info", {
+            "fields": ("title", "abstract", "file", "authors")
+        }),
+        ("Relations", {
+            "fields": ("journal", "volume", "corresponding_author")
+        }),
+        ("Workflow", {
+            "fields": ("status",)
+        }),
+        ("Meta", {
+            "fields": ("created_at",)
+        }),
+    )
+admin.site.register(Manuscript, ManuscriptAdmin)
+
+
+# class ReviewAdmin(admin.ModelAdmin):
+#     list_display = (
+#         'id',
+#         'manuscript',
+#         'reviewer',
+#         'recommendation',
+#         'created_at'
+#     )
+
+#     list_filter = (
+#         'recommendation',
+#         'created_at'
+#     )
+
+#     search_fields = (
+#         'manuscript__title',
+#         'reviewer__username',
+#         'comments'
+#     )
+
+#     ordering = ('-created_at',)
+
+# admin.site.register(Review, ReviewAdmin)
+
+class ReviewAdmin(admin.ModelAdmin):
+    list_display = (
+        "id",
+        "manuscript_id",
+        "manuscript_title",
+        "reviewer",
+        "recommendation",
+        "created_at",
+    )
+
+    def manuscript_id(self, obj):
+        return obj.manuscript.id
+
+    def manuscript_title(self, obj):
+        return obj.manuscript.title
+
+    manuscript_id.short_description = "Manuscript ID"
+    manuscript_title.short_description = "Title"
+admin.site.register(Review, ReviewAdmin)
+
+class ReviewerAssignmentAdmin(admin.ModelAdmin):
+    list_display = ('id', 'manuscript', 'reviewer', 'is_completed', 'assigned_at')
+    list_filter = ('is_completed', 'assigned_at')
+    search_fields = ('manuscript__title', 'reviewer__username')
+
+admin.site.register(ReviewerAssignment, ReviewerAssignmentAdmin)

@@ -8,11 +8,12 @@ from .views import JournalCountryCountAPIView
 from .views import journal_details
 from .views import UserArticleViewSet
 from .views import UserJournalViewSet
+from .views import ReviewerListView
 from .views import get_user_counts
 # from .views import get_all_volumes
 # from .views import delete_volume
 from .views import UserVolumeViewSet
-
+from .views import EditorQueueView, EditorManuscriptDetailView
 
 
 
@@ -237,7 +238,42 @@ urlpatterns=[
    path('api/journals/unapproved/<int:journal_id>/', UnapprovedJournalDetailView.as_view(), name='unapproved-journal-detail'),
  
     # Approve a specific journal (staff only)
-   path('api/journals/<int:journal_id>/approve/', ApproveJournalView.as_view(), name='approve-journal')
+   path('api/journals/<int:journal_id>/approve/', ApproveJournalView.as_view(), name='approve-journal'),
+   
+   #Manuscript Submission 
+   path('api/manuscripts/submit/', views.ManuscriptCreateView.as_view(), name='submit-manuscript'),
+   path('api/my-manuscripts/', views.UserManuscriptViewSet.as_view({'get': 'list'}), name='my-manuscripts'),
+   path('api/my-manuscripts/<int:pk>/', views.UserManuscriptViewSet.as_view({'get': 'retrieve'}), name='my-manuscript-detail'),
 
+   #Reviewer System
+   path('api/reviewer/queue/', views.ReviewerQueueView.as_view(), name='reviewer-queue'),
+   path('api/review/<int:manuscript_id>/submit/', views.SubmitReviewView.as_view(), name='submit-review'),
+   
+   #Editorial decision
+   path('api/editor/manuscript/<int:manuscript_id>/decision/', views.EditorialDecisionView.as_view(), name='editor-decision'),
+   # ─────────────────────────────────────────────
+    # Editor System
+    # ─────────────────────────────────────────────
+
+   path('api/editor/queue/', views.EditorQueueView.as_view(), name='editor-queue'),
+
+   path(
+        'api/editor/manuscript/<int:manuscript_id>/',
+        views.EditorManuscriptDetailView.as_view(),
+        name='editor-manuscript-detail'
+    ),
+   path(
+    "api/manuscripts/<int:manuscript_id>/assign-reviewer/",
+    views.AssignReviewerView.as_view(),
+    ),
+    path(
+    "journal_api/api/editor/reviewers/",
+    ReviewerListView.as_view(),
+    name="reviewers-list"
+    ),
+   #Journal Request System
+#    path('api/journal-requests/', views.JournalRequestCreateView.as_view(), name='journal-request-create'),
+#    path('api/editor/journal-requests/', views.JournalRequestListView.as_view(), name='journal-request-list'),
+#    path('api/editor/journal-requests/<int:pk>/', views.JournalRequestDetailView.as_view(), name='journal-request-detail')
 
 ]

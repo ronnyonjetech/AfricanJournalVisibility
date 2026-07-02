@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'authApi',
+    # 'authApi',
+    'authApi.apps.AuthapiConfig',
     'corsheaders',
     'rest_framework',
     'rest_framework_simplejwt.token_blacklist',
@@ -462,3 +463,5 @@ SESSION_COOKIE_SECURE = False
 CSRF_COOKIE_SECURE = False
 
 #docker exec -it django_app python manage.py migrate
+#docker exec -it django_app python manage.py approve_journals
+#docker exec -it django_app python manage.py showmigrations journalApis

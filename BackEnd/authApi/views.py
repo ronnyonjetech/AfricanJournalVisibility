@@ -40,6 +40,8 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         token['location']=user.location
         token['approved']=user.approved
         token['is_staff']=user.is_staff
+        # ✅ ADD THIS (IMPORTANT)
+        token['roles'] = list(user.groups.values_list('name', flat=True))
         # ...
         return token
 

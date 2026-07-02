@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Journal,Language,Platform,Country,ThematicArea,Volume, Article,JournalImage,Feedback
+from .models import (Journal,Language,Platform,Country,ThematicArea,Volume,Article,JournalImage,Feedback,Manuscript,Review,ReviewerAssignment,EditorialDecision)
 import re
 from django.utils.html import strip_tags
 from bs4 import BeautifulSoup
@@ -116,3 +116,77 @@ class CountsSerializer(serializers.Serializer):
     journals = serializers.IntegerField()
     volumes = serializers.IntegerField()
     articles = serializers.IntegerField()
+
+
+# Manuscript Serializer
+class ManuscriptSerializer(serializers.ModelSerializer):
+    journal_title = serializers.CharField(source='journal.journal_title', read_only=True)
+    author = serializers.CharField(source='corresponding_author.user_name', read_only=True)
+
+    class Meta:
+        model = Manuscript
+        fields = [
+            'id',
+            'journal',
+            'journal_title',
+            'volume',
+            'title',
+            'abstract',
+            'file',
+            'authors',
+            'corresponding_author',
+            'author',
+            'status',
+            'created_at'
+        ]
+        read_only_fields = ['corresponding_author', 'status', 'created_at']
+
+# Review Serializer
+class ReviewSerializer(serializers.ModelSerializer):
+    reviewer_name = serializers.CharField(source='reviewer.user_name', read_only=True)
+
+    class Meta:
+        model = Review
+        fields = [
+            'id',
+            'manuscript',
+            'reviewer',
+            'reviewer_name',
+            'recommendation',
+            'comments',
+            'score',
+            'created_at'
+        ]
+        read_only_fields = ['reviewer', 'created_at']
+
+# Review Assignment Serializer
+class ReviewerAssignmentSerializer(serializers.ModelSerializer):
+    reviewer_name = serializers.CharField(source='reviewer.user_name', read_only=True)
+
+    class Meta:
+        model = ReviewerAssignment
+        fields = [
+            'id',
+            'manuscript',
+            'reviewer',
+            'reviewer_name',
+            'assigned_at',
+            'is_completed'
+        ]
+
+#Editor Decision Serializer
+class EditorialDecisionSerializer(serializers.ModelSerializer):
+    editor_name = serializers.CharField(source='editor.user_name', read_only=True)
+
+    class Meta:
+        model = EditorialDecision
+        fields = [
+            'id',
+            'manuscript',
+            'editor',
+            'editor_name',
+            'decision',
+            'notes',
+            'decided_at'
+        ]
+        read_only_fields = ['editor', 'decided_at']

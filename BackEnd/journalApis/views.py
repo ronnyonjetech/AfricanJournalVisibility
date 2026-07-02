@@ -5,9 +5,10 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import Journal,Feedback
+from .models import Journal,Feedback,Manuscript,ReviewerAssignment,EditorialDecision
 from .serializers import JournalSerializer,JournalSerializer1,LanguageSerializer,PlatformSerializer,CountrySerializer,ThematicAreaSerializer,VolumeSerializer,ArticleSerializer,VolumeSerializer1
 from .serializers import FeedBackSerializer
+from .serializers import ManuscriptSerializer,ReviewSerializer,ReviewerAssignmentSerializer
 from django.shortcuts import get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
 from .filters import JournalFilter,ArticleFilter
@@ -16,15 +17,15 @@ from rest_framework.decorators import api_view
 import google.generativeai as genai
 from rest_framework import viewsets  # This imports viewsets
 from rest_framework.permissions import IsAuthenticated 
-from .models import Language,Platform,Country,ThematicArea,Volume,Article
+from .models import Language,Platform,Country,ThematicArea,Volume,Article,ReviewerAssignment,Review
 from django.conf import settings
 from .serializers import CountsSerializer
 from rest_framework.decorators import permission_classes
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
-
+from django.contrib.auth import get_user_model
 # from django.db.models import Count
-
+from rest_framework.permissions import BasePermission
 # from rest_framework.views import APIView
 # from rest_framework.response import Response
 from django.db.models import Count, Q
@@ -873,3 +874,437 @@ class ApproveJournalView(APIView):
             {'message': f'Journal "{journal.journal_title}" has been approved successfully.'},
             status=status.HTTP_200_OK
         )
+    
+
+###########################################################################
+
+
+class ManuscriptCreateView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        serializer = ManuscriptSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(corresponding_author=request.user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class UserManuscriptViewSet(viewsets.ModelViewSet):
+    serializer_class = ManuscriptSerializer
+    permission_classes = [IsAuthenticated]
+
+    # def get_queryset(self):
+    #     return Manuscript.objects.filter(corresponding_author=self.request.user)
+    def get_queryset(self):
+        return (
+            Manuscript.objects
+            .filter(corresponding_author=self.request.user)
+            .order_by("-created_at")
+        )
+    
+class ReviewerQueueView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        manuscripts = Manuscript.objects.filter(
+            reviewerassignment__reviewer=request.user,
+            reviewerassignment__is_completed=False
+        ).distinct()
+
+        serializer = ManuscriptSerializer(manuscripts, many=True)
+        return Response(serializer.data)
+    
+# class SubmitReviewView(APIView):
+#     permission_classes = [IsAuthenticated]
+
+#     def post(self, request, manuscript_id):
+#         manuscript = get_object_or_404(Manuscript, id=manuscript_id)
+
+#         data = request.data.copy()
+#         data["reviewer"] = request.user.id
+#         data["manuscript"] = manuscript.id
+
+#         serializer = ReviewSerializer(data=data)
+#         if serializer.is_valid():
+#             serializer.save()
+
+#             return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
+# class SubmitReviewView(APIView):
+#     permission_classes = [IsAuthenticated]
+
+#     def post(self, request, manuscript_id):
+#         manuscript = get_object_or_404(Manuscript, id=manuscript_id)
+
+#         # CHECK ASSIGNMENT FIRST
+#         assignment = ReviewerAssignment.objects.filter(
+#             manuscript=manuscript,
+#             reviewer=request.user,
+#             is_completed=False
+#         ).first()
+
+#         if not assignment:
+#             return Response(
+#                 {"error": "You are not assigned to review this manuscript."},
+#                 status=403
+#             )
+
+#         data = request.data.copy()
+#         data["reviewer"] = request.user.id
+#         data["manuscript"] = manuscript.id
+
+#         serializer = ReviewSerializer(data=data)
+#         if serializer.is_valid():
+#             serializer.save()
+
+#             # mark assignment complete
+#             assignment.is_completed = True
+#             assignment.save()
+
+#             return Response(serializer.data, status=201)
+
+#         return Response(serializer.errors, status=400)
+    
+
+
+
+
+class SubmitReviewView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request, manuscript_id):
+        manuscript = get_object_or_404(Manuscript, id=manuscript_id)
+
+        # 1. CHECK ASSIGNMENT (CORE RULE)
+        assignment = ReviewerAssignment.objects.filter(
+            manuscript=manuscript,
+            reviewer=request.user,
+            is_completed=False
+        ).first()
+
+        if not assignment:
+            return Response(
+                {"error": "You are not assigned to review this manuscript."},
+                status=403
+            )
+
+        # 2. PREVENT DOUBLE REVIEW
+        if Review.objects.filter(manuscript=manuscript, reviewer=request.user).exists():
+            return Response(
+                {"error": "You already submitted a review."},
+                status=400
+            )
+
+        # 3. FORCE SAFE DATA (IMPORTANT FIX)
+        serializer = ReviewSerializer(data=request.data)
+
+        if serializer.is_valid():
+            serializer.save(
+                reviewer=request.user,
+                manuscript=manuscript
+            )
+
+            # 4. MARK ASSIGNMENT COMPLETE
+            assignment.is_completed = True
+            assignment.save()
+
+            return Response(serializer.data, status=201)
+
+        return Response(serializer.errors, status=400)
+    
+# class EditorialDecisionView(APIView):
+#     permission_classes = [IsAuthenticated]
+
+#     def post(self, request, manuscript_id):
+#         manuscript = get_object_or_404(Manuscript, id=manuscript_id)
+
+#         decision = request.data.get("decision")
+
+#         manuscript.status = decision
+#         manuscript.save()
+
+#         # if accepted → convert to Article
+#         if decision == "accepted":
+#             Article.objects.create(
+#                 journal=manuscript.journal,
+#                 volume=manuscript.volume,
+#                 title=manuscript.title,
+#                 authors=manuscript.authors,
+#                 abstract=manuscript.abstract
+#             )
+
+#         return Response({"message": "Decision recorded"})
+
+
+class EditorialDecisionView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request, manuscript_id):
+        manuscript = get_object_or_404(Manuscript, id=manuscript_id)
+
+        decision = request.data.get("decision")
+        notes = request.data.get("notes", "")
+
+        # 1. Validate decision
+        valid_map = {
+            "accept": "accepted",
+            "reject": "rejected",
+            "revise": "revision",
+        }
+
+        if decision not in valid_map:
+            return Response(
+                {"error": "Invalid decision. Use accept, reject, or revise."},
+                status=400
+            )
+
+        # 2. Prevent duplicate decisions
+        if hasattr(manuscript, "editorialdecision"):
+            return Response(
+                {"error": "Decision already made for this manuscript."},
+                status=400
+            )
+
+        # 3. Save editorial decision
+        EditorialDecision.objects.create(
+            manuscript=manuscript,
+            editor=request.user,
+            decision=decision,
+            notes=notes
+        )
+
+        # 4. Update manuscript status (IMPORTANT FIX)
+        manuscript.status = valid_map[decision]
+        manuscript.save()
+
+        # 5. If accepted → create Article
+        if decision == "accept":
+            Article.objects.create(
+                journal=manuscript.journal,
+                volume=manuscript.volume,
+                title=manuscript.title,
+                authors=manuscript.authors,
+                abstract=manuscript.abstract
+            )
+
+        return Response({
+            "message": "Editorial decision recorded",
+            "status": manuscript.status
+        })
+    
+# class EditorQueueView(APIView):
+#     permission_classes = [IsAuthenticated]
+
+#     def get(self, request):
+#         manuscripts = Manuscript.objects.filter(
+#             status__in=["under_review", "revision"]
+#         ).distinct()
+
+#         return Response(ManuscriptSerializer(manuscripts, many=True).data)
+
+class EditorQueueView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        manuscripts = Manuscript.objects.filter(
+            # status__in=["under_review", "revision"]
+            status__in=["submitted", "under_review", "revision"]
+        ).order_by("-created_at")
+
+        serializer = ManuscriptSerializer(manuscripts, many=True)
+        return Response(serializer.data)
+    
+class EditorManuscriptDetailView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, manuscript_id):
+        manuscript = get_object_or_404(Manuscript, id=manuscript_id)
+
+        reviews = Review.objects.filter(manuscript=manuscript)
+        assignments = ReviewerAssignment.objects.filter(manuscript=manuscript)
+
+        return Response({
+            "manuscript": ManuscriptSerializer(manuscript).data,
+            "reviews": ReviewSerializer(reviews, many=True).data,
+            "assignments": ReviewerAssignmentSerializer(assignments, many=True).data,
+        })
+
+class IsEditor(BasePermission):
+    def has_permission(self, request, view):
+        return (
+            request.user.is_authenticated and
+            request.user.groups.filter(name="Editor").exists()
+        )
+    
+# User = get_user_model()
+# class AssignReviewerView(APIView):
+#     permission_classes = [IsEditor]
+
+#     def post(self, request, manuscript_id):
+#         manuscript = get_object_or_404(Manuscript, id=manuscript_id)
+
+#         reviewer_id = request.data.get("reviewer")
+#         reviewer = get_object_or_404(User, id=reviewer_id)
+
+#         # prevent duplicates
+#         if ReviewerAssignment.objects.filter(
+#             manuscript=manuscript,
+#             reviewer=reviewer,
+#             is_completed=False
+#         ).exists():
+#             return Response(
+#                 {"error": "Reviewer already assigned to this manuscript."},
+#                 status=400
+#             )
+
+#         # prevent invalid states
+#         if manuscript.status in ["accepted", "rejected"]:
+#             return Response(
+#                 {"error": "Cannot assign reviewers to finalized manuscript."},
+#                 status=400
+#             )
+
+#         # ensure reviewer role (optional but recommended)
+#         if not reviewer.groups.filter(name="Reviewer").exists():
+#             return Response(
+#                 {"error": "Selected user is not a reviewer."},
+#                 status=400
+#             )
+
+#         assignment = ReviewerAssignment.objects.create(
+#             manuscript=manuscript,
+#             reviewer=reviewer
+#         )
+#         print("MANUSCRIPT STATUS BEFORE:", manuscript.status)
+#         if manuscript.status == "submitted":
+#             manuscript.status = "under_review"
+#             manuscript.save(update_fields=["status"])
+#         print("MANUSCRIPT STATUS AFTER:", manuscript.status)
+
+#         return Response({
+#             "message": "Reviewer assigned successfully.",
+#             "status": manuscript.status,
+#             "assignment_id": assignment.id
+#         }, status=201)
+
+
+from django.db import transaction
+
+User = get_user_model()
+
+class AssignReviewerView(APIView):
+    permission_classes = [IsEditor]
+
+    @transaction.atomic
+    def post(self, request, manuscript_id):
+        manuscript = get_object_or_404(Manuscript, id=manuscript_id)
+
+        reviewer_id = request.data.get("reviewer")
+        reviewer = get_object_or_404(User, id=reviewer_id)
+
+        # 1. Prevent invalid manuscript states
+        if manuscript.status in ["accepted", "rejected"]:
+            return Response(
+                {"error": "Cannot assign reviewers to finalized manuscript."},
+                status=400
+            )
+
+        # 2. Ensure reviewer role
+        if not reviewer.groups.filter(name="Reviewer").exists():
+            return Response(
+                {"error": "Selected user is not a reviewer."},
+                status=400
+            )
+
+        # 3. Prevent duplicate assignment (safer check)
+        exists = ReviewerAssignment.objects.select_for_update().filter(
+            manuscript=manuscript,
+            reviewer=reviewer,
+            is_completed=False
+        ).exists()
+
+        if exists:
+            return Response(
+                {"error": "Reviewer already assigned to this manuscript."},
+                status=400
+            )
+
+        # 4. Create assignment
+        assignment = ReviewerAssignment.objects.create(
+            manuscript=manuscript,
+            reviewer=reviewer
+        )
+
+        # 5. Atomic status transition
+        if manuscript.status == "submitted":
+            manuscript.status = "under_review"
+            manuscript.save(update_fields=["status"])
+
+        return Response({
+            "message": "Reviewer assigned successfully.",
+            "status": manuscript.status,
+            "assignment_id": assignment.id
+        }, status=201)
+
+
+
+# class AssignReviewerView(APIView):
+#     permission_classes = [IsAuthenticated]
+
+#     def post(self, request, manuscript_id):
+#         manuscript = get_object_or_404(
+#             Manuscript,
+#             id=manuscript_id
+#         )
+
+#         reviewer_id = request.data.get("reviewer")
+
+#         reviewer = get_object_or_404(
+#             User,
+#             id=reviewer_id
+#         )
+
+#         ReviewerAssignment.objects.create(
+#             manuscript=manuscript,
+#             reviewer=reviewer
+#         )
+
+#         # Automatically move manuscript into review
+#         if manuscript.status == "submitted":
+#             manuscript.status = "under_review"
+#             manuscript.save(update_fields=["status"])
+
+#         return Response(
+#             {
+#                 "message": "Reviewer assigned successfully.",
+#                 "status": manuscript.status
+#             },
+#             status=201
+#         )
+
+
+
+User = get_user_model()
+
+class ReviewerListView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        reviewers = User.objects.filter(groups__name="Reviewer")
+
+        data = [
+            {
+                "id": user.id,
+                # "name": user.get_full_name() or user.username,
+                "name": user.user_name,
+                "email": user.email
+            }
+            for user in reviewers
+        ]
+
+        return Response(data)

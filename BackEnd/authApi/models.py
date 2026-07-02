@@ -39,11 +39,21 @@ class CustomAccountManager(BaseUserManager):
 
 class NewUser(AbstractBaseUser, PermissionsMixin):
 
+    # ROLE_CHOICES = (
+    #     ('author', 'Author'),
+    #     ('reviewer', 'Reviewer'),
+    #     ('editor', 'Editor'),)
+
     email = models.EmailField(_('email address'), unique=True)
     user_name = models.CharField(max_length=150, unique=True)
     #first_name = models.CharField(max_length=150, blank=True)
     start_date = models.DateTimeField(default=timezone.now)
     phone_number = models.CharField(max_length=20,blank=True)
+    # role = models.CharField(
+    #     max_length=20,
+    #     choices=ROLE_CHOICES,
+    #     default='author'
+    # )
     location=models.CharField(max_length=150, blank=True)
     # about = models.TextField(_(
     #     'about'), max_length=500, blank=True)
